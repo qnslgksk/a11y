@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body{margin:0;}
+        body{margin:0; padding:0; width:100vw;}
         #printCont, #skipNav{display:none;}
         /* flex nav */
         .nav_list{display:flex; width:100vw; margin:0; padding:0;}
@@ -63,7 +63,7 @@
                 마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화 해야함<br>
                 ARIA는 역할(role), 상태(state), 속성(property)으로 보조기술로 스크린리더 사용자들의 비시각적 경험을 제공한다.
             </p>
-            <article>
+            <div>
                 1. 역할(role)은 약속
                 <button type="button">버튼</button>요소는 Space Bar와 Enter 키로 실행<br>
                 <a href="javascript:;" role="button">버튼</a>요소는 Enter키로 실행<br>
@@ -96,9 +96,9 @@ if(e.keyCode == 13){
     console.log('enter')
 }
                 </script>
-            </article>
+            </div>
 
-            <article>
+            <div>
                 2. aria-*는 원래 의미의 콘텐츠를 완전히 감추거나 덮어씁니다
                 <a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a>    
                 <a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">링크텍스트</a>
@@ -109,9 +109,9 @@ if(e.keyCode == 13){
                     <li><a href="javascript:;">nav link1</a></li>
                     <li><a href="javascript:;">nav link2</a></li>
                 </ul>
-            </article>
+            </div>
 
-            <article>
+            <div>
                 https://www.w3.org/WAI/ARIA/apg/patterns/alert/
                 https://github.com/lezhin/accessibility/blob/master/aria/README.md#html NO.5
                 3. 알게된 점
@@ -154,7 +154,7 @@ if(e.keyCode == 13){
                 title속성은 <a target="_blank" title="새창 열림"></a>새창 열림처럼 기능에 관련이 있는 메시지를 남김
                 <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요">
                 
-            </article>
+            </div>
         </section>
         <hr>
         <!-- Accordion -->
