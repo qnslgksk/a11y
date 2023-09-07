@@ -81,7 +81,7 @@
             <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
             <ul class="nav_list">
                 <li class="list"><a class="list_link"
-                        href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a><!-- 보이스오버- 텍스트, 목록시작 -->
+                        href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a><!-- 보이스오버- 텍스트, 링크, 목록시작 -->
                 </li>
                 <li class="list"><a class="list_link"
                         href="https://mulder21c.github.io/aria-practices/examples/landmarks/HTML5.html">멀더예제</a></li>
@@ -91,8 +91,7 @@
                 <!-- 보이스오버- 텍스트, 링크 -->
                 <li class="list"><a class="list_link" href="https://www.w3.org/WAI/ARIA/apg/">APG</a></li>
                 <!-- 보이스오버- 텍스트, 링크 -->
-                <li><a href="tel:010-6407-2597">010-6407-2597</a></li>
-                <!-- 보이스오버- 구분점 --><!-- 보이스오버- 텍스트, 링크, 목록끝,-->
+                <li><a href="tel:010-6407-2597">010-6407-2597</a></li><!-- 보이스오버- 구분점 --><!-- 보이스오버- 텍스트, 링크, 목록끝,-->
             </ul>
         </nav><!-- end, end, 탐색 -->
     </header><!--  end, 배너 -->
@@ -112,8 +111,8 @@
                     ...<!-- 보이스오버- 생략부호, end, 탐색 -->
                 </nav>
                 <!-- O: 탐색 역할 갯수가 둘 이상인 경우 레이블 제공(nav) -->
-                <nav aria-labelledby="gnb">
-                    <h2 id="gnb">글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2 -->
+                <nav aria-labelledby="gnbb"><!-- aria-labelledby에 해당되는 id영역의 h2타이틀을 읽음-->
+                    <h2 id="gnbb">글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2,-->
                     <h3>글로벌 네비게이션</h3><!-- 보이스오버-텍스트,머리말레벨3 -->
                     ...<!-- 보이스오버- 생략부호, end, 글로벌 네비게이션,탐색 -->
                 </nav>
