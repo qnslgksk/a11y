@@ -76,49 +76,50 @@
     </div>
 
     <header>
-        <h1>A11y접근성</h1><!-- 보이스오버- A11y접근성, 머리말레벨1, 배너, 랜드마크 -->
+        <h1>A11y접근성</h1><!-- 보이스오버- 텍스트, 머리말레벨1, 배너, 랜드마크 -->
         <nav id="gnb">
-            <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 접근성 요소 참조 URL, 머리말레벨2, 탐색, 랜드마크 -->
+            <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
             <ul class="nav_list">
                 <li class="list"><a class="list_link"
-                        href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a><!-- 보이스오버- 멀더끙, 목록시작 -->
+                        href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a><!-- 보이스오버- 텍스트, 목록시작 -->
                 </li>
                 <li class="list"><a class="list_link"
                         href="https://mulder21c.github.io/aria-practices/examples/landmarks/HTML5.html">멀더예제</a></li>
-                <!-- 보이스오버- 멀더예제, 링크 -->
+                <!-- 보이스오버- 텍스트, 링크 -->
                 <li class="list"><a class="list_link"
                         href="https://github.com/lezhin/accessibility/blob/master/aria/README.md">레진</a></li>
-                <!-- 보이스오버- 레진, 링크 -->
+                <!-- 보이스오버- 텍스트, 링크 -->
                 <li class="list"><a class="list_link" href="https://www.w3.org/WAI/ARIA/apg/">APG</a></li>
-                <!-- 보이스오버- APG, 링크 -->
+                <!-- 보이스오버- 텍스트, 링크 -->
                 <li><a href="tel:010-6407-2597">010-6407-2597</a></li>
-                <!-- 보이스오버- 구분점 --><!-- 보이스오버- 0 1 0 ..., 링크, 목록끝,-->
+                <!-- 보이스오버- 구분점 --><!-- 보이스오버- 텍스트, 링크, 목록끝,-->
             </ul>
         </nav><!-- end, end, 탐색 -->
     </header><!--  end, 배너 -->
     <main id="main">
-        <h2>웹표준을 지키는 이유</h2><!-- 보이스오버- 웹표준을 지키는 이유, 머리말레벨2, 주요, 랜드마크 -->
-        <p>접근성향상, 호환성향상, 사용성향상, 검색노출향상을 위해 지키도록 합니다.<br><!-- 보이스오버- 읽는것을 중단-->
+        <h2>웹표준을 지키는 이유</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 주요, 랜드마크 -->
+        <p>접근성향상, 호환성향상, 사용성향상, 검색노출향상을 위해 지키도록 합니다.<br><!-- 보이스오버- 텍스트, (스와이프하면)읽는것을 중단-->
             br태그 또는 블록요소를 만나면 읽어주는걸 멈춤니다. 그러므로 꼭 br을 넣어야 하는 경우에만 넣도록 합니다.
         </p>
 
-        <h2>접근성UI 종류</h2><!-- 보이스오버- 접근성UI 종류, 머리말레벨2, -->
+        <h2>접근성UI 종류</h2><!-- 보이스오버- 텍스트, 머리말레벨2, -->
         <section aria-label="aria를 사용하기 전에">
-            <h3>navigation</h3><!-- 보이스오버- navigation, 머리말레벨3, aria를 사용하기 전에, 영역, 랜드마크 -->
+            <h3>navigation</h3><!-- 보이스오버- 텍스트, 머리말레벨3, aria를 사용하기 전에, 영역, 랜드마크 -->
             <pre>
                 <!-- O: 탐색에 <div role="navigation"> 보다 <nav>를 사용 권장, O: 탐색 역할을 하는 요소가 유일한 경우 레이블 생략 가능 -->
                 <nav>
-                    <h2>테스트 네비게이션</h2><!-- 보이스오버- 테스트 네비게이션, 머리말레벨2, 탐색, 랜드마크 -->
+                    <h2>테스트 네비게이션</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
                     ...<!-- 보이스오버- 생략부호, end, 탐색 -->
                 </nav>
                 <!-- O: 탐색 역할 갯수가 둘 이상인 경우 레이블 제공(nav) -->
-                <nav aria-labelledby="global-navigation">
-                    <h2 id="global-navigation">글로벌 네비게이션</h2><!-- 보이스오버-글로벌 네비게이션,머리말레벨2,글로벌 네비게이션,탐색, 랜드마크 -->
-                    ...<!-- 보이스오버- 생략부호, end, 탐색 -->
+                <nav aria-labelledby="gnb">
+                    <h2 id="gnb">글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2 -->
+                    <h3>글로벌 네비게이션</h3><!-- 보이스오버-텍스트,머리말레벨3 -->
+                    ...<!-- 보이스오버- 생략부호, end, 글로벌 네비게이션,탐색 -->
                 </nav>
                 <nav aria-labelledby="notice-pagination">
                     <h2 id="notice-pagination">공지사항 페이지네이션</h2><!-- 보이스오버-공지사항 페이지네이션,머리말레벨2,공지사항 페이지네이션,탐색, 랜드마크 -->
-                    ...<!-- 보이스오버- 생략부호, end, 탐색 -->
+                    ...<!-- 보이스오버- 생략부호, end, 공지사항 페이지네이션, 탐색 -->
                 </nav>
                 <!-- O: 헤딩요소가 없으면 aria-label 속성 사용 -->
                 <nav aria-label="notice-pagination"></nav>
@@ -126,13 +127,15 @@
             <p>
                 마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화 해야함<br>
                 ARIA는 역할(role), 상태(state), 속성(property)으로 보조기술로 스크린리더 사용자들의 비시각적 경험을 제공한다.
-            </p><!-- 보이스오버-<p>태그안에 있는 text, end, aria를 사용하기 전에, 영역 end, 주요-->
+            </p><!-- 보이스오버-<p>태그안에 있는 텍스트 -->
 
             <div>
-                <h3>1. 역할(role)은 약속</h3>
+                <h3>1. 역할(role)은 약속</h3><!-- 보이스오버- 역할role은 약속, 머리말레벨3  -->
 
-                <pre><button type="button">버튼</button>요소는 Space Bar와 Enter 키로 실행<br>
-                <a href="javascript:;" role="button">버튼</a>요소는 Enter키로 실행<br>
+                <pre><button type="button">나는버튼</button><!-- 보이스오버- 텍스트,버튼 -->
+                    요소는 Space Bar와 Enter 키로 실행<br><!-- 보이스오버- 텍스트 -->
+                <a href="javascript:;" role="button">앵커버튼</a><!-- 보이스오버- 텍스트, 버튼 -->
+                요소는 Enter키로 실행<br>
                 role을 주었다고 키보드동작이나 스타일을 제공하지 않으므로 스크립트 추가 작업 필요
                 잘못된 태그를 사용하여 aria-*를 남발하면 안하느니만 못함
                 </pre>
