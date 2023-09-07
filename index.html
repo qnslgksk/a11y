@@ -80,9 +80,8 @@
         <nav id="gnb">
             <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
             <ul class="nav_list">
-                <li class="list"><a class="list_link"
-                        href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a><!-- 보이스오버- 텍스트, 링크, 목록시작 -->
-                </li>
+                <li class="list"><a class="list_link" href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a>
+                </li><!-- 보이스오버- 텍스트, 링크, 목록시작 -->
                 <li class="list"><a class="list_link"
                         href="https://mulder21c.github.io/aria-practices/examples/landmarks/HTML5.html">멀더예제</a></li>
                 <!-- 보이스오버- 텍스트, 링크 -->
@@ -103,7 +102,6 @@
 
         <h2>접근성UI 종류</h2><!-- 보이스오버- 텍스트, 머리말레벨2, -->
         <section aria-label="aria를 사용하기 전에">
-
             <div>
                 <h3>navigation</h3><!-- 보이스오버- 텍스트, 머리말레벨3, aria-label값, 영역, 랜드마크 -->
                 <pre><!-- pre태그는 줄바꿈과 띄어쓰기영역 포함하여 focus가 들어온다 -->
@@ -145,23 +143,837 @@
             </div>
 
             <div class="btn_wrap">
-                <input type="button" value="A1" class="btn"><!-- Enter, Space Bar로 동작 -->
-                <button type="button" class="btn">A2</button><!-- Enter, Space Bar로 동작 -->
-                <a href="#" class="btn" role="button">A3</a><!-- Enter로 동작 -->
+                <input type="button" value="A1" class="btn"><!--보이스오버-value, 버튼--> <!-- Enter, Space Bar로 동작 -->
+                <button type="button" class="btn">A2</button><!--보이스오버-텍스트, 버튼--><!-- Enter, Space Bar로 동작 -->
+                <a href="#" class="btn" role="button">A3</a><!--보이스오버-텍스트, 버튼--><!-- Enter로 동작 -->
             </div>
 
             <div>
-                <h3>2. aria-*는 원래 의미의 콘텐츠를 완전히 감추거나 덮어씁니다</h3>
-                <pre><a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a></pre>
-                <pre><a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">링크텍스트</a></pre>
+                <h3>2. aria-*는 원래 의미의 콘텐츠를 완전히 감추거나 덮어씁니다</h3><!--보이스오버-텍스트, 머리말레벨3-->
+                <pre><a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a></pre><!--보이스오버- 텍스트, 메뉴항목 -->
                 <pre><button type="button" aria-pressed="mute">Mute버튼</button></pre>
-                <pre><table role="log">log는 표가 아닌 기록으로 알림</table></pre>
+                <!-- 보이스오버- mute버튼, 체크상자, 선택해제됨, 설정을 끄거나 켜려면 이중탭하십시오 / 이중탭하면 선택해제됨이라고만 읽어줌-->
+
+                <!--여기부터 다시 테스트  -->
+
+                <table role="log">이거는 표가 아닌 기록으로 알림</table>
+                <a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">앵커</a><!--보이스오버- 텍스트 -->
+                <!-- pre에 넣어서 안읽은건가??? -->
 
                 <code><ul></code>태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장
             </div>
         </section>
         <hr><!-- 보이스오버-구분표시 흐리게 표시됨, end, 주요 -->
 
+
+
+        <div>
+            <!-- https://www.w3.org/WAI/ARIA/apg/patterns/alert/
+                                    https://github.com/lezhin/accessibility/blob/master/aria/README.md#html NO.5 -->
+            <h3>3. 알게된 점</h3>
+            <p>aria-label, aria-labelledby, aria-description, aria-describedby속성을 주는 요소에 설명을 제공하는 속성
+                aria-label은 영역에 heading태그가 없을 때 사용<br>
+                aria-labelledby는 heading태그,a, button요소를 id값으로 참조할 때 사용<br>
+                aria-label과 aria-labelledby를 함께 사용하면 aria-label보다 aria-labelledby속성이 우선순위가 높음<br>
+                그리고 숨김 처리한 설명을 참조하면 안되고 참조가 불가능한 경우 aria-label속성 사용
+                aria-description은 자세한 설명을 할 때 사용
+                aria-describedby는 설명글을 id값으로 참조 할 때 사용
+            </p>
+            <pre>
+                        <!-- O: 헤딩 설명 참조 -->
+                        <div aria-labelledby="LZ-PATH" hidden>
+                            <h2 id="LZ-PATH">레진패스란?</h2><!-- 왜 여기서부터 읽지? -->
+                            <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
+                        </div>
+                        
+                        <!-- O: 링크 설명 참조 -->
+                        <a id="LZ-PATH" href="#LZ-PATH-TEXT">레진패스란?</a>
+                        <div id="LZ-PATH-TEXT" aria-labelledby="LZ-PATH" hidden>
+                            <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
+                        </div>
+                        <!-- O: 참조할 설명이 없는 경우 -->
+                        <form>
+                            <label for="wt-search">웹툰 검색</label>
+                            <input id="wt-search" type="search" aria-label="웹툰검색함" title="웹툰검색">
+                            <button>검색</button>
+                        </form>
+                        <!-- O: 버튼 요소에 상세한 설명 제공 -->
+                        <button type="button" aria-describedby="TIP-DEL">게시물 삭제</button>
+                        <p id="TIP-DEL" role="tooltip" hidden>게시물 삭제 후 복원할 수 없음.</p></code>
+                        <!-- 팝업 O: 알럿 대화상자 요소에 상세한 설명 제공 -->
+                        <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
+                            <h2 id="TITLE">레진패스 안내</h2>
+                            <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
+                            <button type="button">레진패스 적용</button>
+                            <button type="button">취소</button>
+                        </div>
+                        title속성은
+                        <a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
+                        <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요">
+                        </pre>
+        </div>
+
+
+        <!-- Accordion -->
+        <section title="Accordion">
+            <!-- <style>
+                                .accordion {
+                                    margin: 0;
+                                    padding: 0;
+                                    border: 2px solid hsl(0deg 0% 52%);
+                                    border-radius: 7px;
+                                    width: 20em;
+                                }
+                    
+                                .accordion h3 {
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                    
+                                .accordion:focus-within {
+                                    border-color: hsl(216deg 94% 43%);
+                                }
+                    
+                                .accordion:focus-within h3 {
+                                    background-color: hsl(0deg 0% 97%);
+                                }
+                    
+                                .accordion>*+* {
+                                    border-top: 1px solid hsl(0deg 0% 52%);
+                                }
+                    
+                                .accordion-trigger {
+                                    background: none;
+                                    color: hsl(0deg 0% 13%);
+                                    display: block;
+                                    font-size: 1rem;
+                                    font-weight: normal;
+                                    margin: 0;
+                                    padding: 1em 1.5em;
+                                    position: relative;
+                                    text-align: left;
+                                    width: 100%;
+                                    outline: none;
+                                }
+                    
+                                .accordion-trigger:focus,
+                                .accordion-trigger:hover {
+                                    background: hsl(216deg 94% 94%);
+                                }
+                    
+                                .accordion-trigger:focus {
+                                    outline: 4px solid transparent;
+                                }
+                    
+                                .accordion>*:first-child .accordion-trigger,
+                                .accordion>*:first-child {
+                                    border-radius: 5px 5px 0 0;
+                                }
+                    
+                                .accordion>*:last-child .accordion-trigger,
+                                .accordion>*:last-child {
+                                    border-radius: 0 0 5px 5px;
+                                }
+                    
+                                button {
+                                    border-style: none;
+                                }
+                    
+                                .accordion button::-moz-focus-inner {
+                                    border: 0;
+                                }
+                    
+                                .accordion-title {
+                                    display: block;
+                                    pointer-events: none;
+                                    border: transparent 2px solid;
+                                    border-radius: 5px;
+                                    padding: 0.25em;
+                                    outline: none;
+                                }
+                    
+                                .accordion-trigger:focus .accordion-title {
+                                    border-color: hsl(216deg 94% 43%);
+                                }
+                    
+                                .accordion-icon {
+                                    border: solid currentcolor;
+                                    border-width: 0 2px 2px 0;
+                                    height: 0.5rem;
+                                    pointer-events: none;
+                                    position: absolute;
+                                    right: 2em;
+                                    top: 50%;
+                                    transform: translateY(-60%) rotate(45deg);
+                                    width: 0.5rem;
+                                }
+                    
+                                .accordion-trigger:focus .accordion-icon,
+                                .accordion-trigger:hover .accordion-icon {
+                                    border-color: hsl(216deg 94% 43%);
+                                }
+                    
+                                .accordion-trigger[aria-expanded="true"] .accordion-icon {
+                                    transform: translateY(-50%) rotate(-135deg);
+                                }
+                    
+                                .accordion-panel {
+                                    margin: 0;
+                                    padding: 1em 1.5em;
+                                }
+                    
+                                /* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */
+                                .accordion-panel[hidden] {
+                                    display: none;
+                                }
+                    
+                                /* fieldset {
+                                    border: 0;
+                                    margin: 0;
+                                    padding: 0;
+                                } */
+                    
+                                /* input {
+                                    border: 1px solid hsl(0deg 0% 42%);
+                                    border-radius: 0.3em;
+                                    display: block;
+                                    font-size: inherit;
+                                    padding: 0.3em 0.5em;
+                                } */
+                            </style>
+                            <h2>Accordion</h2>
+                            <p>section > h2가 있는데 title속성을 쓰면 중복이 아닌가?</p> -->
+            <!-- O: 기본 아코디언 -->
+            <!-- <div class="accordion">
+                                <div class="accordion-header">
+                                    <button type="button" id="acco-anchor" class="accordion-trigger" aria-expanded="true" aria-controls="pan"><span class="accordion-title">상세보기</span><span class="accordion-icon"></span><button>
+                                </div>
+                                <div id="pan" class="accordion-panel" aria-labelledby="acco-anchor">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.<br> Facere fugit quibusdam consequuntur nobis rem quisquam debitis, mollitia esse blanditiis eaque laudantium,<br> nam quidem animi odit eius soluta hic magni aut!
+                                </div>
+                            </div>
+                            <p>체크박스</p> -->
+            <!-- O: 인풋체크박스 포함 아코디언 -->
+            <!-- <div class="accordion_chk">
+                                <div class="accordion">
+                                    <div class="accordion-header">
+                                        <input type="checkbox" name="" id="chk_term"><label for="chk_term">약관</label>
+                                        <button type="button" id="acco-anchor1" class="accordion-trigger" aria-expanded="true" aria-controls="pan1"><span class="accordion-title">accordion header 상세보기</span><span class="accordion-icon"></span><button>
+                                    </div>
+                                    <div id="pan1" class="accordion-panel" aria-labelledby="acco-anchor1">
+                                        accordion header: 아코디언 컨텐츠를 노출/비노출 컨트롤<br>
+                                        accordion pannel: 아코디언 헤더와 연관 된 콘텐츠
+                                    </div>
+                                </div>
+                            </div> -->
+            <!-- O: dl 아코디언 -->
+            <!-- <p>정의목록</p>
+                            <div class="accordion_dlist">
+                                <dl class="accordion">
+                                    <dt class="accordion-header">
+                                        <button type="button" class="accordion-trigger" aria-controls="answer-99" aria-expanded="false"><span class="accordion-title">보너스 코인은 언제 소진되나요?</span><span class="accordion-icon"></span></button>
+                                    </dt>
+                                    <dd id="answer-99" class="accordion-panel" hidden>
+                                        <p>만료기한이 짧은 보너스 코인이 일반 코인보다 먼저 소진됩니다.</p>
+                                    </dd>
+                                </dl>
+                            </div> -->
+            <!-- O: ul 아코디언 -->
+            <!-- <p>목록</p>
+                            <div class="accordion_list">
+                                <ul>
+                                    <li>
+                                        <div class="accordion">
+                                            <div class="accordion-header">
+                                                <button type="button" id="accoBtn1" class="accordion-trigger" aria-expanded="true" aria-controls="listCont1"><span class="accordion-title">a상세보기</span><span class="accordion-icon"></span><button>
+                                            </div>
+                                            <div id="listCont1" class="accordion-panel" aria-labelledby="accoBtn1">aaa</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="accordion">
+                                            <div class="accordion-header">
+                                                <button type="button" id="accoBtn2" class="accordion-trigger" aria-expanded="false" aria-controls="listCont2"><span class="accordion-title">b상세보기</span><span class="accordion-icon"></span></button>
+                                            </div>
+                                            <div id="listCont2" class="accordion-panel" aria-labelledby="accoBtn2" hidden>bbbb</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="accordion">
+                                            <div class="accordion-header">
+                                                <button type="button" id="accoBtn3" class="accordion-trigger" aria-expanded="false" aria-controls="listCont3"><span class="accordion-title">c상세보기</span><span class="accordion-icon"></span><button>
+                                            </div>
+                                            <div id="listCont3" class="accordion-panel" aria-labelledby="accoBtn3" hidden>cc</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p>헤딩포함</p> -->
+            <!-- O: 헤딩>버튼 아코디언 -->
+            <!-- <div id="accordionGroup" class="accordion">
+                                <h3 class="accordion-header">
+                                    <button type="button" aria-expanded="true" class="accordion-trigger" aria-controls="sect1" id="accordion1id">
+                                        <span class="accordion-title">Personal Information<span class="accordion-icon"></span></span>
+                                    </button>
+                                </h3>
+                                <div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel">
+                                    <div>
+                                        aa
+                                    </div>
+                                </div>
+                                <h3 class="accordion-header">
+                                    <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect3" id="accordion3id">
+                                        <span class="accordion-title">Shipping Address<span class="accordion-icon"></span></span>
+                                    </button>
+                                </h3>
+                                <div id="sect3" role="region" aria-labelledby="accordion3id" class="accordion-panel"
+                                    hidden="">
+                                    <div>
+                                        bb
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                /*
+                            *   This content is licensed according to the W3C Software License at
+                            *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+                            *
+                            *   Simple accordion pattern example
+                            */
+                    
+                                'use strict';
+                                class Accordion {
+                                    constructor(domNode) {
+                                        this.rootEl = domNode;
+                                        this.buttonEl = this.rootEl.querySelector('button[aria-expanded]');
+                    
+                                        const controlsId = this.buttonEl.getAttribute('aria-controls');
+                                        this.contentEl = document.getElementById(controlsId);
+                    
+                                        this.open = this.buttonEl.getAttribute('aria-expanded') === 'true';
+                    
+                                        // add event listeners
+                                        this.buttonEl.addEventListener('click', this.onButtonClick.bind(this));
+                                    }
+                    
+                                    onButtonClick() {
+                                        this.toggle(!this.open);
+                                    }
+                    
+                                    toggle(open) {
+                                        // don't do anything if the open state doesn't change
+                                        if (open === this.open) {
+                                            return;
+                                        }
+                    
+                                        // update the internal state
+                                        this.open = open;
+                    
+                                        // handle DOM updates
+                                        this.buttonEl.setAttribute('aria-expanded', `${open}`);
+                                        if (open) {
+                                            this.contentEl.removeAttribute('hidden');
+                                        } else {
+                                            this.contentEl.setAttribute('hidden', '');
+                                        }
+                                    }
+                    
+                                    // Add public open and close methods for convenience
+                                    open() {
+                                        this.toggle(true);
+                                    }
+                    
+                                    close() {
+                                        this.toggle(false);
+                                    }
+                                }
+                    
+                                // init accordions
+                                const accordions = document.querySelectorAll('.accordion-header');
+                                accordions.forEach((accordionEl) => {
+                                    new Accordion(accordionEl);
+                                });
+                    
+                            </script> -->
+        </section>
+        <!-- // Accordion -->
+        <hr>
+        <!-- Alert, Status -->
+        <section>
+            <!-- <h2>Alert</h2>
+                            <p>사용자의 응답이 필요없는 경우 오류나 제안하는 메시지에 사용 하며, 초점을 받지 않도록 처리 (즉시 메시지전달)</p> -->
+            <!-- O: 오류 메시지 -->
+            <!-- <p role="alert">우편번호 입력 오류.</p> -->
+
+            <!-- O: 제안 메시지 -->
+            <!-- <p role="alert">로그인 후 이용 가능.</p>
+                            <style>
+                            [role="alert"] {
+                            padding: 10px;
+                            border: 2px solid hsl(206deg 74% 54%);
+                            border-radius: 4px;
+                            background: hsl(206deg 74% 90%);
+                            }
+                    
+                            [role="alert"]:empty {
+                            display: none;
+                            }
+                    
+                            </style>
+                            <button type="button" id="alert-trigger">Trigger Alert</button>
+                            <div id="example" role="alert"></div>
+                            
+                            <script type="text/template" id="alert-template">
+                              <p>Hello</p>
+                            </script>-->
+            <script>
+                /*
+                *   This content is licensed according to the W3C Software License at
+                *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+                *
+                */
+
+                'use strict';
+
+                window.addEventListener('load', function () {
+                    var button = document.getElementById('alert-trigger');
+
+                    button.addEventListener('click', addAlert);
+                });
+
+                /*
+                * @function addAlert
+                *
+                * @desc Adds an alert to the page
+                *
+                * @param   {object}  event  -  Standard W3C event object
+                *
+                */
+
+                function addAlert() {
+                    var example = document.getElementById('example');
+                    var template = document.getElementById('alert-template').innerHTML;
+
+                    example.innerHTML = template;
+                }
+
+            </script>
+
+
+            <!-- <h2>Status</h2>
+                            <p>초점을 옮기지 않고 사용자에게 메시지 전달하며 role="alert"보다 덜 중요<br>
+                                성공(결과)메시지에 사용하며 암묵적 aria-live="polite" aria-atomic="true"를 할당하며 (현재진행중인 음성안내를 마친 후 전달)
+                                </p> -->
+            <!-- O: 성공 메시지 -->
+            <!-- <p role="status">회원가입 양식 전송완료.</p> -->
+
+            <!-- O: 결과 메시지 -->
+            <!-- <p role="status">10개의 검색 결과.</p>
+                            <p role="status">장바구니에 5개의 항목.</p> -->
+        </section>
+        <!-- // Alert, Status -->
+        <hr>
+        <!-- Alert Dialog -->
+        <section>
+            <!-- <h2>Alert Dialog</h2>
+                            <p>사용자 동의 또는 확인이 필요한 인터렉션 요소(input, button)가 있다면 role="alertdialog"를 사용하고 알럿 대화상자는 다른 과업을 차단해야 하기 때문에 modal스타일로 처리</p> -->
+            <!-- O: 알럿 대화상자 -->
+            <!-- <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
+                                <h3 id="TITLE">레진패스 안내</h3>
+                                <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
+                                <button type="button">레진패스 적용</button>
+                                <button type="button">취소</button>
+                            </div> -->
+        </section>
+        <!-- // Alert Dialog -->
+        <hr>
+        <!-- Dialog -->
+        <section>
+            <!-- <h2>Dialog</h2>
+                            <p>사용자가 여러정보를 입력해야 하는 요소(input, textarea, select, button)가 있다면 role="dialog"를 사용하며, 대화상자를 표시할 때 키보드 초점을 대화상자내부 처음 콘트롤로 옮겨야합니다. 대화상자를 표시하는 동안 초점은 대화상자안에서 벗어나지않게 처리 하고 modal스타일은 선택사항</p> -->
+            <!-- O: 대화상자 -->
+            <!-- <article role="dialog" aria-modal="true" aria-labelledby="TITLE">
+                                <h3 id="TITLE">로그인</h3>
+                                <form>
+                                    <label for="ID">아이디</label>
+                                    <input id="ID">
+                                    <label for="PW">비밀번호</label>
+                                    <input id="PW" type="password">
+                                    <button>로그인</button>
+                                </form>
+                            </article> -->
+        </section>
+        <!-- Dialog -->
+        <hr>
+        <!-- Form -->
+        <section aria-labelledby="region1">
+            <!-- aria-labelledby로 연결 해주면 form영역이라고 읽음-NVDA -->
+            <!-- <h2 id="region1">Form</h2>
+                            <fieldset>
+                                <p>
+                                    <label for="m-add1">Address 1:</label>
+                                    <input type="text" name="m-add1" id="m-add1">
+                                </p>
+                                <p>
+                                    <label for="m-add2">Address 2:</label>
+                                    <input type="text" name="m-add2" id="m-add2">
+                                </p>
+                                <p>
+                                    <label for="m-city">City:</label>
+                                    <input type="text" name="m-city" id="m-city">
+                                </p>
+                                <p>
+                                    <label for="m-state">State:</label>
+                                    <input type="text" name="m-state" id="m-state">
+                                </p>
+                                <p>
+                                    <label for="m-zip">Zip Code:</label>
+                                    <input type="text" name="m-zip" id="m-zip">
+                                </p>
+                            </fieldset> -->
+        </section>
+        <!-- // Form -->
+        <hr>
+        <!-- Tab -->
+        <div role="region" aria-labelledby="region2">
+            <!-- <h2 id="region2">Tab</h2>
+                            <p>현재페이지 안에서 색인을 제공하는 구조(tablist, tab, tabpannel)를 의미하며 사이트탐색에 해당하는 요소는 nav > h2 + ul 또는 aside > h2 + ul로 마크업하며 ul에 role="tabpannel"속성은 사용할 수 없음</p> -->
+            <!-- O: 앵커 형식 탭 -->
+            <!-- <div class="weekly">
+                                <div role="tablist">
+                                    <a id="mon-anchor" href="#mon" role="tab" aria-selected="true">월</a>
+                                    <a id="tue-anchor" href="#tue" role="tab" aria-selected="false">화</a>
+                                </div>
+                                <div id="mon" tabindex="0" role="tabpanel" aria-labelledby="mon-anchor">
+                                    월요일엔 빨간 장미를...
+                                </div>
+                                <div id="tue" tabindex="0" role="tabpanel" aria-labelledby="tue-anchor" hidden>
+                                    화요일엔 노란 장미를...
+                                </div>
+                            </div> -->
+            <!-- O: 버튼 형식 탭 -->
+            <!-- <div class="weekly">
+                                <div role="tablist">
+                                    <button type="button" id="mon-anchor" aria-controls="mon" role="tab" aria-selected="true">월</button>
+                                    <button type="button" id="tue-anchor" aria-controls="tue" role="tab" aria-selected="false">화</button>
+                                </div>
+                                <div id="mon" tabindex="0" role="tabpanel" aria-labelledby="mon-anchor">
+                                    월요일엔 빨간 장미를...
+                                </div>
+                                <div id="tue" tabindex="0" role="tabpanel" aria-labelledby="tue-anchor" hidden>
+                                    화요일엔 노란 장미를...
+                                </div>
+                            </div> -->
+            <!-- O: tablist와 tab 사이 li 요소의 의미 제거 -->
+            <!-- role="none" 또는 role="presentation"을 사용하여 태그의 역할을 제거
+                            role="none", role="presentation"(의미없음)  << 태그의 의미를 없앰<br>
+                            hidden << display:none<br>
+                            aria-hidden=true"(숨김속성) << 보조기기에서만 읽지못하게 숨김  
+                            숨김 속성은 요소와 내용을 모두 감추어 버리지만 role="none" 속성은 내용을 드러내고 의미만 감춥니다.<br>
+                            <ul role="tablist">
+                                <li role="none">
+                                    <a href="#home" role="tab" aria-selected="true">홈</a>
+                                </li>
+                                <li role="none">
+                                    <a href="#ongoing" role="tab" aria-selected="false">연재</a>
+                                </li>
+                                <li role="none">
+                                    <a href="#ranking" role="tab" aria-selected="false">랭킹</a>
+                                </li>
+                            </ul> -->
+            <style>
+                .tabs {
+                    font-family: "lucida grande", sans-serif;
+                }
+
+                [role="tablist"] {
+                    min-width: 100%;
+                }
+
+                [role="tab"],
+                [role="tab"]:focus,
+                [role="tab"]:hover {
+                    display: inline-block;
+                    position: relative;
+                    z-index: 2;
+                    top: 2px;
+                    margin: 0;
+                    margin-top: 4px;
+                    padding: 3px 3px 4px;
+                    border: 1px solid hsl(219deg 1% 72%);
+                    border-bottom: 2px solid hsl(219deg 1% 72%);
+                    border-radius: 5px 5px 0 0;
+                    background: hsl(220deg 20% 94%);
+                    outline: none;
+                    font-weight: bold;
+                    max-width: 22%;
+                    overflow: hidden;
+                    text-align: left;
+                    cursor: pointer;
+                }
+
+                [role="tab"][aria-selected="true"] {
+                    padding: 2px 2px 4px;
+                    margin-top: 0;
+                    border-width: 2px;
+                    border-top-width: 6px;
+                    border-top-color: rgb(36 116 214);
+                    border-bottom-color: hsl(220deg 43% 99%);
+                    background: hsl(220deg 43% 99%);
+                }
+
+                [role="tab"][aria-selected="false"] {
+                    border-bottom: 1px solid hsl(219deg 1% 72%);
+                }
+
+                [role="tab"] span.focus {
+                    display: inline-block;
+                    margin: 2px;
+                    padding: 4px 6px;
+                }
+
+                [role="tab"]:hover span.focus,
+                [role="tab"]:focus span.focus,
+                [role="tab"]:active span.focus {
+                    padding: 2px 4px;
+                    border: 2px solid rgb(36 116 214);
+                    border-radius: 3px;
+                }
+
+                [role="tabpanel"] {
+                    padding: 5px;
+                    border: 2px solid hsl(219deg 1% 72%);
+                    border-radius: 0 5px 5px;
+                    background: hsl(220deg 43% 99%);
+                    min-height: 10em;
+                    width: 100%;
+                    overflow: auto;
+                }
+
+                [role="tabpanel"].is-hidden {
+                    display: none;
+                }
+
+                [role="tabpanel"] p {
+                    margin: 0;
+                }
+            </style>
+            <!-- <div class="tabs">
+                                <h3 id="tablist-1">Danish Composers</h3>
+                                <div role="tablist" aria-labelledby="tablist-1" class="automatic">
+                                  <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
+                                    <span class="focus">Maria Ahlefeldt</span>
+                                  </button>
+                                  <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1">
+                                    <span class="focus">Carl Andersen</span>
+                                  </button>
+                                  <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1">
+                                    <span class="focus">Ida da Fonseca</span>
+                                  </button>
+                                  <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1">
+                                    <span class="focus">Peter Müller</span>
+                                  </button>
+                                </div>
+                              
+                                <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+                                  <p>
+                                    Maria Theresia Ahlefeldt <span lang="da">virkelig Tonekunstnerinde</span>” ('a True Artist of Music').
+                                  </p>
+                                </div>
+                                <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" class="is-hidden">
+                                  <p>
+                                    Carl Joachim Andersen 
+                                  </p>
+                                </div>
+                                <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="is-hidden">
+                                  <p>
+                                    Ida Henriette da Fonseca 
+                                  </p>
+                                </div>
+                                <div id="tabpanel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4" class="is-hidden">
+                                  <p>
+                                    Peter Erasmus Lange-Müller
+                                  </p>
+                                </div>
+                              </div> -->
+            <script>
+                /*
+                *   This content is licensed according to the W3C Software License at
+                *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+                *
+                *   File:   tabs-automatic.js
+                *
+                *   Desc:   Tablist widget that implements ARIA Authoring Practices
+                */
+
+                'use strict';
+
+                class TabsAutomatic {
+                    constructor(groupNode) {
+                        this.tablistNode = groupNode;
+
+                        this.tabs = [];
+
+                        this.firstTab = null;
+                        this.lastTab = null;
+
+                        this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
+                        this.tabpanels = [];
+
+                        for (var i = 0; i < this.tabs.length; i += 1) {
+                            var tab = this.tabs[i];
+                            var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
+
+                            tab.tabIndex = -1;
+                            tab.setAttribute('aria-selected', 'false');
+                            this.tabpanels.push(tabpanel);
+
+                            tab.addEventListener('keydown', this.onKeydown.bind(this));
+                            tab.addEventListener('click', this.onClick.bind(this));
+
+                            if (!this.firstTab) {
+                                this.firstTab = tab;
+                            }
+                            this.lastTab = tab;
+                        }
+
+                        this.setSelectedTab(this.firstTab, false);
+                    }
+
+                    setSelectedTab(currentTab, setFocus) {
+                        if (typeof setFocus !== 'boolean') {
+                            setFocus = true;
+                        }
+                        for (var i = 0; i < this.tabs.length; i += 1) {
+                            var tab = this.tabs[i];
+                            if (currentTab === tab) {
+                                tab.setAttribute('aria-selected', 'true');
+                                tab.removeAttribute('tabindex');
+                                this.tabpanels[i].classList.remove('is-hidden');
+                                if (setFocus) {
+                                    tab.focus();
+                                }
+                            } else {
+                                tab.setAttribute('aria-selected', 'false');
+                                tab.tabIndex = -1;
+                                this.tabpanels[i].classList.add('is-hidden');
+                            }
+                        }
+                    }
+
+                    setSelectedToPreviousTab(currentTab) {
+                        var index;
+
+                        if (currentTab === this.firstTab) {
+                            this.setSelectedTab(this.lastTab);
+                        } else {
+                            index = this.tabs.indexOf(currentTab);
+                            this.setSelectedTab(this.tabs[index - 1]);
+                        }
+                    }
+
+                    setSelectedToNextTab(currentTab) {
+                        var index;
+
+                        if (currentTab === this.lastTab) {
+                            this.setSelectedTab(this.firstTab);
+                        } else {
+                            index = this.tabs.indexOf(currentTab);
+                            this.setSelectedTab(this.tabs[index + 1]);
+                        }
+                    }
+
+                    /* EVENT HANDLERS */
+
+                    onKeydown(event) {
+                        var tgt = event.currentTarget,
+                            flag = false;
+
+                        switch (event.key) {
+                            case 'ArrowLeft':
+                                this.setSelectedToPreviousTab(tgt);
+                                flag = true;
+                                break;
+
+                            case 'ArrowRight':
+                                this.setSelectedToNextTab(tgt);
+                                flag = true;
+                                break;
+
+                            case 'Home':
+                                this.setSelectedTab(this.firstTab);
+                                flag = true;
+                                break;
+
+                            case 'End':
+                                this.setSelectedTab(this.lastTab);
+                                flag = true;
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        if (flag) {
+                            event.stopPropagation();
+                            event.preventDefault();
+                        }
+                    }
+
+                    onClick(event) {
+                        this.setSelectedTab(event.currentTarget);
+                    }
+                }
+
+                // Initialize tablist
+
+                window.addEventListener('load', function () {
+                    var tablists = document.querySelectorAll('[role=tablist].automatic');
+                    for (var i = 0; i < tablists.length; i++) {
+                        new TabsAutomatic(tablists[i]);
+                    }
+                });
+
+            </script>
+            <!--  input radio로 탭만들지 마라
+                                접근성은 
+                                1. 직접 들어본다
+                                2. input을 라디오 버튼으로 읽을 가능성이 큼
+                                3. input에 role="none"을 넣으면 문제 없을 듯 함
+                                4. label > input 지침상 암묵적레이블은 접근성 오류에 해당 됨
+                    
+                                결론:  라디오 버튼으로 탭을 만드는게 문제가 되진 않음 
+                                aria-*를 쓰면 용도에는 어긋나는게 맞으나 노력?을 해서 정상적으로 보이게 한 것이니..
+                                그냥 라디오로 만들면 접근성 위배
+                    
+                                role="tablist의 자식으로 role="tab"이 있어야 함(필수)
+                    
+                            -->
+        </div>
+        <!-- // Tab -->
+        <hr>
+        <!-- Breadcrumb -->
+        <section></section>
+        <!-- Breadcrumb -->
+        <hr>
+        <!-- Tooltip -->
+        <section>
+            <!-- <h2>Tooltip</h2>
+                            <p>role="" alert, alertdialog, dialog, status와 차이 알아보기
+                            폼컨트롤 요소에 대한 참고 컨텐츠로 마우스오버, 클릭 키보드초점을 받는경우에 노출 되기도하며 화면에 항상 표시할 수 있음.<br>마우스가 벗어나거나 <kbd>Escape</kbd>키를 누르면 툴팁이 비노출 처리, 툴팁이 노출되는동안 트리거 요소(버튼)에 포커스유지,포커스가 없으면 비노출
+                            </p> -->
+            <!-- O: 인풋 툴팁 -->
+            <!-- <label for="tel">전화번호</label>
+                            <input id="tel" type="tel" aria-describedby="TIP-TEL">
+                            <p id="TIP-TEL" role="tooltip" hidden>하이픈(-) 없이 숫자만 입력.</p> -->
+
+            <!-- O: 버튼 툴팁 -->
+            <!-- <button aria-describedby="TIP-DEL">게시물 삭제</button>
+                            <p id="TIP-DEL" role="tooltip" hidden>게시물 삭제 후 복원할 수 없음.</p>
+                            </section> -->
+            <!-- Tooltip -->
+            <hr>
+        </section>
     </main>
     <footer>footer</footer><!-- 보이스오버- 텍스트, 콘텐츠정보, 랜드마크 -->
     <script>
