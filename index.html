@@ -51,6 +51,16 @@
 
         /* float nav */
         /* table nav */
+
+        .btn:focus,
+        .btn:focus-within,
+        .btn:active {
+            border-color: blue;
+        }
+
+        .btn {
+            background: coral;
+        }
     </style>
     <title>A11y(2023.08.30)</title>
 </head>
@@ -96,7 +106,6 @@
         <section aria-label="aria를 사용하기 전에">
             <h3>navigation</h3><!-- 보이스오버- navigation, 머리말레벨3, aria를 사용하기 전에, 영역, 랜드마크 -->
             <pre>
-                <code>
                 <!-- O: 탐색에 <div role="navigation"> 보다 <nav>를 사용 권장, O: 탐색 역할을 하는 요소가 유일한 경우 레이블 생략 가능 -->
                 <nav>
                     <h2>테스트 네비게이션</h2><!-- 보이스오버- 테스트 네비게이션, 머리말레벨2, 탐색, 랜드마크 -->
@@ -113,7 +122,6 @@
                 </nav>
                 <!-- O: 헤딩요소가 없으면 aria-label 속성 사용 -->
                 <nav aria-label="notice-pagination"></nav>
-                </code>
             </pre>
             <p>
                 마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화 해야함<br>
@@ -123,51 +131,25 @@
             <div>
                 <h3>1. 역할(role)은 약속</h3>
 
-                <code><button type="button">버튼</button></code>요소는 Space Bar와 Enter 키로 실행<br>
-                <code><a href="javascript:;" role="button">버튼</a></code>요소는 Enter키로 실행<br>
+                <pre><button type="button">버튼</button>요소는 Space Bar와 Enter 키로 실행<br>
+                <a href="javascript:;" role="button">버튼</a>요소는 Enter키로 실행<br>
                 role을 주었다고 키보드동작이나 스타일을 제공하지 않으므로 스크립트 추가 작업 필요
                 잘못된 태그를 사용하여 aria-*를 남발하면 안하느니만 못함
+                </pre>
             </div>
-            <style>
-                .btn:focus,
-                .btn:focus-within,
-                .btn:active {
-                    border-color: blue;
-                }
 
-                .btn {
-                    background: coral;
-                }
-            </style>
             <div class="btn_wrap">
                 <input type="button" value="A1" class="btn"><!-- Enter, Space Bar로 동작 -->
                 <button type="button" class="btn">A2</button><!-- Enter, Space Bar로 동작 -->
                 <a href="#" class="btn" role="button">A3</a><!-- Enter로 동작 -->
             </div>
-            <script>
-                // const btnList = document.querySelectorAll(".btn");
-                // const btnArr = [];
-                // for(var i = 0; i < btnList.length; i++){
-                //     bntArr = btnArr.push(btnList[i]);
-                // }
-                // btnArr.addEventListener('click', function(){
-                //     console.log(this);
-                // });
-                // 내가 누른 버튼만 콘솔로 출력한다 (마우스이벤트)
-                // 내가 누른 버튼만 콘솔로 출력한다 (키보드이벤트)
-                if (e.keyCode == 32) {
-                    console.log('space bar')
-                }
-                if (e.keyCode == 13) {
-                    console.log('enter')
-                }
-            </script>
+
             <div>
                 <h3>2. aria-*는 원래 의미의 콘텐츠를 완전히 감추거나 덮어씁니다</h3>
-                <code><a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a></code>
-                <code><a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">링크텍스트</a></code>
-                <code><button type="button" aria-pressed="mute">Mute버튼</button></code>
-                <code><table role="log">log는 표가 아닌 기록으로 알림</table></code>
+                <pre><a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a></pre>
+                <pre><a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">링크텍스트</a></pre>
+                <pre><button type="button" aria-pressed="mute">Mute버튼</button></pre>
+                <pre><table role="log">log는 표가 아닌 기록으로 알림</table></pre>
 
                 <code><ul></code>태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장
             </div>
@@ -183,48 +165,62 @@
                     aria-description은 자세한 설명을 할 때 사용
                     aria-describedby는 설명글을 id값으로 참조 할 때 사용
                 </p>
+                <pre>
                 <!-- O: 헤딩 설명 참조 -->
-                <code><div aria-labelledby="LZ-PATH" hidden>
-                            <h2 id="LZ-PATH">레진패스란?</h2><!-- 왜 여기서부터 읽지? -->
-                            <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
-                        </div>
-                        </code>
+                <div aria-labelledby="LZ-PATH" hidden>
+                    <h2 id="LZ-PATH">레진패스란?</h2><!-- 왜 여기서부터 읽지? -->
+                    <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
+                </div>
+                
                 <!-- O: 링크 설명 참조 -->
-                <code>
-                        <a id="LZ-PATH" href="#LZ-PATH-TEXT">레진패스란?</a>
-                        <div id="LZ-PATH-TEXT" aria-labelledby="LZ-PATH" hidden>
-                            <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
-                        </div>
-                        </code>
+                <a id="LZ-PATH" href="#LZ-PATH-TEXT">레진패스란?</a>
+                <div id="LZ-PATH-TEXT" aria-labelledby="LZ-PATH" hidden>
+                    <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
+                </div>
                 <!-- O: 참조할 설명이 없는 경우 -->
-                <code><form>
-                            <label for="wt-search">웹툰 검색</label>
-                            <input id="wt-search" type="search" aria-label="웹툰검색함" title="웹툰검색">
-                            <button>검색</button>
-                        </form>
-                        </code>
+                <form>
+                    <label for="wt-search">웹툰 검색</label>
+                    <input id="wt-search" type="search" aria-label="웹툰검색함" title="웹툰검색">
+                    <button>검색</button>
+                </form>
                 <!-- O: 버튼 요소에 상세한 설명 제공 -->
-                <code><button type="button" aria-describedby="TIP-DEL">게시물 삭제</button>
-                        <p id="TIP-DEL" role="tooltip" hidden>게시물 삭제 후 복원할 수 없음.</p></code>
-                <!-- 팝업
-                O: 알럿 대화상자 요소에 상세한 설명 제공 -->
-                <code>
-                    <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
-                        <h2 id="TITLE">레진패스 안내</h2>
-                        <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
-                        <button type="button">레진패스 적용</button>
-                        <button type="button">취소</button>
-                    </div>
-                </code>
+                <button type="button" aria-describedby="TIP-DEL">게시물 삭제</button>
+                <p id="TIP-DEL" role="tooltip" hidden>게시물 삭제 후 복원할 수 없음.</p></code>
+                <!-- 팝업 O: 알럿 대화상자 요소에 상세한 설명 제공 -->
+                <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
+                    <h2 id="TITLE">레진패스 안내</h2>
+                    <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
+                    <button type="button">레진패스 적용</button>
+                    <button type="button">취소</button>
+                </div>
                 title속성은
-                <code><a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
-                        <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요"></code>
+                <a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
+                <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요">
+                </pre>
             </div>
         </section>
         <hr>
 
     </main>
     <footer>footer</footer>
+    <script>
+        // const btnList = document.querySelectorAll(".btn");
+        // const btnArr = [];
+        // for(var i = 0; i < btnList.length; i++){
+        //     bntArr = btnArr.push(btnList[i]);
+        // }
+        // btnArr.addEventListener('click', function(){
+        //     console.log(this);
+        // });
+        // 내가 누른 버튼만 콘솔로 출력한다 (마우스이벤트)
+        // 내가 누른 버튼만 콘솔로 출력한다 (키보드이벤트)
+        if (e.keyCode == 32) {
+            console.log('space bar')
+        }
+        if (e.keyCode == 13) {
+            console.log('enter')
+        }
+    </script>
 </body>
 
 </html>
