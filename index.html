@@ -103,8 +103,11 @@
 
         <h2>접근성UI 종류</h2><!-- 보이스오버- 텍스트, 머리말레벨2, -->
         <section aria-label="aria를 사용하기 전에">
-            <h3>navigation</h3><!-- 보이스오버- 텍스트, 머리말레벨3, aria를 사용하기 전에, 영역, 랜드마크 -->
-            <pre>
+
+            <div>
+                <h3>navigation</h3><!-- 보이스오버- 텍스트, 머리말레벨3, aria-label값, 영역, 랜드마크 -->
+                <pre><!-- pre태그는 줄바꿈과 띄어쓰기영역 포함하여 focus가 들어온다 -->
+                <!-- pre 태그안에 있는 코드도 헤딩코드 들 정상 인식함 -->
                 <!-- O: 탐색에 <div role="navigation"> 보다 <nav>를 사용 권장, O: 탐색 역할을 하는 요소가 유일한 경우 레이블 생략 가능 -->
                 <nav>
                     <h2>테스트 네비게이션</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
@@ -112,21 +115,22 @@
                 </nav>
                 <!-- O: 탐색 역할 갯수가 둘 이상인 경우 레이블 제공(nav) -->
                 <nav aria-labelledby="gnbb"><!-- aria-labelledby에 해당되는 id영역의 타이틀을 읽음-->
-                    <h2>글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2, 탐색, 랜드마크-->
+                    <h2>글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2, labelledby영역텍스트, 탐색, 랜드마크-->
                     <h3 id="gnbb">글로벌 네비게이션</h3><!-- 보이스오버-텍스트,머리말레벨3 -->
-                    ...<!-- 보이스오버- 생략부호, end, 글로벌 네비게이션,탐색 -->
+                    ...<!-- 보이스오버- 생략부호, end, 글로벌 네비게이션, 탐색 -->
                 </nav>
                 <nav aria-labelledby="notice-pagination">
-                    <h2 id="notice-pagination">공지사항 페이지네이션</h2><!-- 보이스오버-공지사항 페이지네이션,머리말레벨2,공지사항 페이지네이션,탐색, 랜드마크 -->
+                    <h2 id="notice-pagination">공지사항 페이지네이션</h2><!-- 보이스오버-텍스트,머리말레벨2,labelledby영역텍스트,탐색, 랜드마크 -->
                     ...<!-- 보이스오버- 생략부호, end, 공지사항 페이지네이션, 탐색 -->
                 </nav>
                 <!-- O: 헤딩요소가 없으면 aria-label 속성 사용 -->
                 <nav aria-label="notice-pagination"></nav>
             </pre>
-            <p>
-                마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화 해야함<br>
-                ARIA는 역할(role), 상태(state), 속성(property)으로 보조기술로 스크린리더 사용자들의 비시각적 경험을 제공한다.
-            </p><!-- 보이스오버-<p>태그안에 있는 텍스트 -->
+                <p>
+                    마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화 해야함<br>
+                    ARIA는 역할(role), 상태(state), 속성(property)으로 보조기술로 스크린리더 사용자들의 비시각적 경험을 제공한다.
+                </p><!-- 보이스오버-<p>태그안에 있는 텍스트 -->
+            </div>
 
             <div>
                 <h3>1. 역할(role)은 약속</h3><!-- 보이스오버- 역할role은 약속, 머리말레벨3  -->
@@ -136,16 +140,30 @@
                 <a href="javascript:;" role="button">앵커버튼</a><!-- 보이스오버- 텍스트, 버튼 -->
                 요소는 Enter키로 실행<br>
                 role을 주었다고 키보드동작이나 스타일을 제공하지 않으므로 스크립트 추가 작업 필요
-                잘못된 태그를 사용하여 aria-*를 남발하면 안하느니만 못함
-                </pre>
+                잘못된 태그를 사용하여 aria-*를 남발하면 안하느니만 못함<!-- 보이스오버- * 별표 -->
+                </pre><!-- 보이스오버- 텍스트-->
             </div>
 
+            <div class="btn_wrap">
+                <input type="button" value="A1" class="btn"><!-- Enter, Space Bar로 동작 -->
+                <button type="button" class="btn">A2</button><!-- Enter, Space Bar로 동작 -->
+                <a href="#" class="btn" role="button">A3</a><!-- Enter로 동작 -->
+            </div>
 
+            <div>
+                <h3>2. aria-*는 원래 의미의 콘텐츠를 완전히 감추거나 덮어씁니다</h3>
+                <pre><a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a></pre>
+                <pre><a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">링크텍스트</a></pre>
+                <pre><button type="button" aria-pressed="mute">Mute버튼</button></pre>
+                <pre><table role="log">log는 표가 아닌 기록으로 알림</table></pre>
+
+                <code><ul></code>태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장
+            </div>
         </section>
-        <hr>
+        <hr><!-- 보이스오버-구분표시 흐리게 표시됨, end, 주요 -->
 
     </main>
-    <footer>footer</footer>
+    <footer>footer</footer><!-- 보이스오버- 텍스트, 콘텐츠정보, 랜드마크 -->
     <script>
         // const btnList = document.querySelectorAll(".btn");
         // const btnArr = [];
