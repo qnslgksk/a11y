@@ -178,7 +178,7 @@
 
             <!-- O: 헤딩 설명 참조 -->
             <div aria-labelledby="LZ-PATH" hidden>
-                <h3 id="LZ-PATH">레진패스란?</h3><!-- h2인 경우 여기서부터 포커스 시작 갖힘 -->
+                <h3 id="LZ-PATH">레진패스란?</h3>
                 <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
             </div>
 
@@ -196,17 +196,18 @@
             <!-- O: 버튼 요소에 상세한 설명 제공 -->
             <button type="button" aria-describedby="TIP-DEL">게시물 삭제</button>
             <p id="TIP-DEL" role="tooltip" hidden>게시물 삭제 후 복원할 수 없음.</p></code>
-            <!-- 팝업 O: 알럿 대화상자 요소에 상세한 설명 제공 -->
-            <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
-                <h3 id="TITLE">레진패스 안내</h3><!-- h2인 경우 여기서부터 포커스 시작 갖힘 -->
-                <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
-                <button type="button">레진패스 적용</button>
-                <button type="button">취소</button>
-            </div>
+
             <div>
                 <h2>title속성은</h2>
                 <a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
                 <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요">
+            </div>
+            <!-- 팝업 O: 알럿 대화상자 요소에 상세한 설명 제공 -->
+            <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
+                <h3 id="TITLE">레진패스 안내</h3>
+                <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
+                <button type="button">레진패스 적용</button>
+                <button type="button">취소</button>
             </div>
         </section>
         <hr><!-- 보이스오버-구분표시 흐리게 표시됨, end, 주요 -->
