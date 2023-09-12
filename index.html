@@ -16,6 +16,10 @@
             display: none;
         }
 
+        [aria-hidden="true"] {
+            display: none;
+        }
+
         .ir-txt {
             overflow: hidden;
             position: absolute;
@@ -208,26 +212,44 @@
                 <a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
                 <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요">
             </div>
-            <!-- 팝업 O: 알럿 대화상자 요소에 상세한 설명 제공, 히든처리가 되지 않으면 포커스가 갖힘 
-                        
-                    1. aria-hidden="true", display:none로 컨트롤
-                    2. hidden속성으로 토글 컨트롤
+            <!-- 레이어 팝업을 호출하면 포커스가 레이어팝업으로 이동해야하고 팝업이 닫히면 팝업호출 전 포커스로 돌려보내야함 Esc키를 사용하면 팝업이 다혀야함
+                O: 알럿 대화상자 요소에 상세한 설명 제공, 히든처리가 되지 않으면 포커스가 갖힘 
+                    aria-hidden="true", display:none로 컨트롤
                 -->
-            <button id="popBtn" type="button" onclick="popOpen('#popp')"><span>팝업열기</span></button>
-            <div class="pop_area">
-                <div id="popp" role="dialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION"
-                    hidden>
-                    <!-- aria-hidden -->
-                    <h3 id="TITLE">레진패스 안내</h3>
-                    <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
-                    <button type="button">레진패스 적용</button>
-                    <button type="button">취소</button>
-                </div>
+
+            <button id="popBtnOpen" type="button" onclick="popOpen();"><span>팝업열기</span></button>
+            <div id="layerPop" role="alertdialog" aria-modal="true" aria-labelledby="TITLE"
+                aria-describedby="DESCRIPTION" aria-hidden="true" tabindex="0">
+                <!-- aria-hidden -->
+                <h3 id="TITLE">레진패스 안내</h3>
+                <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
+                <button type="button">레진패스 적용</button>
+                <button id="popBtnClose" type="button" onclick="popClose();">닫기</button>
             </div>
+
             <script>
-                function popOpen(pop) {
-                    alert('팝업열어');
+                const popBtnClose = document.querySelector('#popBtnClose');
+                const popBtnOpen = document.querySelector('#popBtnOpen');
+                const layerPop = document.querySelector('#layerPop');
+                let popState = layerPop.getAttribute('aria-hidden');
+
+                // console.log(typeof popState); // string
+                // popBtnOpen.addEventListener('click', popOpen);
+                // popBtnClose.addEventListener('click', popClose);
+
+                function popClose() {
+                    layerPop.setAttribute('aria-hidden', 'true');
+                    layerPop.setAttribute('tabindex', '-1')
+                    popBtnOpen.focus();
+
                 }
+
+                function popOpen() {
+                    layerPop.setAttribute('aria-hidden', 'false');
+                    layerPop.setAttribute('tabindex', '0')
+                    layerPop.focus();
+                }
+
             </script>
         </section>
 
@@ -247,12 +269,12 @@
         // });
         // 내가 누른 버튼만 콘솔로 출력한다 (마우스이벤트)
         // 내가 누른 버튼만 콘솔로 출력한다 (키보드이벤트)
-        if (e.keyCode == 32) {
-            console.log('space bar')
-        }
-        if (e.keyCode == 13) {
-            console.log('enter')
-        }
+        // if (e.keyCode == 32) {
+        //     console.log('space bar')
+        // }
+        // if (e.keyCode == 13) {
+        //     console.log('enter')
+        // }
     </script>
 </body>
 
