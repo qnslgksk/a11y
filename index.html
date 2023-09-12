@@ -5,10 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        html {
+            font-size: 62.5%;
+        }
+
         body {
+            width: 100vw;
             margin: 0;
             padding: 0;
-            width: 100vw;
+            font-size: 16px;
         }
 
         #printCont,
@@ -25,8 +30,19 @@
             position: absolute;
             width: 1px;
             height: 1px;
+            clip: rect(0 0 0 0);
         }
 
+        :root {
+            --main-color: cornflowerblue;
+            --hover-color: gray;
+        }
+
+        hr {
+            border-color: darkviolet;
+        }
+
+        /* navigation */
         /* flex nav */
         .nav_list {
             display: flex;
@@ -55,7 +71,7 @@
 
         /* float nav */
         /* table nav */
-
+        /* navigation */
         .btn:focus,
         .btn:focus-within,
         .btn:active {
@@ -66,7 +82,8 @@
             background: coral;
         }
     </style>
-    <title>A11y(s:2023.08.30~2023.09.08)</title>
+    <!--[if lt IE 10] <link href="ie10.css" type="text/css">[endif] 하거나, ie전용 클래스명을 별도로 쓰거나-->
+    <title>A11y(s:2023.08.30~2023.09.12)</title>
 </head>
 
 <body>
@@ -218,7 +235,7 @@
 
             <div>
                 <h3>title속성은</h3><!-- 보이스오버- 텍스트, 머리말레벨3-->
-                <a target="_blank" title="새창 열림">안읽음</a><!-- 보이스오버에서 안읽어줌Why? -->
+                <a href="#none" target="_blank" title="새창 열림">안읽음</a><!-- 보이스오버- href=""속성이 없으면 텍스트만 읽어버림! -->
                 <input type="text" value="input이 없으면 title속성을 기재한다"
                     title="레이블이 없어요"><!-- 보이스오버- title="", value="",텍스트 필드, 편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
             </div>
@@ -227,7 +244,8 @@
                     aria-hidden="true", display:none로 컨트롤
                 -->
 
-            <button id="popBtnOpen" type="button" onclick="popOpen();"><span>팝업열기</span></button>
+            <button id="popBtnOpen" type="button"
+                onclick="popOpen();"><span>팝업열기</span></button><!--보이스오버- 텍스트,버튼, aria-label="",영역, end,주요(팝업을 열려면 탭하라는 안내문구가 없음;;)-->
             <div id="layerPop" role="alertdialog" aria-modal="true" aria-labelledby="popTitle"
                 aria-describedby="DESCRIPTION" aria-hidden="true"><!-- tabindex=0을 주면 포커스가 들어가면서 팝업내용을 전체 읽어줌;; -->
                 <!-- aria-hidden -->
@@ -238,6 +256,7 @@
             </div>
 
             <script>
+                // 팝업js - hana
                 const popBtnClose = document.querySelector('#popBtnClose');
                 const popBtnOpen = document.querySelector('#popBtnOpen');
                 const layerPop = document.querySelector('#layerPop');
