@@ -208,17 +208,17 @@
             <form>
                 <label for="wt-search">웹툰 검색</label><!-- 보이스오버- 텍스트-->
                 <input id="wt-search" type="search" aria-label="웹툰검색함"
-                    title="웹투니 검색"><!-- 보이스오버- aria-label, 검색필드, title을 읽은건지 연결된 label을 읽은건지 test,편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
+                    title="웹투니 검색"><!-- 보이스오버- aria-label, 검색필드, title="", 편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
                 <button>검색</button><!-- 보이스오버- 텍스트, 버튼 -->
             </form>
             <!-- O: 버튼 요소에 상세한 설명 제공 -->
             <button type="button" aria-describedby="TIP-DEL">게시물
                 삭제</button><!-- 보이스오버- 텍스트,버튼, aria-describedby="id값" -->
-            <p id="TIP-DEL" role="tooltip">게시물 삭제 후 복원할수 없음.</p></code><!-- 보이스오버- 텍스트-->
+            <p id="TIP-DEL" role="tooltip">게시물 삭제 후 복원할수 없음.</p></code><!-- 보이스오버- 텍스트를 읽어 주면.. 중복안내가 아닌가?-->
 
             <div>
                 <h3>title속성은</h3><!-- 보이스오버- 텍스트, 머리말레벨3-->
-                <a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
+                <a target="_blank" title="새창 열림">안읽음</a><!-- 보이스오버에서 안읽어줌Why? -->
                 <input type="text" value="input이 없으면 title속성을 기재한다"
                     title="레이블이 없어요"><!-- 보이스오버- title="", value="",텍스트 필드, 편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
             </div>
