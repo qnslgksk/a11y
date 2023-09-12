@@ -109,26 +109,25 @@
         <section aria-label="aria를 사용하기 전에">
             <div>
                 <h3>navigation</h3><!-- 보이스오버- 텍스트, 머리말레벨3, aria-label값, 영역, 랜드마크 -->
-                <pre><!-- pre태그는 줄바꿈과 띄어쓰기영역 포함하여 focus가 들어온다 -->
-                <!-- pre 태그안에 있는 코드도 헤딩코드 들 정상 인식함 -->
-                <!-- O: 탐색에 <div role="navigation"> 보다 <nav>를 사용 권장, O: 탐색 역할을 하는 요소가 유일한 경우 레이블 생략 가능 -->
-                <nav>
-                    <h2>테스트 네비게이션</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
-                    ...<!-- 보이스오버- 생략부호, end, 탐색 -->
-                </nav>
-                <!-- O: 탐색 역할 갯수가 둘 이상인 경우 레이블 제공(nav) -->
-                <nav aria-labelledby="gnbb"><!-- aria-labelledby에 해당되는 id영역의 타이틀을 읽음-->
-                    <h2>글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2, labelledby영역텍스트, 탐색, 랜드마크-->
-                    <h3 id="gnbb">글로벌 네비게이션</h3><!-- 보이스오버-텍스트,머리말레벨3 -->
-                    !, @, # <!-- 보이스오버- 생략부호, end, 글로벌 네비게이션, 탐색 -->
-                </nav>
-                <nav aria-labelledby="notice-pagination">
-                    <h2 id="notice-pagination">공지사항 페이지네이션</h2><!-- 보이스오버-텍스트,머리말레벨2,labelledby영역텍스트,탐색, 랜드마크 -->
-                    <!-- 보이스오버- end, 공지사항 페이지네이션, 탐색 -->
-                </nav>
-                <!-- O: 헤딩요소가 없으면 aria-label 속성 사용 -->
-                <nav aria-label="notice-pagination"></nav>
-            </pre>
+                <pre><!-- pre태그는 줄바꿈과 띄어쓰기영역 포함하여 focus가 들어온다 --><!-- pre 태그안에 있는 코드도 헤딩코드 들 정상 인식함 -->
+                <!-- O: 탐색 역할을 하는 요소가 유일한 경우 레이블 생략 가능 -->
+                    <nav>
+                        <h2>테스트 네비게이션</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
+                        ...<!-- 보이스오버- 생략부호, end, 탐색 -->
+                    </nav>
+                    <!-- O: 탐색 역할 갯수가 둘 이상인 경우 레이블 제공(nav) -->
+                    <nav aria-labelledby="gnbb"><!-- aria-labelledby에 해당되는 id영역의 타이틀을 읽음-->
+                        <h2>글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2, labelledby영역텍스트, 탐색, 랜드마크-->
+                        <h3 id="gnbb">글로벌 네비게이션</h3><!-- 보이스오버-텍스트,머리말레벨3 -->
+                        ..., !, @, # <!-- 보이스오버- 생략부호, 골뱅이기호, 숫자기호, end, 글로벌 네비게이션, 탐색 -->
+                    </nav>
+                    <nav aria-labelledby="notice-pagination">
+                        <h2 id="notice-pagination">공지사항 페이지네이션</h2><!-- 보이스오버-텍스트,머리말레벨2,labelledby영역텍스트,탐색, 랜드마크 -->
+                        <!-- 보이스오버- end, 공지사항 페이지네이션, 탐색 -->
+                    </nav>
+                    <!-- O: 헤딩요소가 없으면 aria-label 속성 사용 -->
+                    <nav aria-label="notice-pagination"></nav>
+                </pre>
                 <p>
                     마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화
                     해야함<br><!-- 보이스오버- * 별표 -->
@@ -171,46 +170,57 @@
             <div>
                 <h3>3. 알게된 점</h3><!-- 보이스오버- 텍스트, 머리말레벨3 -->
                 <p>aria-label, aria-labelledby, aria-description, aria-describedby와 같은 속성은 요소에 설명을 제공하는 속성으로 사용합니다</p>
-                <ul>
-                    <li>aria-label은 영역에 heading태그가 없을 때 사용</li>
+                <ul><!-- 보이스오버- 구분점, 목록시작 -->
+                    <li>aria-label은 영역에 heading태그가 없을 때 사용</li><!-- 보이스오버- 텍스트 -->
                     <li>aria-labelledby는 heading태그,a, button요소를 id값으로 참조할 때 사용</li>
+                    <!-- 보이스오버- 구분점 --><!-- 보이스오버- 텍스트, 목록끝 -->
                 </ul>
-                <p>aria-label과 aria-labelledby를 함께 사용하면 aria-label보다 aria-labelledby속성이 우선순위가 높고
-                    숨김 처리한 설명을 참조하면 안되고 참조가 불가능한 경우 aria-label속성 사용
-                </p>
-                <ul>
-                    <li>aria-description은 자세한 설명을 할 때 사용</li>
-                    <li>aria-describedby는 설명글을 id값으로 참조 할 때 사용</li>
-                </ul>
+                <p>aria-label과 aria-labelledby를 함께 사용하면 aria-label보다 aria-labelledby속성이 우선순위가 높고, 숨김 처리한 설명을 참조하면 안되고
+                    참조가 불가능한 경우 aria-label속성 사용</p>
+                <ul><!-- 보이스오버- 구분점, 목록시작 -->
+                    <li>aria-description은 자세한 설명을 할 때 사용</li><!-- 보이스오버- 텍스트 -->
+                    <li>aria-describedby는 설명글을 id값으로 참조 할 때 사용</li><!-- 보이스오버- 구분점 --> <!-- 보이스오버- 텍스트 -->
+                </ul><!-- 보이스오버- 목록끝, end, end, 아리아를 사용하기전에 영역 -->
+                <p>보이스오버(IOS)에서 읽어주는 순서(안쪽요소-> 바깥쪽 요소)</p>
+                <ol>
+                    <li>포커스가 들어간 요소의 텍스트</li>
+                    <li>요소의 속성(헤딩레벨단계)</li>
+                    <li>arialabel, arialabelledby 영역</li>
+                    <li>랜드마크여부</li>
+                </ol>
+
             </div>
         </section>
-        <hr><!-- 보이스오버-구분표시 흐리게 표시됨, end, 주요 -->
+        <hr><!-- 보이스오버-구분표시 흐리게 표시됨 -->
         <section aria-label="aria 적용예시">
             <!-- O: 헤딩 설명 참조 -->
             <div aria-labelledby="LZ-PATH">
-                <h3 id="LZ-PATH">레진패스란?</h3>
-                <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
+                <h3 id="LZ-PATH">레진패스란?</h3><!-- 보이스오버- 텍스트, 머리말레벨3, aria-label값,영역 랜드마크 -->
+                <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p><!-- 보이스오버- 텍스트-->
             </div>
 
             <!-- O: 링크 설명 참조 -->
-            <a id="LZ-PATH1" href="#LZ-PATH-TEXT">레진패스란?</a>
+            <a id="LZ-PATH1" href="#LZ-PATH-TEXT">레진패스란?</a><!-- 보이스오버- 텍스트, 페이지내부 링크-->
             <div id="LZ-PATH-TEXT" aria-labelledby="LZ-PATH1">
-                <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
+                <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p><!-- 보이스오버- 텍스트-->
             </div>
             <!-- O: 참조할 설명이 없는 경우 -->
             <form>
-                <label for="wt-search">웹툰 검색</label>
-                <input id="wt-search" type="search" aria-label="웹툰검색함" title="웹툰검색">
-                <button>검색</button>
+                <label for="wt-search">웹툰 검색</label><!-- 보이스오버- 텍스트-->
+                <input id="wt-search" type="search" aria-label="웹툰검색함"
+                    title="웹투니 검색"><!-- 보이스오버- aria-label, 검색필드, title을 읽은건지 연결된 label을 읽은건지 test,편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
+                <button>검색</button><!-- 보이스오버- 텍스트, 버튼 -->
             </form>
             <!-- O: 버튼 요소에 상세한 설명 제공 -->
-            <button type="button" aria-describedby="TIP-DEL">게시물 삭제</button>
-            <p id="TIP-DEL" role="tooltip">게시물 삭제 후 복원할 수 없음.</p></code>
+            <button type="button" aria-describedby="TIP-DEL">게시물
+                삭제</button><!-- 보이스오버- 텍스트,버튼, aria-describedby="id값" -->
+            <p id="TIP-DEL" role="tooltip">게시물 삭제 후 복원할수 없음.</p></code><!-- 보이스오버- 텍스트-->
 
             <div>
-                <h3>title속성은</h3>
+                <h3>title속성은</h3><!-- 보이스오버- 텍스트, 머리말레벨3-->
                 <a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
-                <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요">
+                <input type="text" value="input이 없으면 title속성을 기재한다"
+                    title="레이블이 없어요"><!-- 보이스오버- title="", value="",텍스트 필드, 편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
             </div>
             <!-- 레이어 팝업을 호출하면 포커스가 레이어팝업으로 이동해야하고 팝업이 닫히면 팝업호출 전 포커스로 돌려보내야함 Esc키를 사용하면 팝업이 다혀야함
                 O: 알럿 대화상자 요소에 상세한 설명 제공, 히든처리가 되지 않으면 포커스가 갖힘 
@@ -218,10 +228,10 @@
                 -->
 
             <button id="popBtnOpen" type="button" onclick="popOpen();"><span>팝업열기</span></button>
-            <div id="layerPop" role="alertdialog" aria-modal="true" aria-labelledby="TITLE"
-                aria-describedby="DESCRIPTION" aria-hidden="true" tabindex="0">
+            <div id="layerPop" role="alertdialog" aria-modal="true" aria-labelledby="popTitle"
+                aria-describedby="DESCRIPTION" aria-hidden="true"><!-- tabindex=0을 주면 포커스가 들어가면서 팝업내용을 전체 읽어줌;; -->
                 <!-- aria-hidden -->
-                <h3 id="TITLE">레진패스 안내</h3>
+                <h3 id="popTitle" tabindex="0">레진패스 안내</h3>
                 <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
                 <button type="button">레진패스 적용</button>
                 <button id="popBtnClose" type="button" onclick="popClose();">닫기</button>
@@ -232,6 +242,7 @@
                 const popBtnOpen = document.querySelector('#popBtnOpen');
                 const layerPop = document.querySelector('#layerPop');
                 let popState = layerPop.getAttribute('aria-hidden');
+                const popTitle = document.querySelector('#popTitle');
 
                 // console.log(typeof popState); // string
                 // popBtnOpen.addEventListener('click', popOpen);
@@ -247,7 +258,7 @@
                 function popOpen() {
                     layerPop.setAttribute('aria-hidden', 'false');
                     layerPop.setAttribute('tabindex', '0')
-                    layerPop.focus();
+                    popTitle.focus();
                 }
 
             </script>
