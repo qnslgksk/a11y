@@ -76,6 +76,7 @@
     </div>
 
     <header>
+        <!-- 보이스오버- 특수문자기호: * 별표, ... 생략부호, #  -->
         <h1>A11y접근성</h1><!-- 보이스오버- 텍스트, 머리말레벨1, 배너, 랜드마크 -->
         <nav id="gnb">
             <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
@@ -115,31 +116,34 @@
                 <nav aria-labelledby="gnbb"><!-- aria-labelledby에 해당되는 id영역의 타이틀을 읽음-->
                     <h2>글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2, labelledby영역텍스트, 탐색, 랜드마크-->
                     <h3 id="gnbb">글로벌 네비게이션</h3><!-- 보이스오버-텍스트,머리말레벨3 -->
-                    ...<!-- 보이스오버- 생략부호, end, 글로벌 네비게이션, 탐색 -->
+                    !, @, # <!-- 보이스오버- 생략부호, end, 글로벌 네비게이션, 탐색 -->
                 </nav>
                 <nav aria-labelledby="notice-pagination">
                     <h2 id="notice-pagination">공지사항 페이지네이션</h2><!-- 보이스오버-텍스트,머리말레벨2,labelledby영역텍스트,탐색, 랜드마크 -->
-                    ...<!-- 보이스오버- 생략부호, end, 공지사항 페이지네이션, 탐색 -->
+                    <!-- 보이스오버- end, 공지사항 페이지네이션, 탐색 -->
                 </nav>
                 <!-- O: 헤딩요소가 없으면 aria-label 속성 사용 -->
                 <nav aria-label="notice-pagination"></nav>
             </pre>
                 <p>
-                    마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화 해야함<br>
+                    마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화
+                    해야함<br><!-- 보이스오버- * 별표 -->
                     ARIA는 역할(role), 상태(state), 속성(property)으로 보조기술로 스크린리더 사용자들의 비시각적 경험을 제공한다.
                 </p><!-- 보이스오버-<p>태그안에 있는 텍스트 -->
             </div>
 
             <div>
-                <h3>1. 역할(role)은 약속</h3><!-- 보이스오버- 역할role은 약속, 머리말레벨3  -->
+                <h3>1. 역할(role)은 약속</h3><!-- 보이스오버- 텍스트, 머리말레벨3  -->
 
-                <pre><button type="button">나는버튼</button><!-- 보이스오버- 텍스트,버튼 -->
-                    요소는 Space Bar와 Enter 키로 실행<br><!-- 보이스오버- 텍스트 -->
+                <button type="button">나는버튼</button><!-- 보이스오버- 텍스트,버튼 -->
+                요소는 Space Bar와 Enter 키로 실행<br><!-- 보이스오버- 텍스트 -->
                 <a href="javascript:;" role="button">앵커버튼</a><!-- 보이스오버- 텍스트, 버튼 -->
                 요소는 Enter키로 실행<br>
-                role을 주었다고 키보드동작이나 스타일을 제공하지 않으므로 스크립트 추가 작업 필요
-                잘못된 태그를 사용하여 aria-*를 남발하면 안하느니만 못함<!-- 보이스오버- * 별표 -->
-                </pre><!-- 보이스오버- 텍스트-->
+
+                <p>role을 주었다고 키보드동작이나 스타일을 제공하지 않으므로 스크립트 및 스타일 추가 작업 필요
+                    잘못된 태그를 사용하여 aria-*를 남발하면 안하느니만 못함
+                </p>
+                <!-- 보이스오버- 텍스트-->
             </div>
 
             <div class="btn_wrap">
@@ -150,41 +154,43 @@
 
             <div>
                 <h3>2. aria-*는 원래 의미의 콘텐츠를 완전히 감추거나 덮어씁니다</h3><!--보이스오버-텍스트, 머리말레벨3-->
-                <pre><a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a></pre><!--보이스오버- 텍스트, 메뉴항목 -->
-                <pre><button type="button" aria-pressed="mute">Mute버튼</button></pre>
-                <!-- 보이스오버- mute버튼, 체크상자, 선택해제됨, 설정을 끄거나 켜려면 이중탭하십시오 / 이중탭하면 선택해제됨이라고만 읽어줌-->
+                <a role="menuitem">보조기술사용자는 링크가 아닌 메뉴의 항목으로 인지</a><!--보이스오버- 텍스트, 메뉴항목 -->
+                <button type="button" aria-pressed="mute">Mute버튼</button>
+                <!-- 보이스오버- mute버튼, 체크상자, 선택해제됨, 설정을 끄거나 켜려면 이중탭하십시오 / 이중탭하면 선택해제됨이라고만 읽어줌 스크립트 작업이 필요한가?-->
 
                 <!--여기부터 다시 테스트  -->
 
-                <table role="log">이거는 표가 아닌 기록으로 알림</table>
+                <table role="log">이거는 표가 아닌 기록으로 알림</table><!-- 보이스오버- 텍스트  -->
                 <a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">앵커</a><!--보이스오버- 텍스트 -->
-                <!-- pre에 넣어서 안읽은건가??? -->
-
-                <code><ul></code>태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장
+                <ul>태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장<!--보이스오버- 텍스트만 읽어줌 <code><ul></code>코드는 읽지않음;; -->
             </div>
             <div>
-                <h3>3. 알게된 점</h3>
-                <p>aria-label, aria-labelledby, aria-description, aria-describedby속성을 주는 요소에 설명을 제공하는 속성
-                    aria-label은 영역에 heading태그가 없을 때 사용<br>
-                    aria-labelledby는 heading태그,a, button요소를 id값으로 참조할 때 사용<br>
-                    aria-label과 aria-labelledby를 함께 사용하면 aria-label보다 aria-labelledby속성이 우선순위가 높음<br>
-                    그리고 숨김 처리한 설명을 참조하면 안되고 참조가 불가능한 경우 aria-label속성 사용
-                    aria-description은 자세한 설명을 할 때 사용
-                    aria-describedby는 설명글을 id값으로 참조 할 때 사용
+                <h3>3. 알게된 점</h3><!-- 보이스오버- 텍스트, 머리말레벨3 -->
+                <p>aria-label, aria-labelledby, aria-description, aria-describedby와 같은 속성은 요소에 설명을 제공하는 속성으로 사용합니다</p>
+                <ul>
+                    <li>aria-label은 영역에 heading태그가 없을 때 사용</li>
+                    <li>aria-labelledby는 heading태그,a, button요소를 id값으로 참조할 때 사용</li>
+                </ul>
+                <p>aria-label과 aria-labelledby를 함께 사용하면 aria-label보다 aria-labelledby속성이 우선순위가 높고
+                    숨김 처리한 설명을 참조하면 안되고 참조가 불가능한 경우 aria-label속성 사용
                 </p>
+                <ul>
+                    <li>aria-description은 자세한 설명을 할 때 사용</li>
+                    <li>aria-describedby는 설명글을 id값으로 참조 할 때 사용</li>
+                </ul>
             </div>
-            <!-- https://www.w3.org/WAI/ARIA/apg/patterns/alert/
-                https://github.com/lezhin/accessibility/blob/master/aria/README.md#html NO.5 -->
-
+        </section>
+        <hr><!-- 보이스오버-구분표시 흐리게 표시됨, end, 주요 -->
+        <section aria-label="aria 적용예시">
             <!-- O: 헤딩 설명 참조 -->
-            <div aria-labelledby="LZ-PATH" hidden>
+            <div aria-labelledby="LZ-PATH">
                 <h3 id="LZ-PATH">레진패스란?</h3>
                 <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
             </div>
 
             <!-- O: 링크 설명 참조 -->
             <a id="LZ-PATH1" href="#LZ-PATH-TEXT">레진패스란?</a>
-            <div id="LZ-PATH-TEXT" aria-labelledby="LZ-PATH1" hidden>
+            <div id="LZ-PATH-TEXT" aria-labelledby="LZ-PATH1">
                 <p>이 작품의 유료 에피소드 열람 시 자동으로 구매합니다.</p>
             </div>
             <!-- O: 참조할 설명이 없는 경우 -->
@@ -195,23 +201,35 @@
             </form>
             <!-- O: 버튼 요소에 상세한 설명 제공 -->
             <button type="button" aria-describedby="TIP-DEL">게시물 삭제</button>
-            <p id="TIP-DEL" role="tooltip" hidden>게시물 삭제 후 복원할 수 없음.</p></code>
+            <p id="TIP-DEL" role="tooltip">게시물 삭제 후 복원할 수 없음.</p></code>
 
             <div>
                 <h3>title속성은</h3>
                 <a target="_blank" title="새창 열림"></a><!--  새창 열림처럼 기능에 관련이 있는 메시지를 남김-->
                 <input type="text" value="input이 없으면 title속성을 기재한다" title="레이블이 없어요">
             </div>
-            <!-- 팝업 O: 알럿 대화상자 요소에 상세한 설명 제공, 히든처리가 되지 않으면 포커스가 갖힘 -->
-            <div role="dialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION"
-                aria-hidden="true"><!-- aria-hidden -->
-                <h3 id="TITLE">레진패스 안내</h3>
-                <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
-                <button type="button">레진패스 적용</button>
-                <button type="button">취소</button>
+            <!-- 팝업 O: 알럿 대화상자 요소에 상세한 설명 제공, 히든처리가 되지 않으면 포커스가 갖힘 
+                        
+                    1. aria-hidden="true", display:none로 컨트롤
+                    2. hidden속성으로 토글 컨트롤
+                -->
+            <button id="popBtn" type="button" onclick="popOpen('#popp')"><span>팝업열기</span></button>
+            <div class="pop_area">
+                <div id="popp" role="dialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION"
+                    hidden>
+                    <!-- aria-hidden -->
+                    <h3 id="TITLE">레진패스 안내</h3>
+                    <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
+                    <button type="button">레진패스 적용</button>
+                    <button type="button">취소</button>
+                </div>
             </div>
+            <script>
+                function popOpen(pop) {
+                    alert('팝업열어');
+                }
+            </script>
         </section>
-        <hr><!-- 보이스오버-구분표시 흐리게 표시됨, end, 주요 -->
 
 
 
