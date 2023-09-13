@@ -7,7 +7,7 @@
 
     <!--[if lt IE 10] <link href="ie10.css" type="text/css">[endif] 하거나, ie전용 클래스명을 별도로 쓰거나-->
     <title>A11y(s:2023.08.30~2023.09.12)</title>
-    <link rel="stylesheet" href="/common.css">
+    <link rel="stylesheet" href="./common.css">
 </head>
 
 <body>
@@ -400,6 +400,410 @@
             </script>
         </section>
         <!-- // Accordion -->
+        <hr>
+        <!-- Alert, Status -->
+        <section>
+            <h3>Alert</h3>
+            <p>사용자의 응답이 필요없는 경우 오류나 제안하는 메시지에 사용 하며, 초점을 받지 않도록 처리 (즉시 메시지전달)</p>
+            <!-- O: 오류 메시지 -->
+            <p role="alert">우편번호 입력 오류.</p>
+            <!-- O: 제안 메시지 -->
+            <p role="alert">로그인 후 이용 가능.</p>
+
+            <button type="button" id="alert-trigger">Trigger Alert</button>
+            <div id="example" role="alert"></div>
+
+            <script type="text/template" id="alert-template">
+                        <p>Hello</p>
+                    </script>
+            <script>
+                /*
+                *   This content is licensed according to the W3C Software License at
+                *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+                *
+                */
+
+                'use strict';
+
+                window.addEventListener('load', function () {
+                    var button = document.getElementById('alert-trigger');
+
+                    button.addEventListener('click', addAlert);
+                });
+
+                /*
+                * @function addAlert
+                *
+                * @desc Adds an alert to the page
+                *
+                * @param   {object}  event  -  Standard W3C event object
+                *
+                */
+
+                function addAlert() {
+                    var example = document.getElementById('example');
+                    var template = document.getElementById('alert-template').innerHTML;
+
+                    example.innerHTML = template;
+                }
+            </script>
+
+
+            <!-- <h2>Status</h2>
+                                    <p>초점을 옮기지 않고 사용자에게 메시지 전달하며 role="alert"보다 덜 중요<br>
+                                        성공(결과)메시지에 사용하며 암묵적 aria-live="polite" aria-atomic="true"를 할당하며 (현재진행중인 음성안내를 마친 후 전달)
+                                        </p> -->
+            <!-- O: 성공 메시지 -->
+            <!-- <p role="status">회원가입 양식 전송완료.</p> -->
+
+            <!-- O: 결과 메시지 -->
+            <!-- <p role="status">10개의 검색 결과.</p>
+                                    <p role="status">장바구니에 5개의 항목.</p> -->
+        </section>
+        <!-- // Alert, Status -->
+        <hr>
+        <!-- Alert Dialog -->
+        <section>
+            <h2>Alert Dialog</h2>
+            <p>사용자 동의 또는 확인이 필요한 인터렉션 요소(input, button)가 있다면 role="alertdialog"를 사용하고 알럿 대화상자는 <strong>다른 과업을
+                    차단</strong>해야 하기
+                때문에 modal스타일로 처리</p>
+            <!-- O: 알럿 대화상자 -->
+            <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
+                <h3 id="TITLE">레진패스 안내</h3>
+                <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
+                <button type="button">레진패스 적용</button>
+                <button type="button">취소</button>
+            </div>
+        </section>
+        <!-- // Alert Dialog -->
+        <hr>
+        <!-- Dialog -->
+        <section>
+            <h2>Dialog</h2>
+            <p>사용자가 여러정보를 입력해야 하는 요소(input, textarea, select, button)가 반드시 포함 되며 role="dialog"를 사용하며, 사용자 인터렉션이 필요한 현재
+                문서의
+                하위창(마치 윈도우 팝업)입니다. 대화상자를 표시할 때 키보드 초점을 대화상자내부 처음 콘트롤로 옮겨야합니다. 대화상자를 표시하는 동안 초점은 대화상자안에서 벗어나지않게 처리 하고
+                modal스타일은
+                선택사항</p>
+            <!-- O: 대화상자 -->
+            <article role="dialog" aria-modal="true" aria-labelledby="TITLE">
+                <h3 id="TITLE">로그인</h3>
+                <form>
+                    <label for="ID">아이디</label>
+                    <input id="ID">
+                    <label for="PW">비밀번호</label>
+                    <input id="PW" type="password">
+                    <button>로그인</button>
+                </form>
+            </article>
+        </section>
+        <!-- // Dialog -->
+        <hr>
+        <!-- Form -->
+        <section aria-labelledby="region1">
+            <!-- aria-labelledby로 연결 해주면 form영역이라고 읽음-NVDA -->
+            <h2 id="region1">Form</h2>
+            <fieldset>
+                <p>
+                    <label for="m-add1">Address 1:</label>
+                    <input type="text" name="m-add1" id="m-add1">
+                </p>
+                <p>
+                    <label for="m-add2">Address 2:</label>
+                    <input type="text" name="m-add2" id="m-add2">
+                </p>
+                <p>
+                    <label for="m-city">City:</label>
+                    <input type="text" name="m-city" id="m-city">
+                </p>
+                <p>
+                    <label for="m-state">State:</label>
+                    <input type="text" name="m-state" id="m-state">
+                </p>
+                <p>
+                    <label for="m-zip">Zip Code:</label>
+                    <input type="text" name="m-zip" id="m-zip">
+                </p>
+            </fieldset>
+        </section>
+        <!-- // Form -->
+        <hr>
+        <!-- Tab -->
+        <div role="region" aria-labelledby="region2">
+            <h2 id="region2">Tab</h2>
+            <p>현재페이지 안에서 색인을 제공하는 구조(tablist, tab, tabpannel)를 의미하며 사이트탐색에 해당하는 요소는 nav > h2 + ul 또는 aside > h2 + ul로
+                마크업하며 ul에
+                role="tabpannel"속성은 사용할 수 없음</p>
+            <!-- O: 앵커 형식 탭 -->
+            <div class="weekly">
+                <div role="tablist">
+                    <a id="mon-anchor" href="#mon" role="tab" aria-selected="true">월</a>
+                    <a id="tue-anchor" href="#tue" role="tab" aria-selected="false">화</a>
+                </div>
+                <div id="mon" tabindex="0" role="tabpanel" aria-labelledby="mon-anchor">
+                    월요일엔 빨간 장미를...
+                </div>
+                <div id="tue" tabindex="0" role="tabpanel" aria-labelledby="tue-anchor" hidden>
+                    화요일엔 노란 장미를...
+                </div>
+            </div>
+            <!-- O: 버튼 형식 탭 -->
+            <div class="weekly">
+                <div role="tablist">
+                    <button type="button" id="mon-anchor" aria-controls="mon" role="tab" aria-selected="true">월</button>
+                    <button type="button" id="tue-anchor" aria-controls="tue" role="tab"
+                        aria-selected="false">화</button>
+                </div>
+                <div id="mon" tabindex="0" role="tabpanel" aria-labelledby="mon-anchor">
+                    월요일엔 빨간 장미를...
+                </div>
+                <div id="tue" tabindex="0" role="tabpanel" aria-labelledby="tue-anchor" hidden>
+                    화요일엔 노란 장미를...
+                </div>
+            </div>
+            <!-- O: tablist와 tab 사이 li 요소의 의미 제거 -->
+            <p>role="none" 또는 role="presentation"을 사용하여 태그의 역할을 제거 role="none", role="presentation"(의미없음) << 태그의 의미를
+                    없앰<br> hidden << display:none<br> aria-hidden=true"(숨김속성) << 보조기기에서만 읽지못하게 숨김 숨김 속성은 요소와 내용을 모두 감추어
+                            버리지만 role="none" 속성은 내용을 드러내고 의미만 감춥니다.</p>
+                            <ul role="tablist">
+                                <li role="none">
+                                    <a href="#home" role="tab" aria-selected="true">홈</a>
+                                </li>
+                                <li role="none">
+                                    <a href="#ongoing" role="tab" aria-selected="false">연재</a>
+                                </li>
+                                <li role="none">
+                                    <a href="#ranking" role="tab" aria-selected="false">랭킹</a>
+                                </li>
+                            </ul>
+
+                            <div class="tabs">
+                                <h3 id="tablist-1">Danish Composers</h3>
+                                <div role="tablist" aria-labelledby="tablist-1" class="automatic">
+                                    <button id="tab-1" type="button" role="tab" aria-selected="true"
+                                        aria-controls="tabpanel-1">
+                                        <span class="focus">Maria Ahlefeldt</span>
+                                    </button>
+                                    <button id="tab-2" type="button" role="tab" aria-selected="false"
+                                        aria-controls="tabpanel-2" tabindex="-1">
+                                        <span class="focus">Carl Andersen</span>
+                                    </button>
+                                    <button id="tab-3" type="button" role="tab" aria-selected="false"
+                                        aria-controls="tabpanel-3" tabindex="-1">
+                                        <span class="focus">Ida da Fonseca</span>
+                                    </button>
+                                    <button id="tab-4" type="button" role="tab" aria-selected="false"
+                                        aria-controls="tabpanel-4" tabindex="-1">
+                                        <span class="focus">Peter Müller</span>
+                                    </button>
+                                </div>
+
+                                <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+                                    <p>
+                                        Maria Theresia Ahlefeldt <span lang="da">virkelig Tonekunstnerinde</span>” ('a
+                                        True
+                                        Artist of Music').
+                                    </p>
+                                </div>
+                                <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2"
+                                    class="is-hidden">
+                                    <p>
+                                        Carl Joachim Andersen
+                                    </p>
+                                </div>
+                                <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3"
+                                    class="is-hidden">
+                                    <p>
+                                        Ida Henriette da Fonseca
+                                    </p>
+                                </div>
+                                <div id="tabpanel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4"
+                                    class="is-hidden">
+                                    <p>
+                                        Peter Erasmus Lange-Müller
+                                    </p>
+                                </div>
+                            </div>
+                            <script>
+                                /*
+                                *   This content is licensed according to the W3C Software License at
+                                *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+                                *
+                                *   File:   tabs-automatic.js
+                                *
+                                *   Desc:   Tablist widget that implements ARIA Authoring Practices
+                                */
+
+                                'use strict';
+
+                                class TabsAutomatic {
+                                    constructor(groupNode) {
+                                        this.tablistNode = groupNode;
+
+                                        this.tabs = [];
+
+                                        this.firstTab = null;
+                                        this.lastTab = null;
+
+                                        this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
+                                        this.tabpanels = [];
+
+                                        for (var i = 0; i < this.tabs.length; i += 1) {
+                                            var tab = this.tabs[i];
+                                            var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
+
+                                            tab.tabIndex = -1;
+                                            tab.setAttribute('aria-selected', 'false');
+                                            this.tabpanels.push(tabpanel);
+
+                                            tab.addEventListener('keydown', this.onKeydown.bind(this));
+                                            tab.addEventListener('click', this.onClick.bind(this));
+
+                                            if (!this.firstTab) {
+                                                this.firstTab = tab;
+                                            }
+                                            this.lastTab = tab;
+                                        }
+
+                                        this.setSelectedTab(this.firstTab, false);
+                                    }
+
+                                    setSelectedTab(currentTab, setFocus) {
+                                        if (typeof setFocus !== 'boolean') {
+                                            setFocus = true;
+                                        }
+                                        for (var i = 0; i < this.tabs.length; i += 1) {
+                                            var tab = this.tabs[i];
+                                            if (currentTab === tab) {
+                                                tab.setAttribute('aria-selected', 'true');
+                                                tab.removeAttribute('tabindex');
+                                                this.tabpanels[i].classList.remove('is-hidden');
+                                                if (setFocus) {
+                                                    tab.focus();
+                                                }
+                                            } else {
+                                                tab.setAttribute('aria-selected', 'false');
+                                                tab.tabIndex = -1;
+                                                this.tabpanels[i].classList.add('is-hidden');
+                                            }
+                                        }
+                                    }
+
+                                    setSelectedToPreviousTab(currentTab) {
+                                        var index;
+
+                                        if (currentTab === this.firstTab) {
+                                            this.setSelectedTab(this.lastTab);
+                                        } else {
+                                            index = this.tabs.indexOf(currentTab);
+                                            this.setSelectedTab(this.tabs[index - 1]);
+                                        }
+                                    }
+
+                                    setSelectedToNextTab(currentTab) {
+                                        var index;
+
+                                        if (currentTab === this.lastTab) {
+                                            this.setSelectedTab(this.firstTab);
+                                        } else {
+                                            index = this.tabs.indexOf(currentTab);
+                                            this.setSelectedTab(this.tabs[index + 1]);
+                                        }
+                                    }
+
+                                    /* EVENT HANDLERS */
+
+                                    onKeydown(event) {
+                                        var tgt = event.currentTarget,
+                                            flag = false;
+
+                                        switch (event.key) {
+                                            case 'ArrowLeft':
+                                                this.setSelectedToPreviousTab(tgt);
+                                                flag = true;
+                                                break;
+
+                                            case 'ArrowRight':
+                                                this.setSelectedToNextTab(tgt);
+                                                flag = true;
+                                                break;
+
+                                            case 'Home':
+                                                this.setSelectedTab(this.firstTab);
+                                                flag = true;
+                                                break;
+
+                                            case 'End':
+                                                this.setSelectedTab(this.lastTab);
+                                                flag = true;
+                                                break;
+
+                                            default:
+                                                break;
+                                        }
+
+                                        if (flag) {
+                                            event.stopPropagation();
+                                            event.preventDefault();
+                                        }
+                                    }
+
+                                    onClick(event) {
+                                        this.setSelectedTab(event.currentTarget);
+                                    }
+                                }
+
+                                // Initialize tablist
+
+                                window.addEventListener('load', function () {
+                                    var tablists = document.querySelectorAll('[role=tablist].automatic');
+                                    for (var i = 0; i < tablists.length; i++) {
+                                        new TabsAutomatic(tablists[i]);
+                                    }
+                                });
+
+                            </script>
+                            <!--  input radio로 탭만들지 마라
+                접근성은 
+                1. 직접 들어본다
+                2. input을 라디오 버튼으로 읽을 가능성이 큼
+                3. input에 role="none"을 넣으면 문제 없을 듯 함
+                4. label > input 지침상 암묵적레이블은 접근성 오류에 해당 됨
+        
+                결론:  라디오 버튼으로 탭을 만드는게 문제가 되진 않음 
+                aria-*를 쓰면 용도에는 어긋나는게 맞으나 노력?을 해서 정상적으로 보이게 한 것이니..
+                그냥 라디오로 만들면 접근성 위배
+        
+                role="tablist의 자식으로 role="tab"이 있어야 함(필수)
+        
+            -->
+        </div>
+        <!-- // Tab -->
+        <hr>
+        <!-- Breadcrumb -->
+        <section></section>
+        <!-- Breadcrumb -->
+        <hr>
+        <!-- Tooltip -->
+        <section>
+            <!-- <h2>Tooltip</h2>
+                                    <p>role="" alert, alertdialog, dialog, status와 차이 알아보기
+                                    폼컨트롤 요소에 대한 참고 컨텐츠로 마우스오버, 클릭 키보드초점을 받는경우에 노출 되기도하며 화면에 항상 표시할 수 있음.<br>마우스가 벗어나거나 <kbd>Escape</kbd>키를 누르면 툴팁이 비노출 처리, 툴팁이 노출되는동안 트리거 요소(버튼)에 포커스유지,포커스가 없으면 비노출
+                                    </p> -->
+            <!-- O: 인풋 툴팁 -->
+            <!-- <label for="tel">전화번호</label>
+                                    <input id="tel" type="tel" aria-describedby="TIP-TEL">
+                                    <p id="TIP-TEL" role="tooltip" hidden>하이픈(-) 없이 숫자만 입력.</p> -->
+
+            <!-- O: 버튼 툴팁 -->
+            <!-- <button aria-describedby="TIP-DEL">게시물 삭제</button>
+                                    <p id="TIP-DEL" role="tooltip" hidden>게시물 삭제 후 복원할 수 없음.</p>
+                                    </section> -->
+            <!-- Tooltip -->
+            <hr>
+        </section>
+
 
 
 
