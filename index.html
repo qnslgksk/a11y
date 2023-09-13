@@ -4,86 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html {
-            font-size: 62.5%;
-        }
 
-        body {
-            width: 100vw;
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
-        }
-
-        #printCont,
-        #skipNav {
-            display: none;
-        }
-
-        [aria-hidden="true"] {
-            display: none;
-        }
-
-        .ir-txt {
-            overflow: hidden;
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            clip: rect(0 0 0 0);
-        }
-
-        :root {
-            --main-color: cornflowerblue;
-            --hover-color: gray;
-        }
-
-        hr {
-            border-color: darkviolet;
-        }
-
-        /* navigation */
-        /* flex nav */
-        .nav_list {
-            display: flex;
-            width: 100vw;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav_list .list {
-            list-style: none;
-            flex: 1 1 auto;
-        }
-
-        .nav_list .list_link {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .nav_list .list_link:hover,
-        .nav_list .list_link:active,
-        .nav_list .list_link:focus {
-            font-weight: 700
-        }
-
-        /* float nav */
-        /* table nav */
-        /* navigation */
-        .btn:focus,
-        .btn:focus-within,
-        .btn:active {
-            border-color: blue;
-        }
-
-        .btn {
-            background: coral;
-        }
-    </style>
     <!--[if lt IE 10] <link href="ie10.css" type="text/css">[endif] 하거나, ie전용 클래스명을 별도로 쓰거나-->
     <title>A11y(s:2023.08.30~2023.09.12)</title>
+    <link rel="stylesheet" href="/common.css">
 </head>
 
 <body>
@@ -121,19 +45,18 @@
         <p>접근성향상, 호환성향상, 사용성향상, 검색노출향상을 위해 지키도록 합니다.<br><!-- 보이스오버- 텍스트, (스와이프하면)읽는것을 중단-->
             br태그 또는 블록요소를 만나면 읽어주는걸 멈춤니다. 그러므로 꼭 br을 넣어야 하는 경우에만 넣도록 합니다.
         </p>
-
-        <h2>접근성UI 종류</h2><!-- 보이스오버- 텍스트, 머리말레벨2, -->
         <section aria-label="aria를 사용하기 전에">
+            <h2>접근성UI 종류</h2><!-- 보이스오버- 텍스트, 머리말레벨2, -->
             <div>
                 <h3>navigation</h3><!-- 보이스오버- 텍스트, 머리말레벨3, aria-label값, 영역, 랜드마크 -->
-                <pre><!-- pre태그는 줄바꿈과 띄어쓰기영역 포함하여 focus가 들어온다 --><!-- pre 태그안에 있는 코드도 헤딩코드 들 정상 인식함 -->
+                <pre><!-- 보이스오버- pre태그는 줄바꿈과 띄어쓰기영역 포함하여 focus가 들어온다 --><!--보이스오버- pre 태그안에 있는 헤딩코드들 정상 인식함 -->
                 <!-- O: 탐색 역할을 하는 요소가 유일한 경우 레이블 생략 가능 -->
-                    <nav>
-                        <h2>테스트 네비게이션</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
-                        ...<!-- 보이스오버- 생략부호, end, 탐색 -->
-                    </nav>
+                    <div role="navigation">
+                        <h4>테스트 네비게이션</h4><!-- 보이스오버- 텍스트, 머리말레벨4, 탐색, 랜드마크 -->
+                        ul..li
+                    </div>
                     <!-- O: 탐색 역할 갯수가 둘 이상인 경우 레이블 제공(nav) -->
-                    <nav aria-labelledby="gnbb"><!-- aria-labelledby에 해당되는 id영역의 타이틀을 읽음-->
+                    <nav aria-labelledby="gnbb"><!--보이스오버- aria-labelledby에 해당되는 id영역의 타이틀을 읽음-->
                         <h2>글로벌메뉴</h2><!-- 보이스오버-텍스트,머리말레벨2, labelledby영역텍스트, 탐색, 랜드마크-->
                         <h3 id="gnbb">글로벌 네비게이션</h3><!-- 보이스오버-텍스트,머리말레벨3 -->
                         ..., !, @, # <!-- 보이스오버- 생략부호, 골뱅이기호, 숫자기호, end, 글로벌 네비게이션, 탐색 -->
@@ -143,7 +66,7 @@
                         <!-- 보이스오버- end, 공지사항 페이지네이션, 탐색 -->
                     </nav>
                     <!-- O: 헤딩요소가 없으면 aria-label 속성 사용 -->
-                    <nav aria-label="notice-pagination"></nav>
+                    <nav aria-label="안티페이지네이션"></nav>
                 </pre>
                 <p>
                     마크업 작업 시 aria-* 사용을 고려하기 전에 먼저 HTML을 용도에 맞게 작성하였는지 확인하여 필요없는 WAI-ARIA를 사용을 최소화
@@ -151,7 +74,6 @@
                     ARIA는 역할(role), 상태(state), 속성(property)으로 보조기술로 스크린리더 사용자들의 비시각적 경험을 제공한다.
                 </p><!-- 보이스오버-<p>태그안에 있는 텍스트 -->
             </div>
-
             <div>
                 <h3>1. 역할(role)은 약속</h3><!-- 보이스오버- 텍스트, 머리말레벨3  -->
 
@@ -171,6 +93,27 @@
                 <button type="button" class="btn">A2</button><!--보이스오버-텍스트, 버튼--><!-- Enter, Space Bar로 동작 -->
                 <a href="#" class="btn" role="button">A3</a><!--보이스오버-텍스트, 버튼--><!-- Enter로 동작 -->
             </div>
+            <script>
+                'use strict';
+                // 버튼 js - hana
+                const btnList = document.querySelectorAll(".btn_wrap .btn");
+                const btnArr = [];
+                for (var i = 0; i < btnList.length; i++) {
+                    bntArr = btnArr.push(btnList[i]);
+                }
+                // 내가 누른 버튼만 콘솔로 출력한다(마우스이벤트)
+                btnArr.addEventListener('click', function () {
+                    console.log(this);
+                });
+
+                // 내가 누른 버튼만 콘솔로 출력한다(키보드이벤트)
+                if (e.keyCode == 32) {
+                    console.log('space bar')
+                }
+                if (e.keyCode == 13) {
+                    console.log('enter')
+                }
+            </script>
 
             <div>
                 <h3>2. aria-*는 원래 의미의 콘텐츠를 완전히 감추거나 덮어씁니다</h3><!--보이스오버-텍스트, 머리말레벨3-->
@@ -182,7 +125,7 @@
 
                 <table role="log">이거는 표가 아닌 기록으로 알림</table><!-- 보이스오버- 텍스트  -->
                 <a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">앵커</a><!--보이스오버- 텍스트 -->
-                <ul>태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장<!--보이스오버- 텍스트만 읽어줌 <code><ul></code>코드는 읽지않음;; -->
+                ul태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장<!--보이스오버- 텍스트만 읽어줌 <code><ul></code>코드는 읽지않음;; -->
             </div>
             <div>
                 <h3>3. 알게된 점</h3><!-- 보이스오버- 텍스트, 머리말레벨3 -->
@@ -256,6 +199,7 @@
             </div>
 
             <script>
+                'use strict';
                 // 팝업js - hana
                 const popBtnClose = document.querySelector('#popBtnClose');
                 const popBtnOpen = document.querySelector('#popBtnOpen');
@@ -282,30 +226,186 @@
 
             </script>
         </section>
+        <!-- Accordion -->
+        <section title="아코디언 영역">
+            <h2>Accordion</h2>
+            <!-- O: 기본 아코디언 -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <button type="button" id="acco-anchor" class="accordion-trigger" aria-expanded="true"
+                        aria-controls="pan"><span class="accordion-title">상세보기</span><span
+                            class="accordion-icon"></span><button>
+                </div>
+                <div id="pan" class="accordion-panel" aria-labelledby="acco-anchor">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.<br> Facere fugit quibusdam consequuntur
+                    nobis rem
+                    quisquam debitis, mollitia esse blanditiis eaque laudantium,<br> nam quidem animi odit eius soluta
+                    hic magni
+                    aut!
+                </div>
+            </div>
+            <h3>체크박스유형</h3>
+            <!-- O: 인풋체크박스 포함 아코디언 -->
+            <div class="accordion_chk">
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <input type="checkbox" name="" id="chk_term"><label for="chk_term">약관</label>
+                        <button type="button" id="acco-anchor1" class="accordion-trigger" aria-expanded="true"
+                            aria-controls="pan1"><span class="accordion-title">accordion header 상세보기</span><span
+                                class="accordion-icon"></span><button>
+                    </div>
+                    <div id="pan1" class="accordion-panel" aria-labelledby="acco-anchor1">
+                        accordion header: 아코디언 컨텐츠를 노출/비노출 컨트롤<br>
+                        accordion pannel: 아코디언 헤더와 연관 된 콘텐츠
+                    </div>
+                </div>
+            </div>
+            <!-- O: dl 아코디언 -->
+            <h3>정의목록유형</h3>
+            <div class="accordion_dlist">
+                <dl class="accordion">
+                    <dt class="accordion-header">
+                        <button type="button" class="accordion-trigger" aria-controls="answer-99"
+                            aria-expanded="false"><span class="accordion-title">보너스 코인은 언제 소진되나요?</span><span
+                                class="accordion-icon"></span></button>
+                    </dt>
+                    <dd id="answer-99" class="accordion-panel" hidden>
+                        <p>만료기한이 짧은 보너스 코인이 일반 코인보다 먼저 소진됩니다.</p>
+                    </dd>
+                </dl>
+            </div>
+            <!-- O: ul 아코디언 -->
+            <h3>목록유형</h3>
+            <div class="accordion_list">
+                <ul>
+                    <li>
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <button type="button" id="accoBtn1" class="accordion-trigger" aria-expanded="true"
+                                    aria-controls="listCont1"><span class="accordion-title">a상세보기</span><span
+                                        class="accordion-icon"></span><button>
+                            </div>
+                            <div id="listCont1" class="accordion-panel" aria-labelledby="accoBtn1">aaa</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <button type="button" id="accoBtn2" class="accordion-trigger" aria-expanded="false"
+                                    aria-controls="listCont2"><span class="accordion-title">b상세보기</span><span
+                                        class="accordion-icon"></span></button>
+                            </div>
+                            <div id="listCont2" class="accordion-panel" aria-labelledby="accoBtn2" hidden>bbbb</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <button type="button" id="accoBtn3" class="accordion-trigger" aria-expanded="false"
+                                    aria-controls="listCont3"><span class="accordion-title">c상세보기</span><span
+                                        class="accordion-icon"></span><button>
+                            </div>
+                            <div id="listCont3" class="accordion-panel" aria-labelledby="accoBtn3" hidden>cc</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <h3>헤딩포함유형</h3>
+            <!-- O: 헤딩>버튼 아코디언 -->
+            <div id="accordionGroup" class="accordion">
+                <h3 class="accordion-header">
+                    <button type="button" aria-expanded="true" class="accordion-trigger" aria-controls="sect1"
+                        id="accordion1id">
+                        <span class="accordion-title">Personal Information<span class="accordion-icon"></span></span>
+                    </button>
+                </h3>
+                <div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel">
+                    <div>
+                        aa
+                    </div>
+                </div>
+                <h3 class="accordion-header">
+                    <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect3"
+                        id="accordion3id">
+                        <span class="accordion-title">Shipping Address<span class="accordion-icon"></span></span>
+                    </button>
+                </h3>
+                <div id="sect3" role="region" aria-labelledby="accordion3id" class="accordion-panel" hidden="">
+                    <div>
+                        bb
+                    </div>
+                </div>
+            </div>
+            <script>
+                /*
+                *   This content is licensed according to the W3C Software License at
+                *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+                *
+                *   Simple accordion pattern example
+                */
+
+                'use strict';
+                class Accordion {
+                    constructor(domNode) {
+                        this.rootEl = domNode;
+                        this.buttonEl = this.rootEl.querySelector('button[aria-expanded]');
+
+                        const controlsId = this.buttonEl.getAttribute('aria-controls');
+                        this.contentEl = document.getElementById(controlsId);
+
+                        this.open = this.buttonEl.getAttribute('aria-expanded') === 'true';
+
+                        // add event listeners
+                        this.buttonEl.addEventListener('click', this.onButtonClick.bind(this));
+                    }
+
+                    onButtonClick() {
+                        this.toggle(!this.open);
+                    }
+
+                    toggle(open) {
+                        // don't do anything if the open state doesn't change
+                        if (open === this.open) {
+                            return;
+                        }
+
+                        // update the internal state
+                        this.open = open;
+
+                        // handle DOM updates
+                        this.buttonEl.setAttribute('aria-expanded', `${open}`);
+                        if (open) {
+                            this.contentEl.removeAttribute('hidden');
+                        } else {
+                            this.contentEl.setAttribute('hidden', '');
+                        }
+                    }
+
+                    // Add public open and close methods for convenience
+                    open() {
+                        this.toggle(true);
+                    }
+
+                    close() {
+                        this.toggle(false);
+                    }
+                }
+
+                // init accordions
+                const accordions = document.querySelectorAll('.accordion-header');
+                accordions.forEach((accordionEl) => {
+                    new Accordion(accordionEl);
+                });
+
+            </script>
+        </section>
+        <!-- // Accordion -->
 
 
 
     </main>
     <footer>footer</footer><!-- 보이스오버- 텍스트, 콘텐츠정보, 랜드마크 -->
-    <script>
-        'use strict';
-        // const btnList = document.querySelectorAll(".btn");
-        // const btnArr = [];
-        // for(var i = 0; i < btnList.length; i++){
-        //     bntArr = btnArr.push(btnList[i]);
-        // }
-        // btnArr.addEventListener('click', function(){
-        //     console.log(this);
-        // });
-        // 내가 누른 버튼만 콘솔로 출력한다 (마우스이벤트)
-        // 내가 누른 버튼만 콘솔로 출력한다 (키보드이벤트)
-        // if (e.keyCode == 32) {
-        //     console.log('space bar')
-        // }
-        // if (e.keyCode == 13) {
-        //     console.log('enter')
-        // }
-    </script>
+
 </body>
 
 </html>
