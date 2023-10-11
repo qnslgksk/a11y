@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    1. tabindex=""
+    전체 페이지구조에서 팝업은 제일 하단에 위치함 활성화되면 탭이 팝업에 초점이 들어오게 하려면 tabindex="0" 사용하여 초점이동을 시킨다
+    tabindex="0"은 기존에 초점이 가지 않는 요소에 초점이동이 가능하게 하고, tabindex="-1"은 초점이동이 가능한요소에 초점이동을 하지 못하게 한다.
+
+    2. title=""
+
+    <div id="ex1">
+        <fieldset class="checkbox-mixed">
+            <legend>Sandwich Condiments</legend>
+            <div role="checkbox" class="group_checkbox" aria-checked="mixed" aria-controls="cond1 cond2 cond3 cond4"
+                tabindex="0">All condiments</div>
+            <ul class="checkboxes">
+                <li>
+                    <label><input type="checkbox" id="cond1">Lettuce</label>
+                </li>
+                <li>
+                    <label><input type="checkbox" id="cond2" checked="">Tomato</label>
+                </li>
+                <li>
+                    <label><input type="checkbox" id="cond3">Mustard</label>
+                </li>
+                <li>
+                    <label><input type="checkbox" id="cond4">Sprouts</label>
+                </li>
+            </ul>
+        </fieldset>
+    </div>
+    <br>
+    <h2>input test</h2>
+    <div class="input_box flex_box">
+        <label for="tel">전화번호</label>
+        <input type="text" id="tel" id="txt1"> - <input type="text" title="전화번호 뒷자리">
+    </div>
+    <div class="input_box">
+        <label for="tel">주소</label>
+        <input type="text" id="tel" id="txt1"> - <input type="text" title="전화번호 뒷자리">
+    </div>
+
+    <br>
+
+    <label for="userid">
+        <input type="text" id="userid" placeholder="ID">
+    </label>
+    <br>
+    <br>
+    <div class="input_box chk_box">
+        <input type="checkbox" id="solo01" name="solo01" title="solo" checked>
+    </div>
+
+    <div class="flex_box">
+        <div class="input_box chk_box">
+            <label for="userjob01">doctor</label>
+            <input type="checkbox" id="userjob01" name="userjob01" title="doctor" checked>
+        </div>
+        <div class="input_box chk_box">
+            <label for="userjob02">programer</label>
+            <input type="checkbox" id="userjob02" name="userjob02" title="programer">
+        </div>
+        <div class="input_box chk_box">
+            <label for="userjob03">student</label>
+            <input type="checkbox" id="userjob03" name="userjob03" title="student">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="flex_box">
+        <div class="input_box radio_box">
+            <input type="radio" id="userhoby01" name="userhoby" title="doctor" checked>
+            <label for="userhoby01">doctor</label>
+        </div>
+        <div class="input_box radio_box">
+            <input type="radio" id="userhoby02" name="userhoby" title="programer">
+            <label for="userhoby02">programer</label>
+        </div>
+        <div class="input_box radio_box">
+            <input type="radio" id="userhoby03" name="userhoby" title="student">
+            <label for="userhoby03">student</label>
+        </div>
+    </div>
+</body>
+
+</html>
