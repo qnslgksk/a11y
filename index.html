@@ -173,8 +173,8 @@
                 <button>검색</button><!-- 보이스오버- 텍스트, 버튼 -->
             </form>
             <!-- O: 버튼 요소에 상세한 설명 제공 -->
-            <button type="button" aria-describedby="TIP-DEL">게시물
-                삭제</button><!-- 보이스오버- 텍스트,버튼, aria-describedby="id값" -->
+            <button type="button"
+                aria-describedby="TIP-DEL">게시물삭제</button><!-- 보이스오버- 텍스트,버튼, aria-describedby="id값" -->
             <p id="TIP-DEL" role="tooltip">게시물 삭제 후 복원할수 없음.</p></code><!-- 보이스오버- 텍스트를 읽어 주면.. 중복안내가 아닌가?-->
 
             <div>
@@ -198,7 +198,7 @@
                 <button type="button">레진패스 적용</button>
                 <button id="popBtnClose" type="button" onclick="popClose();">닫기</button>
             </div>
-
+            <!-- 
             <script>
                 'use strict';
                 // 팝업js - hana
@@ -225,13 +225,13 @@
                     popTitle.focus();
                 }
 
-            </script>
+            </script> -->
         </section>
         <!-- Accordion -->
         <section title="아코디언 영역">
-            <h2>Accordion</h2>
+            <!-- <h2>Accordion</h2> -->
             <!-- O: 기본 아코디언 -->
-            <div class="accordion">
+            <!-- <div class="accordion">
                 <div class="accordion-header">
                     <button type="button" id="acco-anchor" class="accordion-trigger" aria-expanded="true"
                         aria-controls="pan"><span class="accordion-title">상세보기</span><span
@@ -245,9 +245,9 @@
                     aut!
                 </div>
             </div>
-            <h3>체크박스유형</h3>
+            <h3>체크박스유형</h3> -->
             <!-- O: 인풋체크박스 포함 아코디언 -->
-            <div class="accordion_chk">
+            <!-- <div class="accordion_chk">
                 <div class="accordion">
                     <div class="accordion-header">
                         <input type="checkbox" name="" id="chk_term"><label for="chk_term">약관</label>
@@ -260,9 +260,9 @@
                         accordion pannel: 아코디언 헤더와 연관 된 콘텐츠
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- O: dl 아코디언 -->
-            <h3>정의목록유형</h3>
+            <!-- <h3>정의목록유형</h3>
             <div class="accordion_dlist">
                 <dl class="accordion">
                     <dt class="accordion-header">
@@ -274,9 +274,9 @@
                         <p>만료기한이 짧은 보너스 코인이 일반 코인보다 먼저 소진됩니다.</p>
                     </dd>
                 </dl>
-            </div>
+            </div> -->
             <!-- O: ul 아코디언 -->
-            <h3>목록유형</h3>
+            <!-- <h3>목록유형</h3>
             <div class="accordion_list">
                 <ul>
                     <li>
@@ -310,10 +310,10 @@
                         </div>
                     </li>
                 </ul>
-            </div>
-            <h3>헤딩포함유형</h3>
+            </div> -->
+            <!-- <h3>헤딩포함유형</h3> -->
             <!-- O: 헤딩>버튼 아코디언 -->
-            <div id="accordionGroup" class="accordion">
+            <!-- <div id="accordionGroup" class="accordion">
                 <h3 class="accordion-header">
                     <button type="button" aria-expanded="true" class="accordion-trigger" aria-controls="sect1"
                         id="accordion1id">
@@ -398,19 +398,18 @@
                     new Accordion(accordionEl);
                 });
 
-            </script>
+            </script> -->
         </section>
         <!-- // Accordion -->
         <hr>
         <!-- Alert, Status -->
         <section>
-            <h3>Alert</h3>
-            <p>사용자의 응답이 필요없는 경우 오류나 제안하는 메시지에 사용 하며, 초점을 받지 않도록 처리 (즉시 메시지전달)</p>
+            <!-- <h3>Alert</h3>
+            <p>사용자의 응답이 필요없는 경우 오류나 제안하는 메시지에 사용 하며, 초점을 받지 않도록 처리 (즉시 메시지전달)</p> -->
             <!-- O: 오류 메시지 -->
-            <p role="alert">우편번호 입력 오류.</p>
+            <!-- <p role="alert">우편번호 입력 오류.</p> -->
             <!-- O: 제안 메시지 -->
-            <p role="alert">로그인 후 이용 가능.</p>
-
+            <!-- <p role="alert">로그인 후 이용 가능.</p>
             <button type="button" id="alert-trigger">Trigger Alert</button>
             <div id="example" role="alert"></div>
 
@@ -447,7 +446,7 @@
 
                     example.innerHTML = template;
                 }
-            </script>
+            </script> -->
 
 
             <!-- <h2>Status</h2>
@@ -465,30 +464,30 @@
         <hr>
         <!-- Alert Dialog -->
         <section>
-            <h2>Alert Dialog</h2>
+            <!-- <h2>Alert Dialog</h2>
             <p>사용자 동의 또는 확인이 필요한 인터렉션 요소(input, button)가 있다면 role="alertdialog"를 사용하고 알럿 대화상자는 <strong>다른 과업을
                     차단</strong>해야 하기
-                때문에 modal스타일로 처리</p>
+                때문에 modal스타일로 처리</p> -->
             <!-- O: 알럿 대화상자 -->
-            <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
+            <!-- <div role="alertdialog" aria-modal="true" aria-labelledby="TITLE" aria-describedby="DESCRIPTION">
                 <h3 id="TITLE">레진패스 안내</h3>
                 <p id="DESCRIPTION">이 작품의 유료 에피소드 열람 시 자동으로 구매합니다. 레진패스를 적용하시겠습니까?</p>
                 <button type="button">레진패스 적용</button>
                 <button type="button">취소</button>
-            </div>
+            </div> -->
         </section>
         <!-- // Alert Dialog -->
         <hr>
         <!-- Dialog -->
         <section>
-            <h2>Dialog</h2>
+            <!-- <h2>Dialog</h2>
             <p>사용자가 여러정보를 입력해야 하는 요소(input, textarea, select, button)가 반드시 포함 되며 role="dialog"를 사용하며, 사용자 인터렉션이 필요한 현재
                 문서의
                 하위창(마치 윈도우 팝업)입니다. 대화상자를 표시할 때 키보드 초점을 대화상자내부 처음 콘트롤로 옮겨야합니다. 대화상자를 표시하는 동안 초점은 대화상자안에서 벗어나지않게 처리 하고
                 modal스타일은
-                선택사항</p>
+                선택사항</p> -->
             <!-- O: 대화상자 -->
-            <article role="dialog" aria-modal="true" aria-labelledby="TITLE">
+            <!-- <article role="dialog" aria-modal="true" aria-labelledby="TITLE">
                 <h3 id="TITLE">로그인</h3>
                 <form>
                     <label for="ID">아이디</label>
@@ -497,14 +496,14 @@
                     <input id="PW" type="password">
                     <button>로그인</button>
                 </form>
-            </article>
+            </article> -->
         </section>
         <!-- // Dialog -->
         <hr>
         <!-- Form -->
         <section aria-labelledby="region1">
             <!-- aria-labelledby로 연결 해주면 form영역이라고 읽음-NVDA -->
-            <h2 id="region1">Form</h2>
+            <!-- <h2 id="region1">Form</h2>
             <fieldset>
                 <p>
                     <label for="m-add1">Address 1:</label>
@@ -526,18 +525,17 @@
                     <label for="m-zip">Zip Code:</label>
                     <input type="text" name="m-zip" id="m-zip">
                 </p>
-            </fieldset>
+            </fieldset> -->
         </section>
         <!-- // Form -->
         <hr>
         <!-- Tab -->
         <div role="region" aria-labelledby="region2">
-            <h2 id="region2">Tab</h2>
+            <!-- <h2 id="region2">Tab</h2>
             <p>현재페이지 안에서 색인을 제공하는 구조(tablist, tab, tabpannel)를 의미하며 사이트탐색에 해당하는 요소는 nav > h2 + ul 또는 aside > h2 + ul로
-                마크업하며 ul에
-                role="tabpannel"속성은 사용할 수 없음</p>
+                마크업하며 ul에 role="tabpannel"속성은 사용할 수 없음</p> -->
             <!-- O: 앵커 형식 탭 -->
-            <div class="weekly">
+            <!-- <div class="weekly">
                 <div role="tablist">
                     <a id="mon-anchor" href="#mon" role="tab" aria-selected="true">월</a>
                     <a id="tue-anchor" href="#tue" role="tab" aria-selected="false">화</a>
@@ -548,9 +546,9 @@
                 <div id="tue" tabindex="0" role="tabpanel" aria-labelledby="tue-anchor" hidden>
                     화요일엔 노란 장미를...
                 </div>
-            </div>
+            </div> -->
             <!-- O: 버튼 형식 탭 -->
-            <div class="weekly">
+            <!-- <div class="weekly">
                 <div role="tablist">
                     <button type="button" id="mon-anchor" aria-controls="mon" role="tab" aria-selected="true">월</button>
                     <button type="button" id="tue-anchor" aria-controls="tue" role="tab"
@@ -562,210 +560,208 @@
                 <div id="tue" tabindex="0" role="tabpanel" aria-labelledby="tue-anchor" hidden>
                     화요일엔 노란 장미를...
                 </div>
-            </div>
+            </div> -->
             <!-- O: tablist와 tab 사이 li 요소의 의미 제거 -->
-            <p>role="none" 또는 role="presentation"을 사용하여 태그의 역할을 제거 role="none", role="presentation"(의미없음) << 태그의 의미를
-                    없앰<br> hidden << display:none<br> aria-hidden=true"(숨김속성) << 보조기기에서만 읽지못하게 숨김 숨김 속성은 요소와 내용을 모두 감추어
-                            버리지만 role="none" 속성은 내용을 드러내고 의미만 감춥니다.</p>
-                            <ul role="tablist">
-                                <li role="none">
-                                    <a href="#home" role="tab" aria-selected="true">홈</a>
-                                </li>
-                                <li role="none">
-                                    <a href="#ongoing" role="tab" aria-selected="false">연재</a>
-                                </li>
-                                <li role="none">
-                                    <a href="#ranking" role="tab" aria-selected="false">랭킹</a>
-                                </li>
-                            </ul>
+            <!-- <p>role="none" 또는 role="presentation"을 사용하여 태그의 역할을 제거 role="none", role="presentation"(의미없음) << 태그의 의미를 없앰<br> hidden << display:none<br> aria-hidden=true"(숨김속성) << 보조기기에서만 읽지못하게 숨김 숨김 속성은 요소와 내용을 모두 감추어 버리지만 role="none" 속성은 내용을 드러내고 의미만 감춥니다.</p>
+            <ul role="tablist">
+                <li role="none">
+                    <a href="#home" role="tab" aria-selected="true">홈</a>
+                </li>
+                <li role="none">
+                    <a href="#ongoing" role="tab" aria-selected="false">연재</a>
+                </li>
+                <li role="none">
+                    <a href="#ranking" role="tab" aria-selected="false">랭킹</a>
+                </li>
+            </ul>
 
-                            <div class="tabs">
-                                <h3 id="tablist-1">Danish Composers</h3>
-                                <div role="tablist" aria-labelledby="tablist-1" class="automatic">
-                                    <button id="tab-1" type="button" role="tab" aria-selected="true"
-                                        aria-controls="tabpanel-1">
-                                        <span class="focus">Maria Ahlefeldt</span>
-                                    </button>
-                                    <button id="tab-2" type="button" role="tab" aria-selected="false"
-                                        aria-controls="tabpanel-2" tabindex="-1">
-                                        <span class="focus">Carl Andersen</span>
-                                    </button>
-                                    <button id="tab-3" type="button" role="tab" aria-selected="false"
-                                        aria-controls="tabpanel-3" tabindex="-1">
-                                        <span class="focus">Ida da Fonseca</span>
-                                    </button>
-                                    <button id="tab-4" type="button" role="tab" aria-selected="false"
-                                        aria-controls="tabpanel-4" tabindex="-1">
-                                        <span class="focus">Peter Müller</span>
-                                    </button>
-                                </div>
+            <div class="tabs">
+                <h3 id="tablist-1">Danish Composers</h3>
+                <div role="tablist" aria-labelledby="tablist-1" class="automatic">
+                    <button id="tab-1" type="button" role="tab" aria-selected="true"
+                        aria-controls="tabpanel-1">
+                        <span class="focus">Maria Ahlefeldt</span>
+                    </button>
+                    <button id="tab-2" type="button" role="tab" aria-selected="false"
+                        aria-controls="tabpanel-2" tabindex="-1">
+                        <span class="focus">Carl Andersen</span>
+                    </button>
+                    <button id="tab-3" type="button" role="tab" aria-selected="false"
+                        aria-controls="tabpanel-3" tabindex="-1">
+                        <span class="focus">Ida da Fonseca</span>
+                    </button>
+                    <button id="tab-4" type="button" role="tab" aria-selected="false"
+                        aria-controls="tabpanel-4" tabindex="-1">
+                        <span class="focus">Peter Müller</span>
+                    </button>
+                </div>
 
-                                <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
-                                    <p>
-                                        Maria Theresia Ahlefeldt <span lang="da">virkelig Tonekunstnerinde</span>” ('a
-                                        True
-                                        Artist of Music').
-                                    </p>
-                                </div>
-                                <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2"
-                                    class="is-hidden">
-                                    <p>
-                                        Carl Joachim Andersen
-                                    </p>
-                                </div>
-                                <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3"
-                                    class="is-hidden">
-                                    <p>
-                                        Ida Henriette da Fonseca
-                                    </p>
-                                </div>
-                                <div id="tabpanel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4"
-                                    class="is-hidden">
-                                    <p>
-                                        Peter Erasmus Lange-Müller
-                                    </p>
-                                </div>
-                            </div>
-                            <script>
-                                /*
-                                *   This content is licensed according to the W3C Software License at
-                                *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
-                                *
-                                *   File:   tabs-automatic.js
-                                *
-                                *   Desc:   Tablist widget that implements ARIA Authoring Practices
-                                */
+                <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+                    <p>
+                        Maria Theresia Ahlefeldt <span lang="da">virkelig Tonekunstnerinde</span>” ('a
+                        True
+                        Artist of Music').
+                    </p>
+                </div>
+                <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2"
+                    class="is-hidden">
+                    <p>
+                        Carl Joachim Andersen
+                    </p>
+                </div>
+                <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3"
+                    class="is-hidden">
+                    <p>
+                        Ida Henriette da Fonseca
+                    </p>
+                </div>
+                <div id="tabpanel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4"
+                    class="is-hidden">
+                    <p>
+                        Peter Erasmus Lange-Müller
+                    </p>
+                </div>
+            </div>
+            <script>
+                /*
+                *   This content is licensed according to the W3C Software License at
+                *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+                *
+                *   File:   tabs-automatic.js
+                *
+                *   Desc:   Tablist widget that implements ARIA Authoring Practices
+                */
 
-                                'use strict';
+                'use strict';
 
-                                class TabsAutomatic {
-                                    constructor(groupNode) {
-                                        this.tablistNode = groupNode;
+                class TabsAutomatic {
+                    constructor(groupNode) {
+                        this.tablistNode = groupNode;
 
-                                        this.tabs = [];
+                        this.tabs = [];
 
-                                        this.firstTab = null;
-                                        this.lastTab = null;
+                        this.firstTab = null;
+                        this.lastTab = null;
 
-                                        this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
-                                        this.tabpanels = [];
+                        this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
+                        this.tabpanels = [];
 
-                                        for (var i = 0; i < this.tabs.length; i += 1) {
-                                            var tab = this.tabs[i];
-                                            var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
+                        for (var i = 0; i < this.tabs.length; i += 1) {
+                            var tab = this.tabs[i];
+                            var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
 
-                                            tab.tabIndex = -1;
-                                            tab.setAttribute('aria-selected', 'false');
-                                            this.tabpanels.push(tabpanel);
+                            tab.tabIndex = -1;
+                            tab.setAttribute('aria-selected', 'false');
+                            this.tabpanels.push(tabpanel);
 
-                                            tab.addEventListener('keydown', this.onKeydown.bind(this));
-                                            tab.addEventListener('click', this.onClick.bind(this));
+                            tab.addEventListener('keydown', this.onKeydown.bind(this));
+                            tab.addEventListener('click', this.onClick.bind(this));
 
-                                            if (!this.firstTab) {
-                                                this.firstTab = tab;
-                                            }
-                                            this.lastTab = tab;
-                                        }
+                            if (!this.firstTab) {
+                                this.firstTab = tab;
+                            }
+                            this.lastTab = tab;
+                        }
 
-                                        this.setSelectedTab(this.firstTab, false);
-                                    }
+                        this.setSelectedTab(this.firstTab, false);
+                    }
 
-                                    setSelectedTab(currentTab, setFocus) {
-                                        if (typeof setFocus !== 'boolean') {
-                                            setFocus = true;
-                                        }
-                                        for (var i = 0; i < this.tabs.length; i += 1) {
-                                            var tab = this.tabs[i];
-                                            if (currentTab === tab) {
-                                                tab.setAttribute('aria-selected', 'true');
-                                                tab.removeAttribute('tabindex');
-                                                this.tabpanels[i].classList.remove('is-hidden');
-                                                if (setFocus) {
-                                                    tab.focus();
-                                                }
-                                            } else {
-                                                tab.setAttribute('aria-selected', 'false');
-                                                tab.tabIndex = -1;
-                                                this.tabpanels[i].classList.add('is-hidden');
-                                            }
-                                        }
-                                    }
-
-                                    setSelectedToPreviousTab(currentTab) {
-                                        var index;
-
-                                        if (currentTab === this.firstTab) {
-                                            this.setSelectedTab(this.lastTab);
-                                        } else {
-                                            index = this.tabs.indexOf(currentTab);
-                                            this.setSelectedTab(this.tabs[index - 1]);
-                                        }
-                                    }
-
-                                    setSelectedToNextTab(currentTab) {
-                                        var index;
-
-                                        if (currentTab === this.lastTab) {
-                                            this.setSelectedTab(this.firstTab);
-                                        } else {
-                                            index = this.tabs.indexOf(currentTab);
-                                            this.setSelectedTab(this.tabs[index + 1]);
-                                        }
-                                    }
-
-                                    /* EVENT HANDLERS */
-
-                                    onKeydown(event) {
-                                        var tgt = event.currentTarget,
-                                            flag = false;
-
-                                        switch (event.key) {
-                                            case 'ArrowLeft':
-                                                this.setSelectedToPreviousTab(tgt);
-                                                flag = true;
-                                                break;
-
-                                            case 'ArrowRight':
-                                                this.setSelectedToNextTab(tgt);
-                                                flag = true;
-                                                break;
-
-                                            case 'Home':
-                                                this.setSelectedTab(this.firstTab);
-                                                flag = true;
-                                                break;
-
-                                            case 'End':
-                                                this.setSelectedTab(this.lastTab);
-                                                flag = true;
-                                                break;
-
-                                            default:
-                                                break;
-                                        }
-
-                                        if (flag) {
-                                            event.stopPropagation();
-                                            event.preventDefault();
-                                        }
-                                    }
-
-                                    onClick(event) {
-                                        this.setSelectedTab(event.currentTarget);
-                                    }
+                    setSelectedTab(currentTab, setFocus) {
+                        if (typeof setFocus !== 'boolean') {
+                            setFocus = true;
+                        }
+                        for (var i = 0; i < this.tabs.length; i += 1) {
+                            var tab = this.tabs[i];
+                            if (currentTab === tab) {
+                                tab.setAttribute('aria-selected', 'true');
+                                tab.removeAttribute('tabindex');
+                                this.tabpanels[i].classList.remove('is-hidden');
+                                if (setFocus) {
+                                    tab.focus();
                                 }
+                            } else {
+                                tab.setAttribute('aria-selected', 'false');
+                                tab.tabIndex = -1;
+                                this.tabpanels[i].classList.add('is-hidden');
+                            }
+                        }
+                    }
 
-                                // Initialize tablist
+                    setSelectedToPreviousTab(currentTab) {
+                        var index;
 
-                                window.addEventListener('load', function () {
-                                    var tablists = document.querySelectorAll('[role=tablist].automatic');
-                                    for (var i = 0; i < tablists.length; i++) {
-                                        new TabsAutomatic(tablists[i]);
-                                    }
-                                });
+                        if (currentTab === this.firstTab) {
+                            this.setSelectedTab(this.lastTab);
+                        } else {
+                            index = this.tabs.indexOf(currentTab);
+                            this.setSelectedTab(this.tabs[index - 1]);
+                        }
+                    }
 
-                            </script>
-                            <!--  input radio로 탭만들지 마라
+                    setSelectedToNextTab(currentTab) {
+                        var index;
+
+                        if (currentTab === this.lastTab) {
+                            this.setSelectedTab(this.firstTab);
+                        } else {
+                            index = this.tabs.indexOf(currentTab);
+                            this.setSelectedTab(this.tabs[index + 1]);
+                        }
+                    }
+
+                    /* EVENT HANDLERS */
+
+                    onKeydown(event) {
+                        var tgt = event.currentTarget,
+                            flag = false;
+
+                        switch (event.key) {
+                            case 'ArrowLeft':
+                                this.setSelectedToPreviousTab(tgt);
+                                flag = true;
+                                break;
+
+                            case 'ArrowRight':
+                                this.setSelectedToNextTab(tgt);
+                                flag = true;
+                                break;
+
+                            case 'Home':
+                                this.setSelectedTab(this.firstTab);
+                                flag = true;
+                                break;
+
+                            case 'End':
+                                this.setSelectedTab(this.lastTab);
+                                flag = true;
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        if (flag) {
+                            event.stopPropagation();
+                            event.preventDefault();
+                        }
+                    }
+
+                    onClick(event) {
+                        this.setSelectedTab(event.currentTarget);
+                    }
+                }
+
+                // Initialize tablist
+
+                window.addEventListener('load', function () {
+                    var tablists = document.querySelectorAll('[role=tablist].automatic');
+                    for (var i = 0; i < tablists.length; i++) {
+                        new TabsAutomatic(tablists[i]);
+                    }
+                });
+
+            </script> -->
+            <!--  input radio로 탭만들지 마라
                 접근성은 
                 1. 직접 들어본다
                 2. input을 라디오 버튼으로 읽을 가능성이 큼
