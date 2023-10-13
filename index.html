@@ -22,10 +22,10 @@
 
     <header>
         <!-- 보이스오버- 특수문자기호: * 별표, ... 생략부호, #  -->
-        <h1>A11y접근성</h1><!-- 보이스오버- 텍스트, 머리말레벨1, 배너, 랜드마크 -->
+        <h1>A11y접근성</h1><!-- 보이스오버- 사파리 텍스트, 머리말레벨1, 배너, 랜드마크 -->
         <nav id="gnb">
             <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
-            <ul class="nav_list">
+            <ul class="nav_list"><!-- 보이스오버에서 before로 준 중간점을 읽어줌  -->
                 <li class="list"><a class="list_link" href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a>
                 </li><!-- 보이스오버- 텍스트, 링크, 목록시작 -->
                 <li class="list"><a class="list_link"
@@ -123,6 +123,29 @@
                 <!-- 보이스오버- mute버튼, 체크상자, 선택해제됨, 설정을 끄거나 켜려면 이중탭하십시오 / 이중탭하면 선택해제됨이라고만 읽어줌 스크립트 작업이 필요한가?-->
 
                 <!--여기부터 다시 테스트  -->
+                인풋테스트입니다.
+                <div>
+                    <label for="number">연락처</label>
+                    <input type="text" id="number" title="연락처"> - <input type="text" title="연락처 뒷자리를 적어주세요">
+                </div>
+
+                <label for="agree">
+                    <input type="checkbox" id="agree">
+                    <i></i>
+                    <span>포약관동의</span>
+                </label>
+
+                <label for="agree1">
+                    <input type="checkbox" id="agree" title="포타이틀약관동의">
+                    <i></i>
+                    <span>포타이틀약관동의</span>
+                </label>
+
+                <label>
+                    <input type="checkbox" title="타이틀약관동의">
+                    <i></i>
+                    <span>타이틀약관동의</span>
+                </label>
 
                 <table role="log">이거는 표가 아닌 기록으로 알림</table><!-- 보이스오버- 텍스트  -->
                 <a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">앵커</a><!--보이스오버- 텍스트 -->
