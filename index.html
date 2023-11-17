@@ -210,6 +210,11 @@
                 O: 알럿 대화상자 요소에 상세한 설명 제공, 히든처리가 되지 않으면 포커스가 갖힘 
                     aria-hidden="true", display:none로 컨트롤
                 -->
+            <!-- 1. tabindex=""
+                전체 페이지구조에서 팝업은 제일 하단에 위치함 활성화되면 탭이 팝업에 초점이 들어오게 하려면 tabindex="0" 사용하여 초점이동을 시킨다
+                tabindex="0"은 기존에 초점이 가지 않는 요소에 초점이동이 가능하게 하고, tabindex="-1"은 초점이동이 가능한요소에 초점이동을 하지 못하게 한다.
+            
+            2. title="" -->
 
             <button id="popBtnOpen" type="button"
                 onclick="popOpen();"><span>팝업열기</span></button><!--보이스오버- 텍스트,버튼, aria-label="",영역, end,주요(팝업을 열려면 탭하라는 안내문구가 없음;;)-->
