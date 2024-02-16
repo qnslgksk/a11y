@@ -25,15 +25,29 @@
         <h1>A11y접근성</h1><!-- 보이스오버- 사파리 텍스트, 머리말레벨1, 배너, 랜드마크 -->
 
         <p tabindex="0">탭탭</p>
-
         <p class="focu" tabindex="0">focu<br>탭인덱스가 없으면 포커스가 안들어오고 그럼 포커스이벤트테스트가 안되네 <br></p>
         <script>
             let focu = document.querySelector(".focu")
             focu.focus();
             focu.addEventListener("focusin", () => focu.classList.add('focused'));
             focu.addEventListener("focusout", () => focu.classList.remove('focused'));
-
         </script>
+
+        <!-- NVDA가 켜져있으면 (role="button"인 경우 space로 실행가능)보조기기 프로그램이 켜져있지 않으면 role="button"이 실행되지 않는게 정상 -->
+        role="button"은 보조기기(NVDA)를 사용중에만 스페이스바 기능사용이 가능함
+        웹접근성을 제대로 하려면 보조기기를 잘 다룰수 있어야 하고 실제로 사용자테스트를 해야함
+
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="imageUpload">이미지 업로드:</label>
+            <input type="image" id="imageUpload" name="image" accept="image/*"><!-- 인풋이이미지가 업로드 버튼으로 사용되는 예시 -->
+            <!-- <input type="submit" value="전송"> -->
+        </form>
+
+        <!--<html lang="ko"> 없으면 위배 -->
+        <p>This is a paragraph in English.</p> <!-- lang="en" 없으면 위배일까?-->
+        <p lang="ja">これは日本語の段落です。</p>
+
         <nav id="gnb">
             <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
             <ul class="nav_list"><!-- 보이스오버에서 before로 준 중간점을 읽어줌  -->
