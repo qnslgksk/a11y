@@ -6,6 +6,28 @@
 @import url('./webfont.css');
 @import url('./operation.css');
 
+/*https: //marshallku.com/dev/focus-visible%EB%A1%9C-%EC%A0%91%EA%B7%BC%EC%84%B1-%EB%86%92%EC%9D%B4%EA%B8%B0*/
+:root {
+    --focus-gold: #ffbf47;
+}
+
+:focus-visible {
+    outline: 3px solid var(--focus-gold);
+}
+
+a:focus-visible {
+    background-color: var(--focus-gold);
+}
+
+:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+.dropdown:focus,
+.dropdown:focus-within {
+    display: block;
+}
+
 /* common basic(reset) */
 html,
 body {
