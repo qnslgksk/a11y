@@ -24,13 +24,13 @@
         <!-- 보이스오버- 특수문자기호: * 별표, ... 생략부호, #  -->
         <h1>A11y접근성</h1><!-- 보이스오버- 사파리 텍스트, 머리말레벨1, 배너, 랜드마크 -->
         <a href="javascript:;">나는 a 링크</a>
-        <p tabindex="0">포커스를 위하여</p>
+        <p>tabindex="0"</p>
         <p role="link">나도 링크로 인식되지만 초점은 가지 않아</p>
 
-        <p class="focu" tabindex="0">focu<br>포커스이벤트테스트<br></p>
+        <p class="focu">focu<br>포커스이벤트테스트<br></p>
         <script>
             let focu = document.querySelector(".focu")
-            // focu.focus();
+            focu.focus();
             focu.addEventListener("focusin", () => focu.classList.add('focused'));
             focu.addEventListener("focusout", () => focu.classList.remove('focused'));
 
