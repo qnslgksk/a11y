@@ -26,83 +26,111 @@
 
         <nav id="gnb">
             <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
-            <ul class="nav_list"><!-- 보이스오버-before로 준 content: '·';를 중간점이라 읽음 -->
-                <li class="list"><a class="list_link"
-                        href="https://www.w3.org/WAI/WCAG22/Understanding/">WCAG2.2문서이해하기</a></li>
-                <!-- 보이스오버- 텍스트, 링크, 목록시작 -->
-                <li class="list"><a class="list_link" href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a>
-                </li><!-- 보이스오버- 텍스트, 링크 -->
-                <li class="list"><a class="list_link"
-                        href="https://mulder21c.github.io/aria-practices/examples/landmarks/HTML5.html">멀더예제</a></li>
-                <!-- 보이스오버- 텍스트, 링크 -->
-                <li class="list"><a class="list_link"
-                        href="https://github.com/lezhin/accessibility/blob/master/aria/README.md">레진</a></li>
-                <!-- 보이스오버- 텍스트, 링크 -->
+            <ul class="nav_list">
+                <li class="list">
+                    <!-- 보이스오버- 중간점, 목록시작 -->
+                    <a class="list_link"
+                        href="https://www.w3.org/WAI/WCAG22/Understanding/">WCAG2.2문서이해하기</a><!-- 보이스오버- 텍스트, 링크 -->
+                </li>
+                <li class="list">
+                    <!-- 보이스오버- 중간점-->
+                    <a class="list_link"
+                        href="https://mulder21c.github.io/aria-practices/#intro">멀더끙</a><!-- 보이스오버- 텍스트, 링크 -->
+                </li>
+                <li class="list">
+                    <!-- 보이스오버- 중간점-->
+                    <a class="list_link"
+                        href="https://mulder21c.github.io/aria-practices/examples/landmarks/HTML5.html">멀더예제</a><!-- 보이스오버- 텍스트, 링크 -->
+                </li>
+                <li class="list">
+                    <!-- 보이스오버- 중간점-->
+                    <a class="list_link"
+                        href="https://github.com/lezhin/accessibility/blob/master/aria/README.md">레진</a><!-- 보이스오버- 텍스트, 링크 -->
+                </li>
+
                 <li class="list"><a class="list_link" href="https://www.w3.org/WAI/ARIA/apg/">APG</a></li>
                 <!-- 보이스오버- 텍스트, 링크 -->
-                <li><a href="tel:010-6407-2597">010-6407-2597</a></li><!-- 보이스오버- 구분점 --><!-- 보이스오버- 텍스트, 링크, 목록끝,-->
-                <!-- <li><a href="https://blog.hivelab.co.kr/%EA%B3%B5%EC%9C%A0-title-%EC%86%8D%EC%84%B1%EC%9D%98-%EB%B0%94%EB%9E%8C%EC%A7%81%ED%95%9C-%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95/">하이브랩title속성</a></li> -->
+                <li><a href="tel:010-6407-2597">010-6407-2597</a></li><!-- 보이스오버- 구분점, 텍스트, 링크, 목록끝-->
+                <li><a
+                        href="https://blog.hivelab.co.kr/%EA%B3%B5%EC%9C%A0-title-%EC%86%8D%EC%84%B1%EC%9D%98-%EB%B0%94%EB%9E%8C%EC%A7%81%ED%95%9C-%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95/">하이브랩title속성</a>
+                </li>
             </ul>
         </nav><!-- end, end, 탐색 -->
     </header><!--  end, 배너 -->
     <main id="main">
-        <!-- 이미지에 대한 대체 텍스트 제공 -->
-        <img src="example.jpg" alt="예시 이미지">
-
-        <!-- 링크에 의미 있는 텍스트 제공 -->
-        <a href="example.html">더 알아보기</a>
-
-        <!-- 적절한 헤딩 구조 사용 -->
-        <h1>제목</h1>
-        <h2>소제목</h2>
-
-        <!-- 폼 관련 요소에 명확한 설명 제공 -->
-        <label for="name">이름:</label>
-        <input type="text" id="name" name="name">
-
-
-
-
-        <button>
-            <div>dsfsdf</div>
-            <p>sadasf</p>
-        </button>
         <!-- 1. tabindex=""
-            전체 페이지구조에서 팝업은 제일 하단에 위치함 활성화되면 탭이 팝업에 초점이 들어오게 하려면 tabindex="0" 사용하여 초점이동을 시킨다
-            tabindex="0"은 기존에 초점이 가지 않는 요소에 초점이동이 가능하게 하고, tabindex="-1"은 초점이동이 가능한요소에 초점이동을 하지 못하게 한다.
+            전체 페이지구조에서 팝업은 제일 하단에 위치 하고 활성화되면 팝업에 초점이 들어오게 하려면 tabindex="0" 사용하여 초점이동을 시킨다
+            tabindex="0"은 기존에 초점이 가지 않는 요소에 초점 이동이 가능하게 하고, tabindex="-1"은 초점 이동이 가능한 요소에 초점이동을 하지 못하게 한다.
         
             2. title="" -->
 
+        이미지케이스
+        <div>
+            <a href="https://www.youtube.com/embed/-udAn0Fd7yo" class="vdad_btn ui-vdadpop-open"
+                title="pLayer Story: 빠른 Girl 어떡해 비디오 팝업 열기" aria-controls="pop2" role="button" aria-haspopup="dialog">
+                <img src="https://www.shinhancard.com/pconts/company/html/promotion/ad/tv/__icsFiles/afieldfile/2023/04/21/20230417555721_img_02_1.jpg"
+                    class="vdad_img" alt="" width="400" height="300">
+                <strong class="vdad_tit">pLayer Story: 빠른 Girl 어떡해</strong>
+            </a>
+        </div>
+        <img class="bn_img"
+            src="https://ssl.pstatic.net/melona/libs/1469/1469045/80ec1965fdc7c1b2a15d_20231228103922233.jpg">
+
+        <img src="https://placehold.co/600x400" alt="예시 또는 샘플 이미지는 장식으로 간주하여 빈 값"><!-- 보이스오버- alt값, 이미지 -->
+
+        링크케이스
+
+        <a href="">링크텍스트는 의미있는 텍스트를 제공</a>
+
+        버튼케이스
+        <button><!-- 웹표준에 맞지않음 안에 텍스트 연결해서 읽어줌 -->
+            <div>dsfsdf</div>
+            <p>sadasf</p>
+        </button>
+
+
+
+        폼요소케이스
+        <!-- 폼 관련 요소에 명확한 설명 제공 -->
+        <label for="name">이름:</label><!--보이스오버- 레이블, 텍스트필드, 편집하려면 이중탭하십시오., 로터를사용하여 맞춤법 오류 단어에 연결 -->
+        <input type="text" id="name" name="name">
+
         <div id="ex1">
             <fieldset class="checkbox-mixed">
-                <legend>Sandwich Condiments</legend>
+                <legend>Sandwich Condiments</legend><!-- 보이스오버- 텍스트 형식시작-->
                 <div role="checkbox" class="group_checkbox" aria-checked="mixed" aria-controls="cond1 cond2 cond3 cond4"
-                    tabindex="0">All condiments</div>
+                    tabindex="0">All condiments</div><!--보이스오버- 텍스트 체크상자 섞여있음, 설정을 끄거나 켜려면 이중탭하십시오. -->
                 <ul class="checkboxes">
                     <li>
-                        <label><input type="checkbox" id="cond1">Lettuce</label>
+                        <label><input type="checkbox"
+                                id="cond1">Lettuce</label><!-- 보이스오버- 텍스트, 체크상자, 선택해제됨, 목록시작, 설정을 끄거나 켜려면 이중탭하십시오. -->
                     </li>
                     <li>
-                        <label><input type="checkbox" id="cond2" checked="">Tomato</label>
+                        <label><input type="checkbox" id="cond2"
+                                checked="">Tomato</label><!-- 보이스오버- 텍스트, 체크상자, 선택됨, 설정을 끄거나 켜려면 이중탭하십시오. -->
                     </li>
                     <li>
-                        <label><input type="checkbox" id="cond3">Mustard</label>
+                        <label><input type="checkbox"
+                                id="cond3">Mustard</label><!-- 보이스오버- 텍스트, 체크상자, 선택해제됨, 설정을 끄거나 켜려면 이중탭하십시오. -->
                     </li>
                     <li>
-                        <label><input type="checkbox" id="cond4">Sprouts</label>
+                        <label><input type="checkbox"
+                                id="cond4">Sprouts</label><!-- 보이스오버- 텍스트, 체크상자, 선택해제됨, 설정을 끄거나 켜려면 이중탭하십시오. -->
                     </li>
                 </ul>
             </fieldset>
         </div>
-        <br>
-        <h2>input test</h2>
+
+
         <div class="input_box flex_box">
             <label for="tel">전화번호</label>
-            <input type="text" id="tel"> - <input type="text" title="전화번호 뒷자리">
+            <input type="text" id="tel"><!--보이스오버- 전화번호 텍스트필드 편집하려면 이중탭 하십시오.,로터를사용하여 맞춤법 오류 단어에 연결 -->
+            -<!--보이스오버- 하이픈 -->
+            <input type="text" title="전화번호 뒷자리"><!--보이스오버- title값, 텍스트필드, 편집하려면 이중탭 하십시오.,로터를사용하여 맞춤법 오류 단어에 연결-->
         </div>
         <div class="input_box">
-            <label for="tel">주소</label>
-            <input type="text" id="tel"> - <input type="text" title="전화번호 뒷자리">
+            <label for="addr">주소</label>
+            <input type="text" id="add"> - <input type="text" title="나머지주소">
         </div>
 
         <br>
@@ -314,20 +342,10 @@
             </tbody>
         </table>
 
-        <div>
-            <a href="https://www.youtube.com/embed/-udAn0Fd7yo" class="vdad_btn ui-vdadpop-open"
-                title="pLayer Story: 빠른 Girl 어떡해 비디오 팝업 열기" aria-controls="pop2" role="button" aria-haspopup="dialog">
-                <img src="https://www.shinhancard.com/pconts/company/html/promotion/ad/tv/__icsFiles/afieldfile/2023/04/21/20230417555721_img_02_1.jpg"
-                    class="vdad_img" alt="pLayer Story: 빠른 Girl 어떡해 비디오 썸네일 이미지">
-                <!-- <span class="date">2023.04.21</span>-->
-                <strong class="vdad_tit">pLayer Story: 빠른 Girl 어떡해</strong>
-            </a>
-        </div>
-        <img class="bn_img"
-            src="https://ssl.pstatic.net/melona/libs/1469/1469045/80ec1965fdc7c1b2a15d_20231228103922233.jpg">
 
 
-        <h2>웹표준을 지키는 이유</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 주요, 랜드마크 -->
+
+        <h2>웹표준을 지키는 이유</h2><!-- 보이스오버- 텍스트, 머리말레벨2 -->
         <p>접근성향상, 호환성향상, 사용성향상, 검색노출향상을 위해 지키도록 합니다.<br><!-- 보이스오버- 텍스트, (스와이프하면)읽는것을 중단-->
             br태그 또는 블록요소를 만나면 읽어주는걸 멈춤니다. 그러므로 꼭 br을 넣어야 하는 경우에만 넣도록 합니다.
         </p>
