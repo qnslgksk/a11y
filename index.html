@@ -22,35 +22,11 @@
 
     <header>
         <!-- 보이스오버- 특수문자기호: * 별표, ... 생략부호, #  -->
-        <h1>A11y접근성</h1><!-- 보이스오버- 사파리 텍스트, 머리말레벨1, 배너, 랜드마크 -->
-
-        <p tabindex="0">탭탭</p>
-        <p class="focu" tabindex="0">focu<br>탭인덱스가 없으면 포커스가 안들어오고 그럼 포커스이벤트테스트가 안되네 <br></p>
-        <script>
-            let focu = document.querySelector(".focu")
-            focu.focus();
-            focu.addEventListener("focusin", () => focu.classList.add('focused'));
-            focu.addEventListener("focusout", () => focu.classList.remove('focused'));
-        </script>
-
-        <!-- NVDA가 켜져있으면 (role="button"인 경우 space로 실행가능)보조기기 프로그램이 켜져있지 않으면 role="button"이 실행되지 않는게 정상 -->
-        role="button"은 보조기기(NVDA)를 사용중에만 스페이스바 기능사용이 가능함
-        웹접근성을 제대로 하려면 보조기기를 잘 다룰수 있어야 하고 실제로 사용자테스트를 해야함
-
-
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <label for="imageUpload">이미지 업로드:</label>
-            <input type="image" id="imageUpload" name="image" accept="image/*"><!-- 인풋이이미지가 업로드 버튼으로 사용되는 예시 -->
-            <!-- <input type="submit" value="전송"> -->
-        </form>
-
-        <!--<html lang="ko"> 없으면 위배 -->
-        <p>This is a paragraph in English.</p> <!-- lang="en" 없으면 위배일까?-->
-        <p lang="ja">これは日本語の段落です。</p>
+        <h1>A11y접근성</h1><!-- 보이스오버- 텍스트, 머리말레벨1, 배너, 랜드마크 -->
 
         <nav id="gnb">
             <h2>접근성 요소 참조 URL</h2><!-- 보이스오버- 텍스트, 머리말레벨2, 탐색, 랜드마크 -->
-            <ul class="nav_list"><!-- 보이스오버에서 before로 준 중간점을 읽어줌  -->
+            <ul class="nav_list"><!-- 보이스오버-before로 준 content: '·';를 중간점이라 읽음 -->
                 <li class="list"><a class="list_link"
                         href="https://www.w3.org/WAI/WCAG22/Understanding/">WCAG2.2문서이해하기</a></li>
                 <!-- 보이스오버- 텍스트, 링크, 목록시작 -->
@@ -70,6 +46,174 @@
         </nav><!-- end, end, 탐색 -->
     </header><!--  end, 배너 -->
     <main id="main">
+
+        <p tabindex="0">탭탭</p><!-- 보이스오버-텍스트 -->
+        <p class="focu" tabindex="0">focu<br>탭인덱스가 없으면 포커스가 안들어오고 <br>그럼 포커스이벤트테스트가 안되네</p><!-- 보이스오버-텍스트 -->
+        <script>
+            let focu = document.querySelector(".focu")
+            focu.focus();
+            focu.addEventListener("focusin", () => focu.classList.add('focused'));
+            focu.addEventListener("focusout", () => focu.classList.remove('focused'));
+        </script>
+
+        <!-- NVDA가 켜져있으면 (role="button"인 경우 space로 실행가능)보조기기 프로그램이 켜져있지 않으면 role="button"이 실행되지 않는게 정상 -->
+        role="button"은 보조기기(NVDA)를 사용중에만 스페이스바 기능사용이 가능함
+        웹접근성을 제대로 하려면 보조기기를 잘 다룰수 있어야 하고 실제로 사용자테스트를 해야함
+
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="imageUpload">이미지 업로드:</label><!-- 보이스오버-택스트, 버튼 -->
+            <input type="image" id="imageUpload" name="image" accept="image/*"><!-- 인풋이이미지가 업로드 버튼으로 사용되는 예시 -->
+            <input type="submit" value="전송">
+        </form>
+
+        <!--<html lang="ko"> 없으면 위배 -->
+        <p lang="en">This is a paragraph in English.</p>
+        <p>これは日本語の段落です。</p><!-- lang="ja" 없으면 위배일까?-->
+
+        <!-- ARIA는 Accessible Rich Internet Applications -->
+        <table border="1" aria-describedby="real-deal-summary">
+            <colgroup>
+                <col width="150">
+                <col width="130" span="9">
+            </colgroup>
+            <caption>
+                <div id="real-deal-summary">
+                    <h3>국토교통부 실거래가 : 2018.03 자료: 국토교통부</h3>
+                    <p>최근 3개월간(2018.01월~03월) 신고된 국토교통부 실거래 가격자료를 기반으로 최저가격과 최고가격 및 거래건수를 노출합니다.</p>
+                </div>
+            </caption>
+
+            <thead>
+                <tr>
+                    <th id="rd-1" scope="col" rowspan="2">공급/전용(m<sup>2</sup>)</th>
+                    <th id="rd-2" scope="colgroup" colspan="3">매매 실거래가(만원)</th><!-- 2번항목, colgroup 에 대한 제목 -->
+                    <th id="rd-3" scope="colgroup" colspan="3">전세 실거래가(만원)</th><!-- 3번항목, colgroup 에 대한 제목 -->
+                    <th id="rd-4" scope="colgroup" colspan="3">월세 실거래가(만원)</th><!-- 4번항목, colgroup 에 대한 제목 -->
+                </tr>
+                <tr>
+                    <th id="rd-2-1" scope="col">최저가</th>
+                    <th id="rd-2-2" scope="col">최고가</th>
+                    <th id="rd-2-3" scope="col">거래건수</th>
+                    <th id="rd-3-1" scope="col">최저가</th>
+                    <th id="rd-3-2" scope="col">최고가</th>
+                    <th id="rd-3-3" scope="col">거래건수</th>
+                    <th id="rd-4-1" scope="col">최저가</th>
+                    <th id="rd-4-2" scope="col">최고가</th>
+                    <th id="rd-4-3" scope="col">거래건수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="rd-1-1" scope="row">80/59.91</th>
+                    <td headers="rd-1 rd-1-1 rd-2" colspan="3">-</td>
+                    <td headers="rd-1 rd-1-1 rd-3 rd-3-1">43,000(2층)</td>
+                    <td headers="rd-1 rd-1-1 rd-3 rd-3-2">43,000(2층)</td>
+                    <td headers="rd-1 rd-1-1 rd-3 rd-3-3">1</td>
+                    <td headers="rd-1 rd-1-1 rd-4" colspan="3">-</td>
+                </tr>
+                <tr>
+                    <th id="rd-1-2" scope="row">84/59.99</th>
+                    <td headers="rd-1 rd-1-2 rd-2 rd-2-1">47,800(4층)</td>
+                    <td headers="rd-1 rd-1-2 rd-2 rd-2-2">55,000(22층)</td>
+                    <td headers="rd-1 rd-1-2 rd-2 rd-2-3">10</td>
+                    <td headers="rd-1 rd-1-2 rd-3 rd-3-1">43,000(2층)</td>
+                    <td headers="rd-1 rd-1-2 rd-3 rd-3-2">43,000(2층)</td>
+                    <td headers="rd-1 rd-1-2 rd-3 rd-3-3">1</td>
+                    <td headers="rd-1 rd-1-2 rd-4 rd-4-1">5,000/120(6층)</td>
+                    <td headers="rd-1 rd-1-2 rd-4 rd-4-2">40,000/10(4층)</td>
+                    <td headers="rd-1 rd-1-2 rd-4 rd-4-3">5</td>
+                </tr>
+                <tr>
+                    <th id="rd-1-3" scope="row">111/84.82</th>
+                    <td headers="rd-1 rd-1-3 rd-2 rd-2-1">63,200(12층)</td>
+                    <td headers="rd-1 rd-1-3 rd-2 rd-2-2">63,500(19층)</td>
+                    <td headers="rd-1 rd-1-3 rd-2 rd-2-3">2</td>
+                    <td headers="rd-1 rd-1-3 rd-3 rd-3-1">53,000(13층)</td>
+                    <td headers="rd-1 rd-1-3 rd-3 rd-3-2">53,000(13층)</td>
+                    <td headers="rd-1 rd-1-3 rd-3 rd-3-3">1</td>
+                    <td headers="rd-1 rd-1-3 rd-4" colspan="3">-</td>
+                </tr>
+                <tr>
+                    <th id="rd-1-4" scope="row">112/84.92</th>
+                    <td headers="rd-1 rd-1-4 rd-2 rd-2-1">65,000(6층)</td>
+                    <td headers="rd-1 rd-1-4 rd-2 rd-2-2">65,000(6층)</td>
+                    <td headers="rd-1 rd-1-4 rd-2 rd-2-3">1</td>
+                    <td headers="rd-1 rd-1-4 rd-3 rd-3-1">52,000(10층)</td>
+                    <td headers="rd-1 rd-1-4 rd-3 rd-3-2">52,000(10층)</td>
+                    <td headers="rd-1 rd-1-4 rd-3 rd-3-3">1</td>
+                    <td headers="rd-1 rd-1-4 rd-4" colspan="3">-</td>
+                </tr>
+                <tr>
+                    <th id="rd-1-5" scope="row">112/84.94</th>
+                    <td headers="rd-1 rd-1-5 rd-2 rd-2-1">60,000(25층)</td>
+                    <td headers="rd-1 rd-1-5 rd-2 rd-2-2">60,000(25층)</td>
+                    <td headers="rd-1 rd-1-5 rd-2 rd-2-3">1</td>
+                    <td headers="rd-1 rd-1-5 rd-3 rd-3-1">45,000(10층)</td>
+                    <td headers="rd-1 rd-1-5 rd-3 rd-3-2">45,000(10층)</td>
+                    <td headers="rd-1 rd-1-5 rd-3 rd-3-3">1</td>
+                    <td headers="rd-1 rd-1-5 rd-4 rd-4-1">35,000/60(5층)</td>
+                    <td headers="rd-1 rd-1-5 rd-4 rd-4-2">35,000/60(5층)</td>
+                    <td headers="rd-1 rd-1-5 rd-4 rd-4-3">1</td>
+                </tr>
+                <tr>
+                    <th id="rd-1-6" scope="row">145/114.98</th>
+                    <td headers="rd-1 rd-1-6 rd-2 rd-2-1">76,800(15층)</td>
+                    <td headers="rd-1 rd-1-6 rd-2 rd-2-2">80,000(14층)</td>
+                    <td headers="rd-1 rd-1-6 rd-2 rd-2-3">2</td>
+                    <td headers="rd-1 rd-1-6 rd-3 rd-3" colspan="3">-</td>
+                    <td headers="rd-1 rd-1-6 rd-4 rd-4-1">5,000/200(5층)</td>
+                    <td headers="rd-1 rd-1-6 rd-4 rd-4-2">5,000/200(5층)</td>
+                    <td headers="rd-1 rd-1-6 rd-4 rd-4-3">1</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">면적(㎡)</th>
+                    <th scope="col">매매가(만원)</th>
+                    <th scope="col">전세가(만원)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">159B</td>
+                    <td>75,500</td>
+                    <td>33,500</td>
+                </tr>
+                <tr>
+                    <td scope="row">195</td>
+                    <td>87,500</td>
+                    <td>38,500</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2" scope="col">구분</th>
+                    <th colspan="2" scope="colgroup">상품종류</th>
+                </tr>
+                <tr>
+                    <th scope="col">스마트폰</th>
+                    <th scope="col">태블릿</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1월</th>
+                    <td>5만원</td>
+                    <td>7만원</td>
+                </tr>
+                <tr>
+                    <th scope="row">2월</th>
+                    <td>7만원</td>
+                    <td>만원</td>
+                </tr>
+            </tbody>
+        </table>
+
         <div>
             <a href="https://www.youtube.com/embed/-udAn0Fd7yo" class="vdad_btn ui-vdadpop-open"
                 title="pLayer Story: 빠른 Girl 어떡해 비디오 팝업 열기" aria-controls="pop2" role="button" aria-haspopup="dialog">
