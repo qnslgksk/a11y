@@ -14,9 +14,9 @@
     <div id="printCont">
         <div class="print_date"></div>
     </div>
-    <div id="skipNav">
-        <a href="#main">본문 바로가기</a>
-        <a href="#gnb">주메뉴 바로가기</a>
+    <div id="skipNav" aria-hidden="true">
+        <a href="#main" tabindex="0">본문 바로가기</a>
+        <a href="#gnb" tabindex="-1">주메뉴 바로가기</a>
         <a href="#footer">사이트정보 바로가기</a>
     </div>
 
@@ -197,20 +197,15 @@
 
         <!--<html lang="ko"> 없으면 위배 -->
         <p lang="en">This is a paragraph in English.</p>
-        <p>これは日本語の段落です。</p><!-- lang="ja" 없으면 위배일까?-->
+        <p>これは日本語の段落です。</p><!-- lang="ja" 없으면 위배일까? lang이 없으면 알아 듣기 힘듬-->
 
         <!-- ARIA는 Accessible Rich Internet Applications -->
         <table border="1" aria-describedby="real-deal-summary">
+            <caption>국토교통부 실거래가 : 2018.03 자료: 국토교통부</caption>
             <colgroup>
                 <col width="150">
                 <col width="130" span="9">
             </colgroup>
-            <caption>
-                <div id="real-deal-summary">
-                    <h3>국토교통부 실거래가 : 2018.03 자료: 국토교통부</h3>
-                    <p>최근 3개월간(2018.01월~03월) 신고된 국토교통부 실거래 가격자료를 기반으로 최저가격과 최고가격 및 거래건수를 노출합니다.</p>
-                </div>
-            </caption>
 
             <thead>
                 <tr>
