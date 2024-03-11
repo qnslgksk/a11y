@@ -177,7 +177,7 @@ main {
 }
 
 .select_month_wrap {
-    display: none;
+    /* display: none; */
     position: absolute;
     left: calc(50% - 210px);
     top: 95px;
