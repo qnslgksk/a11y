@@ -162,26 +162,32 @@
         <br>
         <div class="flex_box">
             <div class="input_box radio_box">
-                <input type="radio" id="userhoby01" name="userhoby" title="doctor" checked="">
-                <label for="userhoby01">doctor</label>
+                <label for="userhoby01">
+                    <input type="radio" id="userhoby01" name="userhoby" title="doctor" checked="">
+                    <span>doctor</span>
+                </label>
             </div>
             <div class="input_box radio_box">
-                <input type="radio" id="userhoby02" name="userhoby" title="programer">
-                <label for="userhoby02">programer</label>
+                <label for="userhoby02">
+                    <input type="radio" id="userhoby02" name="userhoby" title="programer">
+                    <span>programer</span>
+                </label>
             </div>
             <div class="input_box radio_box">
-                <input type="radio" id="userhoby03" name="userhoby" title="student">
-                <label for="userhoby03">student</label>
+                <label for="userhoby03">
+                    <input type="radio" id="userhoby03" name="userhoby" title="student">
+                    <span>student</span>
+                </label>
             </div>
         </div>
 
         <p tabindex="0">탭탭</p><!-- 보이스오버-텍스트 -->
         <p class="focu" tabindex="0">focu<br>탭인덱스가 없으면 포커스가 안들어오고 <br>그럼 포커스이벤트테스트가 안되네</p><!-- 보이스오버-텍스트 -->
         <script>
-            let focu = document.querySelector(".focu")
-            focu.focus();
-            focu.addEventListener("focusin", () => focu.classList.add('focused'));
-            focu.addEventListener("focusout", () => focu.classList.remove('focused'));
+            // let focu = document.querySelector(".focu")
+            // focu.focus();
+            // focu.addEventListener("focusin", () => focu.classList.add('focused'));
+            // focu.addEventListener("focusout", () => focu.classList.remove('focused'));
         </script>
 
         <!-- NVDA가 켜져있으면 (role="button"인 경우 space로 실행가능)보조기기 프로그램이 켜져있지 않으면 role="button"이 실행되지 않는게 정상 -->
