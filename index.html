@@ -58,6 +58,34 @@
         </nav><!-- end, end, 탐색 -->
     </header><!--  end, 배너 -->
     <main id="main">
+
+        <div class="select_month_wrap c-mypage on" tabindex="0" style="">
+            <div class="year_warp" data-bind-html="calendarData">
+                <p class="year">2023</p>
+                <div class="radio_wrap type_btn month_wrap"><label for="month202310" class="radio_btn"><input
+                            type="radio" id="month202310" value="202310" name="selectMonth"
+                            data-bind-click="popCalendarClose();" class="set_AutoComplete" autocomplete="off"><span
+                            role="text">10월</span></label><label for="month202311" class="radio_btn"><input type="radio"
+                            id="month202311" value="202311" name="selectMonth" data-bind-click="popCalendarClose();"
+                            class="set_AutoComplete" autocomplete="off"><span role="text">11월</span></label><label
+                        for="month202312" class="radio_btn"><input type="radio" id="month202312" value="202312"
+                            name="selectMonth" data-bind-click="popCalendarClose();" class="set_AutoComplete"
+                            autocomplete="off"><span role="text">12월</span></label></div>
+                <p class="year">2024</p>
+                <div class="radio_wrap type_btn month_wrap"><label for="month202401" class="radio_btn"><input
+                            type="radio" id="month202401" value="202401" name="selectMonth"
+                            data-bind-click="popCalendarClose();" class="set_AutoComplete" autocomplete="off"><span
+                            role="text">1월</span></label><label for="month202402" class="radio_btn"><input type="radio"
+                            id="month202402" value="202402" name="selectMonth" data-bind-click="popCalendarClose();"
+                            class="set_AutoComplete" autocomplete="off"><span role="text">2월</span></label><label
+                        for="month202403" class="radio_btn"><input type="radio" id="month202403" value="202403"
+                            name="selectMonth" data-bind-click="popCalendarClose();" class="set_AutoComplete"
+                            autocomplete="off"><span role="text">3월</span></label></div>
+            </div>
+            <button type="button" class="btn_close ui-pop-close smwClose" data-bind-click="popCalendarClose();"
+                data-focus-prev="fr06"><span>팝업닫기</span></button>
+        </div>
+
         <!-- 1. tabindex=""
             전체 페이지구조에서 팝업은 제일 하단에 위치 하고 활성화되면 팝업에 초점이 들어오게 하려면 tabindex="0" 사용하여 초점이동을 시킨다
             tabindex="0"은 기존에 초점이 가지 않는 요소에 초점 이동이 가능하게 하고, tabindex="-1"은 초점 이동이 가능한 요소에 초점이동을 하지 못하게 한다.
