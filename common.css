@@ -237,6 +237,20 @@ main {
     height: 100%;
 }
 
+.focustest_list {
+    display: block;
+}
+
+.focustest_list dt {
+    display: block;
+    position: relative;
+}
+
+.focustest_list button {
+    display: inline-block;
+    position: relative;
+}
+
 .bn_img {
     width: 830px;
     height: 130px;
