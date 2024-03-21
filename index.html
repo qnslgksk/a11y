@@ -531,10 +531,29 @@
             <p id="TIP-DEL" role="tooltip">게시물 삭제 후 복원할수 없음.</p></code><!-- 보이스오버- 텍스트를 읽어 주면.. 중복안내가 아닌가?-->
 
             <div>
-                <h3>title속성은</h3><!-- 보이스오버- 텍스트, 머리말레벨3-->
-                <a href="#none" target="_blank" title="새창 열림">안읽음</a><!-- 보이스오버- href=""속성이 없으면 텍스트만 읽어버림! -->
-                <input type="text" value="input이 없으면 title속성을 기재한다"
-                    title="레이블이 없어요"><!-- 보이스오버- title="", value="",텍스트 필드, 편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
+                <h3>title속성 용도</h3><!-- 보이스오버- 텍스트, 머리말레벨3-->
+                <p>타이틀의 내용이 '경고'와 같이 클릭전에 알아야 하는 내용이라면 텍스트로 제공하는 것이 바람직함</p>
+                <a href="https://www.google.com" title="구글홈페이지">title값 대상의 제목</a>
+                <a href="/file/kdf.pdf" title="2011년 재무상태표">title값 링크의 목적을 명확하게하거나 추가정보를 제공</a>
+                <button type="button" title="상태:레이어로 열림/~ 선택 됨/상태"><span>버튼의 용도</span> title값 대상의설명</button>
+                <img src="" alt="보통은 알트를 읽어주지" title="마우스를 올려야 알수 있는 텍스트인데..">
+                <blockquote cite="https://www.w3.org/html" title="HTML의 정의">HTML이란 Hyper Text Markup Language로
+                    ....title값 인용문의 정의로 사용하기도 함.
+                </blockquote>
+                <abbr title="Hyper Text Markup Language">HTML title값에 약어의 원형으로 씀</abbr>
+                <input type="text" title="-없이 적어주세요" placeholder="01078951234">
+                <div>
+                    <label for="add">주소</label>
+                    <input type="text" id="add" title="예:경기도 성남시 분당구 판교로 660 1동 406호">
+                </div>
+                <select name="" id="" title="시/도 협의회">
+                    <option value="http://www.s-win.or.kr">서울복지협의회</option>
+                </select>
+                <input type="text" value="input에 label이 없으면 title로 기재한다" placeholder="요기는 언제 읽지?"
+                    title="레이블이 없어요"><!-- 보이스오버- ... 텍스트 필드, 편집하려면 이중탭하십시오, 로터를사용하여 맞춤법 오류단어에 연결 -->
+
+                <a target="_blank" title="새창 열림">안읽음</a><!-- 보이스오버- href=""속성이 없으면 텍스트만 읽어버림! -->
+
             </div>
             <!-- 레이어 팝업을 호출하면 포커스가 레이어팝업으로 이동해야하고 팝업이 닫히면 팝업호출 전 포커스로 돌려보내야함 Esc키를 사용하면 팝업이 다혀야함
                 O: 알럿 대화상자 요소에 상세한 설명 제공, 히든처리가 되지 않으면 포커스가 갖힘 

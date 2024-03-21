@@ -1,20 +1,1011 @@
-<html lang="ko">
+<html lang="ko"><!-- lang wac -->
 
 <head>
     <meta charset="UTF-8">
     <title>MYstudy Note</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Comppatible" content="IE=edge,chrome=1">
-    여기까지
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="cannonical" href="해당페이지대표URL">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="페이지설명">
+    <meta name="keywords" content="페이지키워드">
+    <!-- SEO 블랙햇&화이트햇 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="사이트이름">
+    <meta property="og:url" content="SNS공유URL">
+    <meta property="og:image" content="SNS공유이미지">
+    <meta property="og:title" content="SNS공유타이틀">
+    <meta property="og:description" content="SNS공유내용">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="사이트명">
+    <meta name="twitter:title" content="공유 타이틀">
+    <meta name="twitter:description" content="공유 내용">
+    <meta name="twitter:image:src" content="공유 이미지">
+    <meta name="twitter:creator" content="공유자">
+
+    <link rel="preload" as="font" type="font/woff2" href=".woff2" crossorigin>
+    <link rel="preload" as="fetch" href=".json" crossorigin>
+    <!-- 익스플로러 10부터 호환이 되어야 한다면 [if lt IE10]<link href="css/ie10.css" type="text/css">[endif] 하거나 ie-css 클래스명을 별도로 만들거나 하자 -->
     <style>
+        /* font */
+        html {
+            font-size: 62.5%
+                /* Why: rem을 계산하기 쉬움 */
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        /* layout */
+        /* html,
+        body {
+            width: 100%;
+        } */
+
+        :root {
+            --main-color: cornflowerblue;
+            --hover-color: darkviolet;
+        }
+
+        .a11y-i {
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            border: 0;
+            clip: rect(1px, 1px, 1px, 1px);
+            /* for regacy browser */
+            clip-path: inset(50%);
+        }
+
+        .a11y-b {
+            /* 상위요소에 relative가 있어야 함*/
+            overflow: hidden;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            clip: rect(1px, 1px, 1px, 1px);
+            /* for regacy browser */
+            clip-path: inset(50%);
+        }
+
+        .blind {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            margin: 0;
+            border: 0;
+            background: transparent;
+            color: transparent;
+            clip: rect(1px, 1px, 1px, 1px);
+        }
     </style>
 </head>
 
 <body>
+    <!-- 좋은회사는 렌더링, 스크립트, css, html, 접근성을 제대로 알고 있는지 질문을 함 -->
+    <noscript>현재 사용 중인 브라우저는 스크립트를 지원하지 않거나, 해당 기능이 활성화되어 있지 않습니다!<br>
+        이 페이지를 실행하려면 자바스크립트를 사용해야 합니다. 아래 내용은 설정 방법입니다.<br>
+        크롭브라우저기준:설정-개인 정보 보호 및 보안-사이트 설정-자바스크립트 사용할 수 있음 선택
+        <!--br태그는 되는데 css는 안됨 -->
+    </noscript>
 
-    초기화
+    <button type="button" onclick="return window.print();"><span>인쇄하기</span></button>
+    <div class="content_print">
+        <span><img src="" alt="LOGO"></span>
+        <span class="print_date">2024.3.20 9:19:37</span>
+    </div>
+    <div id="skipNavi">
+        <a href="#main">본문영역바로가기</a>
+        <a href="#footer">하단영역바로가기</a>
+    </div>
+    <!-- 
+        애니메이션 만드는 법
+        1. 시작스타일
+        2. 최종스타일
+        3. 언제 시작에서 최종으로 변하는 지
+    -->
 
+    <!-- 
+        스텝 애니메이션 백그라운드 포지션 - 스프라이트이미지활용 
+        <div class="msg_loading">
+            <div class="ico_morse"></div>
+        </div>
+        애니메이션 이름 > morseCode
+        진행되는 시간 > 1s
+        타이밍펑션 > steps(12)
+        반복횟수 > infinite; 
+    -->
+
+    <!-- cloud animation -->
+    <style>
+        .cloud-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 40rem;
+            background: #eee
+        }
+
+        .cloud {
+            position: relative;
+            animation: 1s cloud ease-in infinite
+        }
+
+        .cloud-area:hover .cloud i {
+            background-color: var(--hover-color)
+        }
+
+        .cloud i {
+            position: absolute;
+            width: 10rem;
+            height: 10rem;
+            background-color: var(--main-color);
+            border-radius: 50%;
+        }
+
+        .cloud i:nth-child(1) {
+            width: 13rem;
+            height: 13rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        .cloud i:nth-child(2) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-90%, -100%)
+        }
+
+        .cloud i:nth-child(3) {
+            top: 50%;
+            left: 50%;
+            transform: translate(0%, -100%)
+        }
+
+        .cloud i:nth-child(4) {
+            top: 50%;
+            left: 50%;
+            transform: translate(-140%, -40%)
+        }
+
+        .cloud i:nth-child(5) {
+            top: 50%;
+            left: 50%;
+            transform: translate(30%, -40%)
+        }
+
+        .sparkle {
+            position: relative;
+            width: 15px;
+            height: 15px;
+            top: -150px;
+            left: -150px;
+        }
+
+        .cloud-area:hover .sparkle i {
+            background-color: var(--hover-color);
+        }
+
+        .sparkle i {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--main-color);
+        }
+
+        .sparkle i:nth-child(1) {
+            animation: sparkle_1 1.5s linear infinite;
+        }
+
+        .sparkle i:nth-child(2) {
+            animation: sparkle_2 1.5s linear infinite;
+        }
+
+        .sparkle i:nth-child(3) {
+            animation: sparkle_3 1.5s linear infinite;
+        }
+
+        .sparkle i:nth-child(4) {
+            animation: sparkle_4 1.5s linear infinite;
+        }
+
+        .sparkle_a {
+            position: relative;
+            width: 15px;
+            height: 15px;
+            top: -80px;
+            left: -80px;
+        }
+
+        .clould:hover .sparkle_a i {
+            background-color: var(--hover-color);
+        }
+
+        .sparkle_a i {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--main-color);
+        }
+
+        .sparkle_a i:nth-child(1) {
+            animation: sparkle_1a 2s linear 3s infinite;
+        }
+
+        .sparkle_a i:nth-child(2) {
+            animation: sparkle_2a 2s linear 3s infinite;
+        }
+
+        .sparkle_a i:nth-child(3) {
+            animation: sparkle_3a 2s linear 3s infinite;
+        }
+
+        .sparkle_a i:nth-child(4) {
+            animation: sparkle_4a 2s linear 3s infinite;
+        }
+
+        .sparkle_b {
+            position: relative;
+            width: 15px;
+            height: 15px;
+            top: 150px;
+            left: 150px;
+        }
+
+        .cloud:hover .sparkle_b i {
+            background-color: var(--hover-color)
+        }
+
+        .sparkle_b i {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--main-color)
+        }
+
+        .sparkle_b i:nth-child(1) {
+            animation: sparkle_1b 2s linear 1s infinite;
+        }
+
+        .sparkle_b i:nth-child(2) {
+            animation: sparkle_2b 2s linear 1s infinite;
+        }
+
+        .sparkle_b i:nth-child(3) {
+            animation: sparkle_3b 2s linear 1s infinite;
+        }
+
+        .sparkle_b i:nth-child(4) {
+            animation: sparkle_4b 2s linear 1s infinite;
+        }
+
+        .sparkle_c {
+            position: relative;
+            width: 15px;
+            height: 15px;
+            top: 150px;
+            left: 150px;
+        }
+
+        .cloud:hover .sparkle_c i {
+            background-color: var(--hover-color)
+        }
+
+        .sparkle_c i {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--main-color)
+        }
+
+        .sparkle_c i:nth-child(1) {
+            animation: sparkle_1b 2s linear 4s infinite;
+        }
+
+        .sparkle_c i:nth-child(2) {
+            animation: sparkle_1b 2s linear 4s infinite;
+        }
+
+        .sparkle_c i:nth-child(3) {
+            animation: sparkle_1b 2s linear 4s infinite;
+        }
+
+        .sparkle_c i:nth-child(4) {
+            animation: sparkle_1b 2s linear 4s infinite;
+        }
+
+        @keyframes cloud {
+            0% {
+                top: 0;
+            }
+
+            50% {
+                top: 10px;
+            }
+
+            100% {
+                top: 0;
+            }
+        }
+
+        @keyframes sparkle_1 {
+            0% {
+                left: 0
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                left: -30px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_2 {
+            0% {
+                top: 0
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                top: -30px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_3 {
+            0% {
+                left: 0
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                left: 30px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_4 {
+            0% {
+                top: 0
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                top: 30px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_1a {
+            0% {
+                left: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                left: -20px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_2a {
+            0% {
+                top: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                top: -20px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_3a {
+            0% {
+                left: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                left: 20px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_4a {
+            0% {
+                top: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                top: 20px
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_1b {
+            0% {
+                left: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                left: -40px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_2b {
+            0% {
+                top: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                top: -40px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_3b {
+            0% {
+                left: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                left: 40px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_4b {
+            0% {
+                top: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 8px;
+                height: 8px;
+            }
+
+            30% {
+                top: 40px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_1c {
+            0% {
+                left: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                left: -10px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_2c {
+            0% {
+                top: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                top: -10px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_3c {
+            0% {
+                left: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                left: 10px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle_4c {
+            0% {
+                top: 0;
+            }
+
+            10% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+
+            30% {
+                top: 10px;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <div class="cloud-area">
+        <div class="sparkle"><i></i><i></i><i></i><i></i></div>
+        <div class="sparkle_a"><i></i><i></i><i></i><i></i></div>
+        <div class="cloud"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="sparkle_b"><i></i><i></i><i></i><i></i></div>
+        <div class="sparkle_c"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <!--// cloud animation -->
+
+    <!-- input palceholder-shown -->
+    <style>
+        input[name="name"] {
+            background-color: greenyellow;
+            color: #111;
+        }
+
+        input:placeholder-shown {
+            border: 2px solid red;
+            color: teal;
+            font-style: italic;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <input type="text" name="name" id=""
+        placeholder="김수한무 거북이와 두루미 삼천갑자 동방삭 치치카포 사리사리센타 워리워리 세브리깡 무두셀라 구름이 허리케인에 담벼락 담벼락에 서생원 서생원에 고양이 고양이엔 바둑이 바둑이는 돌돌이">
+    <!-- // input palceholder-shown -->
+
+    <!-- print console -->
+    <div clss="test_input">
+        <label for="testInt"></label>
+        <input type="text" id="testInt">
+        <button type="button" class="print">반영</button>
+        <textarea class="alert" name="" id="" cols="30" rows="10"></textarea>
+    </div>
+    <script>
+        "use strict";
+        // element.innerHTML vs element.innertextContent 차이
+        const alertTxt = document.querySelector('.alert')
+        const printBtn = document.querySelector('.print');
+        const tt = alertTxt.textContent;
+        const hh = alertTxt.innerHTML;
+
+        printBtn.addEventListener('click', pprint);
+
+        function pprint(el) {
+            console.log(tt);
+        }
+    </script>
+    <!-- // print console -->
+
+    <!-- tabindex="0,-1" -->
+    <div tabindex="0">초점 노출</div>
+    <a href="" tabindex="-1">초점 비노출</a>
+    <!-- // tabindex="0,-1" -->
+
+    <!-- toggle btn -->
+    <button type="button" title="토글되는상태"><span>토글버튼의 용도</span></button>
+    <label for="chktoggle">토글버튼처럼</label>
+    <input id="chktoggle" type="checkbox" name="" id="" checked="true">
+
+    <div role="checkbox" aria-checked="true" tabindex="0">Toggle(js작업필요)</div>
+
+    <a href="javascript:;" role="button" onclick="btnAction();">버튼|Enter</a>
+    <button type="button" onclick="btnAction();">버튼|Enter,Space</button>
+    <input type="button" onclick="btnAction();" value="버튼|Enter,Space">
+    <script>
+        function btnAction() {
+            console.log(`wow!! ${this.innerHTML}`)
+        } 
+    </script>
+    <!-- // toggle btn-->
+
+    <!-- input radio -->
+    <input type="radio" name="skill" id="sk01" value="01">
+    <label for="sk01">A11y</label>
+
+    <input type="radio" name="skill" id="sk02" value="02">
+    <label for="sk02">Animation</label>
+
+    <input type="radio" name="skill" id="sk03" value="03">
+    <label for="sk03">React</label>
+    <!-- // input radio -->
+
+    <!-- querySelectorAll(node list) vs getElementByClassName(html collection) 차이 -->
+    <ul>
+        <li class="li">A</li>
+        <li class="li">B</li>
+        <li class="li">C</li>
+    </ul>
+    <ul>
+        <li class="list">1</li>
+        <li class="list">2</li>
+        <li class="list">3</li>
+        <li class="list">4</li>
+        <li class="list">5</li>
+        <li class="list">6</li>
+    </ul>
+    <!-- // querySelectorAll(node list) vs getElementByClassName(html collection) 차이 -->
+
+    <!-- javascript Study -->
+    <script>
+        "use strict";
+        /* JS로 원하는 기능을 함수로 만들자 무작정코드를 치기 전 "생각"이란걸 좀 하고 하자 */
+        /*
+            1. 선택자(dom)
+            2. 이벤트(event)
+            3. 필요한 데이터타입(text,boolen...)
+        */
+
+        // 2022.07.22 종환책님피드백 잘 될지를 걱정해야 하고 보여지는 부분 외에 "동작"이 잘 되는지 테스트 왜 이렇게 되는지에 대해서 자꾸 궁금해하면 꼼꼼해질 수 있음
+        // 꾸준히 하는 원동력도 궁금증 + 깐깐하게 완성도 높이기
+        // 신기한기능을 스크립트로 만들려고 보니 어려운코드 > js 열심히해서 이거 해석하겠다는 마음으로 기초부터 공부를 했다고함.
+        // 익숙해지기위해 까먹을쯤 다시 만듬
+
+        // +이거 모르면 스크립트를 제대로 안다고할 수 없는 개념들 공부하기
+        // + 함수위임, 풀스택, js분석, 접근성관련js
+        // + prototype: 객체를 생성하면 자동으로 그 안에 생김. 프로토타입안에 내가 커스텀 한 함수를 만들어 넣을 수 있고, 기존에 있는 함수도 수정이 가능하다. 상위부모로부터 물려받는 유전자와 비슷
+        // + class: 붕어빵 기계 같은..
+        function Member(name, id, pw) {
+            this.name = name;
+            this.id = id;
+            this.pw = pw;
+        }
+        // + object: 데이터를 담는 통으로 붕어빵 기계에서 나오는 붕어빵 같은..
+
+        // + function: 1개의 함수에 1개의 기능
+
+        // + this: 함수안에서의 this는 window, 이벤트리스너 안에서의 this는 이벤트객체
+
+        // + var , const, let
+
+        // + scope
+
+        // + clouser
+        function clo(fn) {
+            function(a, b) {
+                return fn(a, b);
+            }
+
+        }
+        var ss = clo(function (a, b) { return a + b })
+        console.log(ss);
+        var nn = clo(function (a, b) { return a - b })
+        console.log(nn);
+
+        /* 
+            1. 이뷰터블과 뮤터블, 얕은복사와 깊은복사
+            - 불변성이 중요(원본유지)
+            - 새로운 객체를 만들기 위해 복사를 함
+            - 인캡슐레이션과는 다른개념으로 잘못 사용될 수 있는 객체의 특정부분을 사용자가 사용할 수 없게 막는 기술
+            - es5이전에는 스코프가 함수기준이라서 함수로 감싸준것이 캡슐화
+            - es6는 스코프가 {중괄호}
+            - (function(){
+                비슷하거나 관련된 역할을 하는 데이터(속성)와 기능(메소드)을 하나의 틀에 담는것을 의미 함. 클래스 등..
+            })();
+            - 얕은복사는 참조값을 복사하고 1덱스만 복사
+            - 데이터를 다루려면 이뮤터블 라이브러리를 알아보자
+            - 깊은복사는 객체의 실제 값을 복사
+
+            2. 프로토타입체이닝
+            3. 클래스
+            4. 원시형데이터와 참조형데이터
+            - 왜 원시형이고 참조형인지를 생각하면서 코드작성
+            - 변수가 저장되는 원리(호이스팅되서 heep에 담기는것과 다른 관점)
+            - heep(메모리)에 저장 될 때 원시형은 바로 저장 되고 참조형은 주소값을 참조한다. 연계되는 내용이 얕은복사와 깊은복사가 있음
+            - 원시형데이터: 문자, 숫자, 불린, undefined, null, symbol(실데이터값)
+            var a; 선언: 메모리에 공간을 확보하고 변수명과 주소값을 매칭
+            var a = 1; 할당: 해당변수가 가리키는 주소의 공간에 데이터를 저장
+            var a2 = a; (var라는 키워드가 있으므로) 선언하고 할당하는 과정에서 a가 가리키는 주소에 있는 값을 a2가 가리키는 주소에 담음
+            console.log(a); // 1 
+            console.log(a2); // 1
+
+            a = false; (var라는 키워드가 없으므로) false를 할당하는데 a라는 변수명이 있는지 탐색 a라는 변수명이 있으므로 가리키는 주소값으로 이동 후 false를 덮어씀
+            console.log(a); // false
+            console.log(a2); // 1
+            a2가 바뀌지 않는 이유는 a와 주소값이 다르기 때문에 a는 false를 a2는 1을 출력한다.
+
+            - 참조형데이터: 객체, 함수, 배열, 정규표현(주소값)
+            var b = {b : 1}
+            var b2 = b
+            console.log(b); // {b : 1}
+            console.log(b2); // {b : 1}
+
+            b.b = 5;
+            console.log(b); // {b : 5}
+            console.log(b2); // {b : 5}
+            b2가 바뀌는 이유는 b라는 변수에 담고 있는 주소값을 참조하고 있기 때문에
+            결론1. 원시형은 데이터 자체를 저장 (원본데이터를 담고 있는 변수를 다른 변수에 담고 원본값을 바꿔도 다른변수의 값은 그대로 남음)
+            결론2. 참조형은 주소값을 저장하고 주소값을 참조 ()
+            연계된 내용인 참조형의 얕은복사, 깊은복사가 있는데 복사(...ars)를 하는 이유는 (...)으로 풀어줌으로 원본에 영향을 가지 않게 하기 위함
+
+            5. 브라우저, 브라우저렌더링
+            6. 비동기, 동기 ansync await promise webapi
+        
+            예) this, var를 배우려면 알고 있어야 하는 개념들로를 스코프, 클로저, 데이터 유형(원시,참조)
+        */
+        /*
+        lighthouse로 성능 분석 할 때 FP, FCP, DCL이 뭔지 알아보기
+        함수혛 프로그래밍의 장점
+        1. 코드가 분할되어 있다.
+        2. 그래서 오류가 적다.
+        3. 명시적이다
+        함수혛 프로그래밍의 단점
+        같이 일하는 모두가 함수형프로그래밍을 알아야 쓸 수 있다 -유인동
+        
+        */
+
+        /*
+        stack: 실행되는 함수를 담는 통
+        heep: 변수를 담는 통
+        quee: 대기실(setTimeout, ajax, addEventListener)에 담김
+        stack이 비워져야 quee에 담겨있는 것들이 stack으로 담김
+        */
+        /* vue나 react에 있는 모든 코드는 스크립트모양을 css웹팩으로 바꿔주는 것으로 파일을 작성할 때 css모양을 하고 있는  스크립트이고 빌드하면 css로 뱉어짐 */
+        // 라이브러리 또는 제이쿼리버전 충돌방지를 위해 $변수명을 다르게 사용하기 위한 메소드
+        jQuery.noConflict();
+        var j$ = jQuery;
+
+        opener.location.href = "";
+        self.close();
+        window.close();
+        window.open()
+
+        // querySelectorAll(node list) vs getElementByClassName(html collection) 차이
+        // node list는 non-live 객체로 바로 적용이 안되요
+        // html collection은 live 객체로 노드의 추가나 삭제가 바로 적용이 되고 getElementTagName, getElementByClassName 속성으로 접근이 가능
+        // .childNodes(node list)와 children(html collection)의 차이 뱉어주는 결과가 node list인지 html collection인지 다름
+        let titList = document.querySelectorAll('.li');
+        for (var i = 0; i < titList.length; i++) {
+            console.log(titList[i]);
+            titList[0].classList.add('c-tit');// 0번째만 class 추가되고 나머지 자식들 출력예상
+        }
+
+        let list = docyment.getElementByClassName('list');
+        for (var i = 0; i < list.length; i++) {
+            console.log(list[i]);
+            list[0].classList.remove('list'); // 0번째 클래스 제거 후 1,2,3,4번째만 출력예상 
+            list[1].classList.remove('list'); // 1번째 클래스 제거 후 0,2,3,4번째만 출력예상
+            list[2].classList.remove('list'); // 2번째 클래스 제거 후 0,1,3,4번째만 출력예상
+            list[3].classList.remove('list'); // 3번째 클래스 제거 후 0,1,2,4번째만 출력예상
+            list[4].classList.remove('list'); // 4번째 클래스 제거 후 0,1,2,3번째만 출력예상
+        }
+        // 0,1번째 클래스가 제거되고 출력이 이상함?
+        var mm = document.querySelector('#sister');
+        // querySelector에 사용가능한 프로퍼티
+        var mchild = mm.childNodes; // node list(7) [] 비요소 노드 포함
+        var mchildren = mm.children; // html collection(7)[] 비요소 노드 제외
+        console.log(mchild);
+        console.log(mchildren);
+
+        var firstM = mm.firstChild;
+        console.log(firstM); // #text 라고 비요소 노드인 줄바꿈이 먼저 선택 됨
+
+        var lastM = mm.lastChild;
+        console.log(lastM) // #text 라고 비요소 노드인 줄바꿈이 먼저 선택 됨
+
+        var parentM = mm.parentNode;
+        console.log(parentM) // 부모요소인 wrap 선택
+
+        var brotherM = mm.nextSibling;
+        console.log(brotherM) // text노드 선택
+
+        var brother2M = mm.nextElementSibling;
+        console.log(brother2M) //id mother 선택
+        // 다시 테스트확인하기
+
+        // keybord Cheeck
+        window.addEventListener('keydown', (event) => {
+            const p1 = document.createElement('p');
+            p1.textContent = `keyboard Event = '${event.key}' || code = '${event.code}'`
+            document.getElementById('output').appendChild(p1);
+        }, true)        
+    </script>
+    <!-- // javascript Study -->
 
 </body>
+<!-- 
+Block: div, p, ul, ol, li, dl, dt, dd, h1~h6, pre, noscript, table, hr, form, blockquote, address, fieldset
+    h1, address, p요소안에 블록요소가 들어오면 웹표준 위배 -->
 
 </html>
