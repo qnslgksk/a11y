@@ -830,6 +830,78 @@
     <!-- javascript Study -->
     <script>
         "use strict";
+        // 제이쿼리처럼 사용하고 싶다면 객체화 obj.addClass(), .없이 사용하고 싶다면 함수화 addClass('ele')
+        // jQuery를 자스화
+
+        // addClass()
+        // 0. 인자로 받아 리턴
+        // 1. 리턴한 엘리먼트를 받아서
+        // 2. 엘리먼트에 클래스를 추가하는 함수
+
+        function el(ele) { // 엘리먼트를 인자로 받는 함수
+            return document.querySelector(ele) // 엘리먼트를 인자로 리턴 <-하는 이유는? = 인자로 받은 ele를 함수 밖에서도 접근이 가능하게 하려고 
+        }// 클로저
+        //위 코드는 ele객체가 아니라서 리턴한 걸 받지 못함
+
+        function addC(ele, clName) {
+            return ele.calssList.add(clName);
+        }
+        addC(document.auerySelector('#AA', 'on'));
+
+        // hasClass()
+        // 1. 엘리먼트와 클래스네임을 받아서
+        // 2. 엘리먼트안에 있는 클래스리스트 중에 인자로 받은 클레스네임이 있는지 조건을 보는 함수
+
+        // 아래 코드가 작동하지 않는 이유
+        // 1차:
+        // function hasC(ele, clName){
+        //     if(ele.indexOf(clName) == 'true'){ // indexOf는 true를 반환하지 못함
+        //         console.log('t');
+        //     } else {
+        //         console.log('f');
+        //     }
+        // }
+        // 2차:
+        // function hasC(ele, clName) {
+        //     if (ele.indexOf(clName) > -1) { // ele를 받았는데 ele는 그냥 div요소여서 동작을 할수 없음 
+        //         console.log('t');
+        //     } else {
+        //         console.log('f');
+        //     }
+        // }
+        function hasC(ele, clName) {
+            // let el = document.querySelector(ele).className;
+            // console.log(el);
+
+            if (el.indexOf(clName) > -1) {
+                console.log('t');
+            } else {
+                console.log('f');
+            }
+        }
+        function hasC(ele, clName) {
+            let el = document.auerySelector(ele);
+            if (el.classList.contains(clName)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // removeClass()
+        // 1. 엘리먼트를 받아서
+        // 2. 엘리먼트에 잇는 클래스명을 제거하는 함수
+        function removeC(ele, clName) {
+            el = document.querySelector(ele);
+            el.classList.remove(clName);
+        }
+
+        // 타겟을 찍고 확인하고 코드를 짜는 습관을 들이도록 하자! 왜냐하면 뱉어주는 값이 html collection인지 node list인지에 따라 내가 쓸 수 있고 쓸 수 없는 메소드가 다르기 때문에(배열, 유사배열)
+
+
+
+
+
         /* JS로 원하는 기능을 함수로 만들자 무작정코드를 치기 전 "생각"이란걸 좀 하고 하자 */
         /*
             1. 선택자(dom)
