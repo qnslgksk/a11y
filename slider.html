@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        ul::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        button {
+            all: unset;
+        }
+
+        section {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .swiper {
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+</head>
+<!-- 
+    ver.9 실환경 반영 되어 있음
+    ver.10 헤딩레벨밪춤
+    vser.11 컨트롤위치변경 .vision-container추가 상속받은 것만 해당/.a11y추가/ 포커스활성화 조건확인 함수 추가
+ -->
+
+<body>
+    <!-- <a href="https://swiperjs.com/">Swiper.js</a> -->
+    <!-- swiper API -->
+    <section>
+        <h2>회사소개 슬라이드 배너</h2>
+        <div class="swiper swiper-container company-swiper" tabindex="0">
+            <div class="swiper-pagination"></div>
+            <div class="swiper-controll">
+                <div class="swiper-pagination swiper-pagination-fraction"></div>
+                <button type="button" class="swiper-controll-button swiper-button-start"
+                    style="display:none;"><span>자동재생시작</span></button>
+                <button type="button" class="swiper-controll-button swiper-button-pause"><span>자동재생 일시정지</span></button>
+                <button type="button" class="swiper-button swiper-button-prev"><span>이전 슬라이드보기</span></button>
+                <button type="button" class="swiper-button swiper-button-next"><span>다음 슬라이드보기</span></button>
+            </div>
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    1<!-- <div class="txt_wrap">
+                        <strong class="tit"><span>M</span>MAX 2025</strong>
+                        <div class="bullet"></div>
+                        <div class="txt"><span><span>M</span>embers</span></div>
+                        <div class="dec">통합멤버십 3천 5백만</div>
+                    </div>
+                    <div class="img_wrap">
+                        <img class="img_m" src="" alt="모바일용배경">
+                        <img class="img_px" src="" alt="피시용 배경">
+                    </div> -->
+                </li>
+                <li class="swiper-slide">
+                    2<!-- <div class="txt_wrap">
+                        <strong class="tit"><span>M</span>MAX 2025</strong>
+                        <div class="bullet"></div>
+                        <div class="txt"><span><span>M</span>embers</span></div>
+                        <div class="dec">통합멤버십 3천 5백만</div>
+                    </div>
+                    <div class="img_wrap">
+                        <img class="img_m" src="" alt="모바일용배경">
+                        <img class="img_px" src="" alt="피시용 배경">
+                    </div> -->
+                </li>
+                <li class="swiper-slide">
+                    3<!-- <div class="txt_wrap">
+                        <strong class="tit"><span>M</span>MAX 2025</strong>
+                        <div class="bullet"></div>
+                        <div class="txt"><span><span>M</span>embers</span></div>
+                        <div class="dec">통합멤버십 3천 5백만</div>
+                    </div>
+                    <div class="img_wrap">
+                        <img class="img_m" src="" alt="모바일용배경">
+                        <img class="img_px" src="" alt="피시용 배경">
+                    </div> -->
+                </li>
+                <li class="swiper-slide">
+                    4<!-- <div class="txt_wrap">
+                        <strong class="tit"><span>M</span>MAX 2025</strong>
+                        <div class="bullet"></div>
+                        <div class="txt"><span><span>M</span>embers</span></div>
+                        <div class="dec">통합멤버십 3천 5백만</div>
+                    </div>
+                    <div class="img_wrap">
+                        <img class="img_m" src="" alt="모바일용배경">
+                        <img class="img_px" src="" alt="피시용 배경">
+                    </div> -->
+                </li>
+            </ul>
+        </div>
+        <script>
+            // Swiper
+            $(function () {
+                /*
+                $visionSlider = $('.vision-container .swiper-slide');
+                $visionSwiperStart = $('.vision-container .swiper-button-start');
+                $visionSwiperPause = $('.vision-container .swiper-button-pause');
+                $visionSwiperControll = $('.vision-container .swiper-controll-button');
+기존 비전 코드^^^
+                }
+                */
+                $companyContainer = document.querySelector('.company-swiper');
+                $companySwiper = document.querySelector('.company-swiper .swiper-slide');
+                $companySwiperControll = document.QuerySelectorAll('.company-swiper .swiper-controll-button')
+                $companySwiperStart = document.querySelector('.company-swiper .swiper-button-start');
+                $companySwiperPause = document.querySelector('.company-swiper .swiper-button-pause');
+                $companySwiperPrev = document.querySelector('.company-swiper .swiper-button-prev');
+                $companySwiperNext = document.querySelector('.company-swiper .swiper-button-next');
+
+
+                if ($companyContainer.length > 0) {
+                    var companySwiper = new Swiper('.company-swiper', {
+                        direction: 'vertical',
+                        loop: true,
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false,
+
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            type: 'fraction',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        a11y: {
+                            prevSlideMessage: '이전 슬라이드',
+                            nextSlideMessage: '다음 슬라이드',
+                            slideLabelMessage: '총 {{slideLength}}개의 슬라이드 중{{index}}번째 슬라이드 입니다.'
+                        },
+                        // autoHeight: true,
+                        slidesPerview: 1,
+                        watchSlidesProgress: true,
+                        watchSlidesVisibility: true,
+                        on: {
+                            init: function () {
+                                ui.swiperAcces($companyContainer);
+                                var self = this;
+                                // console.log(self);
+
+                                setTimeout(function () {
+                                    // window
+                                    // if (self.autoPlay.running === true) {
+                                    //     $(self.el).find('.swiper-button-start').hide();
+                                    // } else {
+                                    //     $(self.el).find('.swiper-button-pause').hide();
+                                    // }
+                                    // 타겟을 찍고 확인하고 코드를 짜는 습관을 들이도록 하자
+                                    // 왜냐하면 뱉어주는 값이 html element인지 nodelist인지에 따라 내가 쓸 수 있는 메소드가 다르니까(배열, 유사배열)
+                                    // 마우스가 들어왔을 때 편의를 위해 auto를 멈춤
+                                    // consol.log('??????', self, this);
+                                    // self.wrapperEl.addEventLisenter('mouseenter', function (e) {
+                                    //     console.log('??????EE', this)
+                                    //     console.log('mouseenter', self.autoplay.stop());
+                                    // })
+                                    // self.wrapperEl.addEventListener('moueleave', function (e)){
+                                    //     console.log('mouseleave?', self.autoplay.strat());
+                                    // }
+                                    // console.log(self.wrapperEl.querySelector('.swiper-slide.swiper-visible.swiper-slide-active'))
+                                    // self.wrapperEl.querySelector('.swiper-slide.swiper-visible.swiper-slide-active').addEventLisenter('active focus', self.autoplay.stop())
+                                    // .find()와 .eq()의 차이
+                                    // for(var i = 0; i < $visionSlider.length; i++){
+                                    //     console.log('???', self.wrappreEl.querySelector('.swiper-wrapper'))
+                                    //     $(self.wrapperEl).find('.swiper-slide').on('focus', function(e){
+                                    //         console.log(e);
+
+                                    //     })
+                                    // }
+
+
+
+                                    self.el.addEventLisenter('focus', function (e) {
+                                        self.autoplay.stop();
+                                    });
+                                    if (self.autoPlay.running === true) {
+                                        $(self.el).find('.swiper-button-start').hide();
+                                    } else {
+                                        $(self.el).find('.swiper-button-pause').hide();
+                                    }
+                                    for (var i = 0; i < $companySwiper.length; i++) {
+                                        $(self.wrappreEl).find('.swiper-slide').on('focus', function (e) {
+                                            cosole.log(e);
+                                        });
+                                    }
+                                }, 0) //.bind(this), 0 this를 바인딩 해주기 위해 사용 
+                            },
+                            slideChangeTransitionStart: function () {
+                                ui.swiperAccess($companyContainer);
+                            },
+                            resize: function () {
+                                ui.swiperAccess($companyContainer)
+                            }
+                        },
+                    });
+                }
+
+                // Swiper Controller
+                function controllSwiper(swiper, btnStart, btnPause) {
+                    if (swiper.autoplay.running === true) {
+                        swiper.autoplay.stop();
+                        btnPause.hide();
+                        btnStart.show().focus();
+                    } else {
+                        swiper.autoplay.start();
+                        btnStart.hide();
+                        btnPause.show().focus();
+                    }
+
+                    $companySwiperControll.on('click', function () {
+                        controllSwiper(companySwiper, $companySwiperStart, $companySwiperPause);
+                    });
+                }
+            });
+        </script>
+    </section>
+
+    <!-- // swiper API -->
+    <!-- 하드코딩 slider-->
+    <div class="container">
+        <section>
+            <div class="slide_wrap">
+                <ul class="slides">
+                    <li class="item">1<img src="" alt="" data-idx="1"></li>
+                    <li class="item">2<img src="" alt="" data-idx="2"></li>
+                    <li class="item">3<img src="" alt="" data-idx="3"></li>
+                    <li class="item">4<img src="" alt="" data-idx="4"></li>
+                </ul>
+            </div>
+            <div class="slide-controll-btn">
+                <button type="button" class="prev">이전</button>
+                <button type="button" class="next">다음</button>
+                <button type="button" class="play">재생</button>
+                <button type="button" class="stop">정지</button>
+            </div>
+
+            <div class="slide-pagination-btn">
+                <button type="button" class="btn btn1">1</button>
+                <button type="button" class="btn btn2">2</button>
+                <button type="button" class="btn btn3">3</button>
+                <button type="button" class="btn btn4">4</button>
+            </div>
+        </section>
+        <script>
+            /* 업그레이드 할 부분
+            1. 슬라이드 컨트롤 또는 페이지 네이션버튼등 을 연속으로 눌렀을 때 .5초 동안은 반응을 않게한다
+                쓰로틀링: 마지막 함수가 호출된 후 일정 시간이 지나기 전에 다시 호출되지 않도록 하는 것, 
+                디바운싱: 연이어 호출되는 함수들 중 마지막 함수(또는 제일 처음)만 호출하도록 하는 것
+            2. 리사이징 했을 경우나 디테일한 경우의 케이스마다 생각을 좀 더 하자
+            문법도 잘 모르는데 여기서 값을 어떻게 찾는지 값을 어떻게 적영하는지 css는 어떻게 찾고 어떻게 추가하는지에 대한 부분을 다 찾아서 적용해보는 게 실력이 많이 늘 수 있음 오래걸려도 1개를 제대로 만들자.
+            */
+
+            (function () {
+                // 인자(파라미터)를 활용하고 공통(기준)부분은 하나로 묶기
+                // 이미지들을 배열에 담고(이미지 갯수와 인덱스 넘버 기준)
+                // 이미지 갯수에 맞게 페이지네이션 버튼이 생성되어야 하고
+                // 이미지들을 감싸고있는 가로값이 바뀌어야 함.
+                // 페이지네이션 버튼을 누르면 그 순서에 맞는 이미지가 보여지고
+                // 현재 위치의 이미지 값을 변수에 담아야겠네..
+                // prev 버튼을 누르면 현재 위치 이전의 이미지를 보여주고
+                // next 버튼을 누르면 현재 위치 다음의 이미지를 보여줌
+
+                // Val
+                let idx = null; // 초기화하고 글로벌사용
+                let inter = null; // setInterval
+                const imgList = [];
+                const btnList = [];
+                const imgs = document.querySelectorAll('.item');
+                const btns = document.querySelectorAll('.btn');
+                const img = document.querySelectorAll('.item');
+                const btnWrap = document.querySelector('.slide-pagination-btn');
+                const prevBtn = document.querySelector('.slide-controll-btn .prev');
+                const nextBtn = document.querySelector('.slide-controll-btn .next');
+                const playBtn = document.querySelector('.slide-controll-btn .play');
+                const stopBtn = document.querySelector('.slide-controll-btn .stop');
+                const slider = document.querySelector('.slides');
+
+                for (let i = 0; i < imgs.length; i++) {
+                    imgList[i] = imgs[i].getAttribute('data-idx');
+                }
+
+                for (let i = 0; i < btns.length; i++) {
+                    btnList[i] = btns[i]
+                } // for문 밖에 i를 두면 찾을 수 없음 에러
+
+                for (var i = 0; i < btnList.length; i++) {
+                    (function () {
+                        btnList[j].addEventListener('click', function () {
+                            slideMove(j)
+                        })
+                    })(i)
+                }
+
+                // Fn
+                //     function createBtn(target, tag, data){
+                //         for(let i = 0; i < data.length; i++){
+                //             target.innerHTML+=`
+                //             <${tag} class='btn'>
+                //                 ${imgList[i]}
+                //             </${tag}>
+                //             `
+                //         }
+                //     }
+                //     createBtn(btnWrap, button, imgs); // 동적으로 생성 되는 부분으로 이벤트가 작동하기 않음
+                /*
+                전체 슬라이드 목록 중 마지막 슬라이드 클론 생성후 0번째 슬라이드 앞에 붙여 주고(prepend)
+                전체 슬라이드 목록 중 첫번째 슬라이드 클론 생성후 마지막번째 슬라이드 앞에 붙여 주고(append)
+                마지막슬라이드 copy.prepend > 0번(첫번째) > 1번 > 2번 > 3번 > 4번 > 첫번째슬라이드 copy.append
+                */
+                function action() {
+                    if (idx < imgs.length < -1) {
+                        idx++;
+                        slider.style.transform = `translateX(-${(idx) * img.offsetWidth}px)`;
+                    } else {
+                        slider.style.transform = `translateX(0px)`;
+                    } // 0에서 다시 슬라이드가 반복 되려면??
+                }
+
+                function slideMove(jj) {
+                    idx = jj;
+                    sldier.style.transform = `translateX(-${img.offsetWidth * idx}px)`; // 박스의 너비값 * idx 만큼 - 이동
+                    // console.log(img.offsetWidth);
+                }
+
+                function nextBtn() { // 증가 되는 부분을 어떻게 하는지에 대한 고민이 더 필요
+                    if (idx >= imgs.length - 1) {
+                        idx = -1 // -1로 해야 1번 이미지로 돌아온다 왜??
+                    }
+                    idx++; // idx 증가
+                    slider.style.transform = `translateX(-${(idx) * img.offsetWidth}px)`;
+                }
+
+                function prevBtn() {
+                    if (idx == 0) {
+                        idx = 0;
+                    }
+                    idx--; // idx 감소
+                    slider.style.transform = `translateX(${(idx) * img.offsetWidth}px)`;
+                }
+
+                // Evt
+                // widnow.addEventLisenter('load', function () {
+                //     inter = setInterval(action, 2000);
+                // });
+
+                nextBtn.addEventLisenter('click', function () {
+                    nextBtn();
+                });
+
+                prevBtn.addEventLisenter('click', function () {
+                    prevBtn();
+                });
+
+                playBtn.addEventLisenter('click', function () {
+                    inter = setInterval(action, 2000)
+                });
+
+                stopBtn.addEventLisenter('click', function () {
+                    clearInterval(inter)
+                });
+
+
+            });
+        </script>
+    </div>
+    <!-- // 하드코딩 slider-->
+    <!-- jonghwan slide -->
+    <style>
+        li.j_on {
+            background-color: black;
+            color: #fff;
+        }
+    </style>
+    <ul class="j_slide">
+        <li class="j_on">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <button class="j_prev">이전</button>
+    <button class="j_next">다음</button>
+    <button class="j_play">재생</button>
+    <button class="j_stop">정지</button>
+    <script>
+        (function () {
+            // 눌렀을때 백 블랙
+            // 다음 누르면 다음으로 이동
+            // 이전 누르면 이전으로 이동
+            // 재생을 자동으로 재생
+            // 자동재생 멈춤
+            var lis = document.querySelectorAll('.j_slide li');
+            var prev = document.querySelector('.j_prev');
+            var next = document.querySelector('.j_next');
+            var play = document.querySelector('.j_play');
+            var stop = document.querySelector('.j_stop');
+            var idx = null; // 아무것도 넣지 않으면 undefined가 되서 오류
+            var inter = null;
+
+            for (var i = 0; i < lis.length; i++) {
+                (function (h) {
+                    lis[h].addEventListener('click', function () {
+                        for (var j = 0; j < lis.length; j++) {
+                            lis[j].className = '';
+                        }
+                        lis[h].classList.add('on');
+                        idx = h
+                    })
+
+                })(i)
+            }
+
+            next.addEventListener('click', function () {
+                idx++;
+                if (idx > lis.length - 1) {
+                    idx = 0;
+                }
+                for (var j = 0; j < lis.length; j++) {
+                    lis[j].className = '';
+                }
+                lis[idx].classList.add('on')
+            });
+
+            prev.addEventListener('click', function () {
+                idx--;
+                if (idx < 0) {
+                    idx = lis.length - 1;
+                }
+                for (var j = 0; j < lis.length; j++) {
+                    lis[j].className = '';
+                }
+                lis[idx].classList.add('on')
+            });
+            window.addEventListener('click', function () {
+                console.log(idx);
+            });
+
+            function action() {
+                idx++;
+                if (idx > lis.length - 1) {
+                    idx = 0;
+                }
+                for (var j = 0; j < lis.length; j++) {
+                    lis[j].className = '';
+                }
+                lis[idx].classList.add('on');
+            }
+
+            stop.addEventListener('click', function () {
+                clearInterval(inter);
+            });
+
+            paly.addEventLisenter('click', function () {
+                setInterval(inter, 2000);
+            });
+
+            var info = [
+                {
+                    name: 'a',
+                    age: '2',
+                    value: {
+                        aa: 'aa',
+                        bb: 'bb',
+                        cc: 'cc',
+                    }
+                },
+                {
+                    name: 'b',
+                    age: '3',
+                    value: {
+                        aa: 'aa',
+                        bb: 'bb',
+                    }
+                },
+                {
+                    name: 'b',
+                    age: '2',
+                    value: {
+                        aa: 'aa',
+                    }
+                },
+            ]
+
+            function _map(list, call) {
+                var result = [];
+                for (var i = 0; i < list.length; i++) {
+                    result.push(call(list[i]))
+                }
+                return result;
+            }
+
+            function _filter(list, call) {
+                var result = [];
+                for (var i = 0; i < list.length; i++) {
+                    if (call(list[i])) {
+                        result.push(list[i])
+                    }
+                }
+                return result;
+            }
+
+            var _value = _map(info, function (item) {
+                return `<div>${item.name}</div>`;
+            });
+
+            document.querySelector('body').innerHTML = value;
+
+            // console.log(listVal)
+            console.log(_filter(info, function () {
+                return item.age === 3
+            }))
+        })()
+    </script>
+    <!-- // jonghwan slide -->
+</body>
+
+</html>
