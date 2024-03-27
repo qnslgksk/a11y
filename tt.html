@@ -854,6 +854,150 @@
 
     <!-- // tool tip -->
 
+    <!-- jong's tab -->
+    <!-- 
+        ##### 방법1. 탭 키로만 이동 할 때: 탭1 > 탭2 > 탭3 >컨텐츠
+
+        tabindex=-1은 최대한 안쓰는게 좋다
+
+        탭을 감싸고있는 요소에 role="tablist" aria-labeldby="탭제목"
+        그 하위로 감싸고 있는 wrap이 있으면 role="none"
+        탭에 해당되는 요소에 role="tab" aria-selected="true || false" aria-controls="컨트롤 탭패널 아이디"
+
+        탭패널에 해당되는 요소에  role="tabpannel" aria-labelldeby="해당탭아이디" id="컨텐츠아이디" id="컨트롤 탭패널 아이디"
+        선택된 요소 외 display:none;
+
+        ##### 방법2. 방향키로 이동할 때: 탭1 > 방향키로 탭이동 > 원하는 곳에서 tab키 누르면 해당 컨텐츠로 이동(주의. 키보드 좌우 이동은 되는데 세로 이동을 안내해야 함: aria-orientation="vertical")
+    -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab_container {}
+
+        .tab_container .tab_list [role="tab"] {
+            all: unset
+        }
+
+        .tab_container .tab_list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab_container .tab_list>li {
+            flex: 1 1 auto;
+            max-width: 33.333333%;
+        }
+
+        .tab_container .tab_list>li.on {
+            border-bottom: 2px solid red
+        }
+
+        .tab_container .tab_cont_container .tab_conts {
+            display: none;
+        }
+
+        .tab_container .tab_cont_container .tab_conts.on {
+            display: block;
+        }
+    </style>
+    <section class="tab_container">
+        <h2 id="tabTit">tab contents tit</h2>
+        <ul class="tab_list" role="tablist" aria-labelledby="tabTit">
+            <li class="on" role="none">
+                <button id="tabA" class="tabs" type="button" role="tab" aria-selected="true"
+                    aria-controls="tab_cont_A">A</button>
+            </li>
+            <li role="none">
+                <button id="tabB" class="tabs" type="button" role="tab" aria-selected="false"
+                    aria-controls="tab_cont_B">B</button>
+            </li>
+        </ul>
+        <div class="tab_cont_container">
+            <div id="tab_cont_A" class="tab_conts on" role="tabpannel" aria-labelledby="tabA">
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            </div>
+            <div id="tab_cont_B" class="tab_conts" role="tabpannel" aria-labelledby="tabB">
+                BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+            </div>
+        </div>
+    </section>
+    <script>
+        class AccTab {
+            constructor(className, option) {
+                this.className = className;
+            }
+
+            init() {
+                console.log('init')
+
+                // ele
+                this.tab_btn = document.querySelectorAll(`${this.className} .tabs`);
+                this.tab_conts = document.querySelectorAll(`${this.className} .tab_conts`);
+
+                // global
+                this.idx = 0;
+                this.target = null;
+
+                // tab button evt
+                this.evt(this.tab_btn, 'click', this.tabAction.bind(this))
+
+            }
+
+            tabAction(e, idx, list, target) {
+                e.preventDefault();
+                this.idx = idx;
+                this.clearClass(list, 'on');
+                this.clearClass(this.tab_conts, 'on');
+                this.addClass(target, 'on');
+                this.clearAttr(list, 'aria-selected', 'false');
+                this.setAttr(list, 'aria-selected', 'true');
+
+            }
+            clearClass(els, className) {
+                for (const a of els) { a.classList.remove(className) }
+            }
+            clearAttr(els, attrName, val) {
+                for (const a of els) { this.setAttr(a, attrName, val) }
+            }
+            addClass(el, className) {
+                return el.classList.add(className);
+            }
+            removeClass(el, className) {
+                return el.classList.remove(className);
+            }
+            hasClass(el, className) {
+                return el.classList.contains(className);
+            }
+            setAttr(el, attrName, val) {
+                return el.setAttribute(attrName, val);
+            }
+            removeAttr(el, attrName, val) {
+                return el.removeAttribute(attrName);
+            }
+
+            evt(targets, evtName, fn) {
+                if (targets.length) {
+                    for (let i = 0; i < targets.length; i++) {
+                        targets[i].addEventListener(evtName, e => fn(e, i, targets, targets[i]))
+                    }
+                } else {
+                    targets.addEventListener(evtName, e => fn(e))
+                }
+            }
+
+        }
+        const myTab = new Acctab('.tab_container')
+        myTab.init();
+
+    </script>
+    <!-- // jong's tab -->
+
 
     <!-- javascript Study -->
     <script>
@@ -925,8 +1069,6 @@
         }
 
         // 타겟을 찍고 확인하고 코드를 짜는 습관을 들이도록 하자! 왜냐하면 뱉어주는 값이 html collection인지 node list인지에 따라 내가 쓸 수 있고 쓸 수 없는 메소드가 다르기 때문에(배열, 유사배열)
-
-
 
 
 
