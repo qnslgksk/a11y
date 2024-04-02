@@ -1,4 +1,5 @@
-<html lang="ko"><!-- lang wac -->
+<html lang="ko">
+<!-- lang wac -->
 
 <head>
     <meta charset="UTF-8">
@@ -25,8 +26,8 @@
     <meta name="twitter:image:src" content="공유 이미지">
     <meta name="twitter:creator" content="공유자">
 
-    <link rel="preload" as="font" type="font/woff2" href=".woff2" crossorigin>
-    <link rel="preload" as="fetch" href=".json" crossorigin>
+    <!-- <link rel="preload" as="font" type="font/woff2" href=".woff2" crossorigin>
+    <link rel="preload" as="fetch" href=".json" crossorigin> -->
     <!-- 익스플로러 10부터 호환이 되어야 한다면 [if lt IE10]<link href="css/ie10.css" type="text/css">[endif] 하거나 ie-css 클래스명을 별도로 만들거나 하자 -->
     <style>
         /* font */
@@ -787,7 +788,6 @@
     <button type="button" title="토글되는상태"><span>토글버튼의 용도</span></button>
     <label for="chktoggle">토글버튼처럼</label>
     <input id="chktoggle" type="checkbox" name="" id="" checked="true">
-
     <div role="checkbox" aria-checked="true" tabindex="0">Toggle(js작업필요)</div>
 
     <a href="javascript:;" role="button" onclick="btnAction();">버튼|Enter</a>
@@ -795,7 +795,7 @@
     <input type="button" onclick="btnAction();" value="버튼|Enter,Space">
     <script>
         function btnAction() {
-            console.log(`wow!! ${this.innerHTML}`)
+            // console.log(this) // this === window
         } 
     </script>
     <!-- // toggle btn-->
@@ -812,18 +812,29 @@
     <!-- // input radio -->
 
     <!-- querySelectorAll(node list) vs getElementByClassName(html collection) 차이 -->
+    <style>
+        .li.c-tit {
+            font-weight: bold;
+            color: blue;
+        }
+
+        .list.call {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
     <ul>
         <li class="li">A</li>
         <li class="li">B</li>
         <li class="li">C</li>
     </ul>
     <ul>
-        <li class="list">1</li>
-        <li class="list">2</li>
-        <li class="list">3</li>
-        <li class="list">4</li>
-        <li class="list">5</li>
-        <li class="list">6</li>
+        <li class="list call">1</li>
+        <li class="list call">2</li>
+        <li class="list call">3</li>
+        <li class="list call">4</li>
+        <li class="list call">5</li>
+        <li class="list call">6</li>
     </ul>
     <script>
         // querySelectorAll(node list) vs getElementByClassName(html collection) 차이
@@ -831,28 +842,29 @@
         // html collection은 live 객체로 노드의 추가나 삭제가 바로 적용이 되고 getElementTagName, getElementByClassName 속성으로 접근이 가능
         // .childNodes(node list)와 children(html collection)의 차이 뱉어주는 결과가 node list인지 html collection인지 다름
         let titList = document.querySelectorAll('.li');
-        for (var i = 0; i < titList.length; i++) {
-            console.log(titList[i]);
-            titList[0].classList.add('c-tit');// 0번째만 class 추가되고 나머지 자식들 출력예상
+        // console.log(titList); // nodeList
+        const titListaddC = function () {
+            for (var i = 0; i < titList.length; i++) {
+                // console.log(titList[i]);
+                titList[0].classList.add('c-tit');// 0번째만 class 추가
+            }
         }
-
-        let list = docyment.getElementByClassName('list');
-        for (var i = 0; i < list.length; i++) {
-            console.log(list[i]);
-            list[0].classList.remove('list'); // 0번째 클래스 제거 후 1,2,3,4번째만 출력예상 
-            list[1].classList.remove('list'); // 1번째 클래스 제거 후 0,2,3,4번째만 출력예상
-            list[2].classList.remove('list'); // 2번째 클래스 제거 후 0,1,3,4번째만 출력예상
-            list[3].classList.remove('list'); // 3번째 클래스 제거 후 0,1,2,4번째만 출력예상
-            list[4].classList.remove('list'); // 4번째 클래스 제거 후 0,1,2,3번째만 출력예상
+        // titListaddC();
+        let list = document.getElementsByClassName('list');
+        // console.log(list) // HTML Collection
+        function listAddclass() {
+            for (var i = 0; i < list.length; i++) {
+                // console.log(list[i]);
+                list[0].classList.remove('call'); // 0번째 클래스 제거 
+                list[1].classList.remove('call'); // 1번째 클래스 제거 
+                list[2].classList.remove('call'); // 2번째 클래스 제거 
+                list[3].classList.remove('call'); // 3번째 클래스 제거 
+                list[4].classList.remove('call'); // 4번째 클래스 제거
+            }
         }
-        // 0,1번째 클래스가 제거되고 출력이 이상함?
+        // listAddclass();
     </script>
     <!-- // querySelectorAll(node list) vs getElementByClassName(html collection) 차이 -->
-
-    <!-- tool tip -->
-    <h2>헤딩안에 쓰는 툴팁</h2>
-
-    <!-- // tool tip -->
 
     <!-- jong's tab -->
     <!-- 
@@ -861,13 +873,13 @@
         tabindex=-1은 최대한 안쓰는게 좋다
 
         탭을 감싸고있는 요소에 role="tablist" aria-labeldby="탭제목"
-        그 하위로 감싸고 있는 wrap이 있으면 role="none"
+        그 하위로 감싸고 있는 요소에 용도가 있는 태그 라면 role="none" ex) li, dl, ol 등 ...
         탭에 해당되는 요소에 role="tab" aria-selected="true || false" aria-controls="컨트롤 탭패널 아이디"
 
         탭패널에 해당되는 요소에  role="tabpannel" aria-labelldeby="해당탭아이디" id="컨텐츠아이디" id="컨트롤 탭패널 아이디"
         선택된 요소 외 display:none;
 
-        ##### 방법2. 방향키로 이동할 때: 탭1 > 방향키로 탭이동 > 원하는 곳에서 tab키 누르면 해당 컨텐츠로 이동(주의. 키보드 좌우 이동은 되는데 세로 이동을 안내해야 함: aria-orientation="vertical")
+        ##### 방법2. 방향키로 이동할 때: 탭1 > 방향키로 탭이동 > 원하는 곳에서 tab키 누르면 해당 컨텐츠로 이동(주의. 가로탭이 아닌 세로탭이라면 이동을 안내해야 함: aria-orientation="vertical")
     -->
     <style>
         * {
@@ -876,10 +888,16 @@
             padding: 0;
         }
 
-        .tab_container {}
+        .tab_container {
+            width: 50vw;
+            margin: 0 auto;
+            margin-bottom: 100px;
+        }
 
         .tab_container .tab_list [role="tab"] {
-            all: unset
+            background: none;
+            border: none;
+            padding: 8px;
         }
 
         .tab_container .tab_list {
@@ -891,11 +909,16 @@
 
         .tab_container .tab_list>li {
             flex: 1 1 auto;
-            max-width: 33.333333%;
+            max-width: 50%;
         }
 
-        .tab_container .tab_list>li.on {
+        .tab_container .tab_list .tabs.on {
             border-bottom: 2px solid red
+        }
+
+        .tab_container .tab_list>li .tabs {
+            display: inline-block;
+            width: 100%;
         }
 
         .tab_container .tab_cont_container .tab_conts {
@@ -905,25 +928,100 @@
         .tab_container .tab_cont_container .tab_conts.on {
             display: block;
         }
+
+        .tab_container.tab_vertical {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .tab_container.tab_vertical .tab_list {
+            flex: 0 0 auto;
+            flex-direction: column;
+            min-width: 200px;
+        }
+
+        .tab_container.tab_vertical .tab_list>li {
+            flex: 1 1 auto;
+            max-width: 100%;
+        }
+
+        .tab_container.tab_vertical .tab_cont_container {
+            flex: 1 1 auto;
+        }
     </style>
-    <section class="tab_container">
+    <section>
         <h2 id="tabTit">tab contents tit</h2>
-        <ul class="tab_list" role="tablist" aria-labelledby="tabTit">
-            <li class="on" role="none">
-                <button id="tabA" class="tabs" type="button" role="tab" aria-selected="true"
-                    aria-controls="tab_cont_A">A</button>
-            </li>
-            <li role="none">
-                <button id="tabB" class="tabs" type="button" role="tab" aria-selected="false"
-                    aria-controls="tab_cont_B">B</button>
-            </li>
-        </ul>
-        <div class="tab_cont_container">
-            <div id="tab_cont_A" class="tab_conts on" role="tabpannel" aria-labelledby="tabA">
-                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        <div class="tab_container tab1">
+            <ul class="tab_list" role="tablist" aria-labelledby="tabTit">
+                <li role="none">
+                    <button id="tabA" class="tabs on" type="button" role="tab" aria-selected="true"
+                        aria-controls="tab_cont_A">A</button>
+                </li>
+                <li role="none">
+                    <button id="tabB" class="tabs" type="button" role="tab" aria-selected="false"
+                        aria-controls="tab_cont_B">B</button>
+                </li>
+            </ul>
+            <div class="tab_cont_container">
+                <div id="tab_cont_A" class="tab_conts on" role="tabpannel" aria-labelledby="tabA">
+                    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                </div>
+                <div id="tab_cont_B" class="tab_conts" role="tabpannel" aria-labelledby="tabB">
+                    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+                </div>
             </div>
-            <div id="tab_cont_B" class="tab_conts" role="tabpannel" aria-labelledby="tabB">
-                BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+        </div>
+    </section>
+    <section>
+        <h2 id="tabTit">tab contents tit</h2>
+        <div class="tab_container tab2">
+            <ul class="tab_list" role="tablist" aria-labelledby="tabTit">
+                <li role="none">
+                    <button id="tabA" class="tabs on" type="button" role="tab" aria-selected="true"
+                        aria-controls="tab_cont_A">A</button>
+                </li>
+                <li role="none">
+                    <button id="tabB" class="tabs" type="button" role="tab" aria-selected="false"
+                        aria-controls="tab_cont_B">B</button>
+                </li>
+                <li role="none">
+                    <button id="tabC" class="tabs" type="button" role="tab" aria-selected="false"
+                        aria-controls="tab_cont_C">C</button>
+                </li>
+            </ul>
+            <div class="tab_cont_container">
+                <div id="tab_cont_A" class="tab_conts on" role="tabpannel" aria-labelledby="tabA">
+                    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                </div>
+                <div id="tab_cont_B" class="tab_conts" role="tabpannel" aria-labelledby="tabB">
+                    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+                </div>
+                <div id="tab_cont_C" class="tab_conts" role="tabpannel" aria-labelledby="tabC">
+                    CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 id="tabTit">tab contents tit</h2>
+        <div class="tab_container tab3 tab_vertical" aria-orientation="vertical">
+            <ul class="tab_list" role="tablist" aria-labelledby="tabTit">
+                <li role="none">
+                    <button id="tabA" class="tabs" type="button" role="tab" aria-selected="true"
+                        aria-controls="tab_cont_A">A</button>
+                </li>
+                <li role="none">
+                    <button id="tabB" class="tabs on" type="button" role="tab" aria-selected="false"
+                        aria-controls="tab_cont_B">B</button>
+                </li>
+            </ul>
+            <div class="tab_cont_container">
+                <div id="tab_cont_A" class="tab_conts" role="tabpannel" aria-labelledby="tabA">
+                    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                </div>
+                <div id="tab_cont_B" class="tab_conts on" role="tabpannel" aria-labelledby="tabB">
+                    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+                </div>
             </div>
         </div>
     </section>
@@ -934,11 +1032,11 @@
             }
 
             init() {
-                console.log('init')
-
                 // ele
                 this.tab_btn = document.querySelectorAll(`${this.className} .tabs`);
                 this.tab_conts = document.querySelectorAll(`${this.className} .tab_conts`);
+
+                // console.log(this.tab_btn)
 
                 // global
                 this.idx = 0;
@@ -955,8 +1053,9 @@
                 this.clearClass(list, 'on');
                 this.clearClass(this.tab_conts, 'on');
                 this.addClass(target, 'on');
+                this.addClass(this.tab_conts[idx], 'on');
                 this.clearAttr(list, 'aria-selected', 'false');
-                this.setAttr(list, 'aria-selected', 'true');
+                this.setAttr(target, 'aria-selected', 'true');
 
             }
             clearClass(els, className) {
@@ -992,12 +1091,232 @@
             }
 
         }
-        const myTab = new Acctab('.tab_container')
-        myTab.init();
+        const myTab1 = new AccTab('.tab1');
+        myTab1.init();
+        const myTab2 = new AccTab('.tab2');
+        myTab2.init();
+        const myTab3 = new AccTab('.tab3');
+        myTab3.init();
 
     </script>
     <!-- // jong's tab -->
 
+    <!-- calendar -->
+    <style>
+        .calendarWrap {
+            position: relative;
+        }
+
+        .week_list {
+            display: flex;
+            list-style: none;
+            border-top: 1px solid #111
+        }
+
+        .week_list li {
+            flex: 1 0 auto;
+            text-align: center;
+            padding: 4px;
+        }
+
+        .day_list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            counter-reset: colorcircle 0;
+            border: 1px solid #111;
+        }
+
+        .day_list li {
+            overflow: auto;
+            flex: 1 0 auto;
+            width: 14.285714%;
+            position: relative;
+            height: 32rem;
+            padding: 4px;
+
+        }
+
+        .day_list li:nth-child(1) i::before,
+        .day_list li:nth-child(1) i::after,
+        .day_list li:nth-child(32) i::before,
+        .day_list li:nth-child(32) i::after,
+        .day_list li:nth-child(33) i::before,
+        .day_list li:nth-child(33) i::after,
+        .day_list li:nth-child(34) i::before,
+        .day_list li:nth-child(34) i::after,
+        .day_list li:nth-child(35) i::before,
+        .day_list li:nth-child(35) i::after {
+            content: none;
+        }
+
+        .day_list li i {
+            display: block;
+            position: sticky;
+            top: 0;
+        }
+
+        .day_list li i::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1.1em;
+            height: 1.2em;
+            counter-increment: colorcircle 1;
+            content: counter(colorcircle);
+            color: #fff;
+            font-size: 0.8em;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .day_list li i::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            background-color: #f54;
+            border-radius: 50%;
+            width: 1.1em;
+            height: 1.2em;
+        }
+
+        .day_list li .schedule {
+            position: absolute;
+            padding-left: 16px;
+        }
+    </style>
+    <section>
+        <h2>캘린더 2024년 4월</h2>
+        <div class="calendarWrap">
+            <ul class="week_list">
+                <li>일요일</li>
+                <li>월요일</li>
+                <li>화요일</li>
+                <li>수요일</li>
+                <li>목요일</li>
+                <li>금요일</li>
+                <li>토요일</li>
+            </ul>
+            <ul class="day_list">
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                    <div class="schedule">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nesciunt
+                        dolorem rem corporis enim magni, qui voluptatibus,
+                    </div>
+                </li>
+                <li>
+                    <i></i>
+                    <div class="schedule">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nesciunt
+                        dolorem rem corporis enim magni, qui voluptatibus, possimus repellendus odio saepe laborum
+                        aliquid expedita tempore quisquam! Nemo praesentium mollitia voluptatem?</div>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+                <li>
+                    <i></i>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- // calendar -->
 
     <!-- javascript Study -->
     <script>
@@ -1018,7 +1337,7 @@
         function addC(ele, clName) {
             return ele.calssList.add(clName);
         }
-        addC(document.auerySelector('#AA', 'on'));
+        // addC(document.auerySelector('#AA', 'on'));
 
         // hasClass()
         // 1. 엘리먼트와 클래스네임을 받아서
@@ -1104,16 +1423,15 @@
         // + scope
 
         // + clouser
-        function clo(fn) {
-            function(a, b) {
-                return fn(a, b);
-            }
-
-        }
-        var ss = clo(function (a, b) { return a + b })
-        console.log(ss);
-        var nn = clo(function (a, b) { return a - b })
-        console.log(nn);
+        // function clo(fn) {
+        //     function(a, b) {
+        //         return fn(a, b);
+        //     }
+        // }
+        // var ss = clo(function (a, b) { return a + b })
+        // console.log(ss);
+        // var nn = clo(function (a, b) { return a - b })
+        // console.log(nn);
 
         /* 
             1. 이뷰터블과 뮤터블, 얕은복사와 깊은복사
@@ -1185,36 +1503,36 @@
         */
         /* vue나 react에 있는 모든 코드는 스크립트모양을 css웹팩으로 바꿔주는 것으로 파일을 작성할 때 css모양을 하고 있는  스크립트이고 빌드하면 css로 뱉어짐 */
         // 라이브러리 또는 제이쿼리버전 충돌방지를 위해 $변수명을 다르게 사용하기 위한 메소드
-        jQuery.noConflict();
-        var j$ = jQuery;
+        // jQuery.noConflict();
+        // var j$ = jQuery;
 
-        opener.location.href = "";
-        self.close();
-        window.close();
-        window.open()
+        // opener.location.href = "";
+        // self.close();
+        // window.close();
+        // window.open()
 
 
         var mm = document.querySelector('#sister');
         // querySelector에 사용가능한 프로퍼티
-        var mchild = mm.childNodes; // node list(7) [] 비요소 노드 포함
-        var mchildren = mm.children; // html collection(7)[] 비요소 노드 제외
-        console.log(mchild);
-        console.log(mchildren);
+        // var mchild = mm.childNodes; // node list(7) [] 비요소 노드 포함
+        // var mchildren = mm.children; // html collection(7)[] 비요소 노드 제외
+        // console.log(mchild);
+        // console.log(mchildren);
 
-        var firstM = mm.firstChild;
-        console.log(firstM); // #text 라고 비요소 노드인 줄바꿈이 먼저 선택 됨
+        // var firstM = mm.firstChild;
+        // console.log(firstM); // #text 라고 비요소 노드인 줄바꿈이 먼저 선택 됨
 
-        var lastM = mm.lastChild;
-        console.log(lastM) // #text 라고 비요소 노드인 줄바꿈이 먼저 선택 됨
+        // var lastM = mm.lastChild;
+        // console.log(lastM) // #text 라고 비요소 노드인 줄바꿈이 먼저 선택 됨
 
-        var parentM = mm.parentNode;
-        console.log(parentM) // 부모요소인 wrap 선택
+        // var parentM = mm.parentNode;
+        // console.log(parentM) // 부모요소인 wrap 선택
 
-        var brotherM = mm.nextSibling;
-        console.log(brotherM) // text노드 선택
+        // var brotherM = mm.nextSibling;
+        // console.log(brotherM) // text노드 선택
 
-        var brother2M = mm.nextElementSibling;
-        console.log(brother2M) //id mother 선택
+        // var brother2M = mm.nextElementSibling;
+        // console.log(brother2M) //id mother 선택
         // 다시 테스트확인하기
 
         // keybord Cheeck
