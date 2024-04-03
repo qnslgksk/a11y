@@ -1110,13 +1110,23 @@
         .week_list {
             display: flex;
             list-style: none;
-            border-top: 1px solid #111
+            border-top: 1px solid #111;
         }
 
         .week_list li {
             flex: 1 0 auto;
             text-align: center;
             padding: 4px;
+
+        }
+
+        .day_list.ing {
+            border: 1px solid #f54;
+        }
+
+        .day_list li.select {
+            background: #f54;
+            color: #fff;
         }
 
         .day_list {
@@ -1134,6 +1144,7 @@
             position: relative;
             height: 32rem;
             padding: 4px;
+            border: 0.5px solid #333;
 
         }
 
@@ -1186,9 +1197,19 @@
             position: absolute;
             padding-left: 16px;
         }
+
+        .comp {
+            display: none;
+        }
     </style>
     <section>
         <h2>캘린더 2024년 4월</h2>
+        <div class="pp">
+            <button type="button" class="select_btn">SELECT</button><br>
+            <button type="button" class="reset_btn">RESET</button>
+            <p>기간을 설정해주세요</p>
+            <button type="button" class="comp">설정완료</button>
+        </div>
         <div class="calendarWrap">
             <ul class="week_list">
                 <li>일요일</li>
@@ -1204,29 +1225,29 @@
                     <i></i>
                 </li>
                 <li>
-                    <i></i>
+                    <i>1</i>
                     <div class="schedule">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nesciunt
                         dolorem rem corporis enim magni, qui voluptatibus,
                     </div>
                 </li>
                 <li>
-                    <i></i>
+                    <i>2</i>
                     <div class="schedule">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nesciunt
                         dolorem rem corporis enim magni, qui voluptatibus, possimus repellendus odio saepe laborum
                         aliquid expedita tempore quisquam! Nemo praesentium mollitia voluptatem?</div>
                 </li>
                 <li>
-                    <i></i>
+                    <i>3</i>
                 </li>
                 <li>
-                    <i></i>
+                    <i>4</i>
                 </li>
                 <li>
-                    <i></i>
+                    <i>5</i>
                 </li>
                 <li>
-                    <i></i>
+                    <i>6</i>
                 </li>
                 <li>
                     <i></i>
@@ -1315,8 +1336,76 @@
             </ul>
         </div>
     </section>
+    <script>
+        const dayList = document.querySelector('.day_list');
+        const days = document.querySelectorAll('.day_list > li');
+        const selectBtn = document.querySelector('.select_btn');
+        const resetBtn = document.querySelector('.reset_btn');
+        const pp = document.querySelector('.pp')
+        const comp = document.querySelector('.comp');
+        const dayNum = document.querySelectorAll('.day_list > li > i');
 
+        let start;
+        let end;
+        let startSwitch;
+        let selectDays = [];
+
+        document.body.addEventListener('click', function (e) {
+            // console.log(dayNum)
+            // 요소 i안에 텍스트가 있는지 체크
+            // function iChk() {
+            //     ...
+            // }
+
+            // 선택이 완료되었을 때
+            if (e.target.classList.contains('comp')) {
+                dayList.classList.remove('ing');
+                dayList.classList.remove('first');
+                console.log(selectDays)
+            }
+            // 설정 모드일 때 마지막 클릭
+            if (dayList.classList.contains('ing') && dayList.classList.contains('first')) {
+                end = e.target.textContent;
+                e.target.classList.add('select');
+
+                for (let i = 0; i < end; i++) {
+                    if (i > start - 1) {
+                        days[i].classList.add('select');
+                        selectDays.push(days[i]);
+                    }
+                }
+            }
+
+            // 설정 모드일 때 첫번째 클릭
+            if (dayList.classList.contains('ing')) {
+                start = e.target.textContent;
+                e.target.classList.add('select');
+                dayList.classList.add('first');
+            }
+
+            // 설정 모드 버튼
+            if (e.target.classList.contains('select_btn')) {
+                dayList.classList.add('ing')
+                comp.style.display = 'block';
+            }
+            // 리셋 모드 버튼
+            if (e.target.classList.contains('reset_btn')) {
+                dayList.classList.remove('ing');
+                dayList.classList.remove('first');
+                for (let i = 0; i < days.length; i++) {
+                    days[i].classList.remove('select');
+                }
+                comp.style.display = 'none';
+            }
+            // console.log(start, end);
+        })
+    </script>
     <!-- // calendar -->
+
+
+    <div id="output">
+
+    </div>
 
     <!-- javascript Study -->
     <script>
@@ -1534,6 +1623,8 @@
         // var brother2M = mm.nextElementSibling;
         // console.log(brother2M) //id mother 선택
         // 다시 테스트확인하기
+
+
 
         // keybord Cheeck
         window.addEventListener('keydown', (event) => {
