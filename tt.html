@@ -107,7 +107,58 @@
         크롭브라우저기준:설정-개인 정보 보호 및 보안-사이트 설정-자바스크립트 사용할 수 있음 선택
         <!--br태그는 되는데 css는 안됨 -->
     </noscript>
+    <!-- MDN Front End Developer cose: https://developer.mozilla.org/ko/docs/orphaned/Learn/Front-end_web_developer -->
+    <figure>
+        <img src="https://live.mdnplay.dev/en-US/docs/Web/HTML/Element/figure/favicon-192x192.png" alt="MDN logo." />
+        <figcaption>MDN Logo 이미지</figcaption>
+    </figure>
+    <figure>
+        <figcaption><b>인용문 Edsger Dijkstra:</b></figcaption>
+        <blockquote>
+            If debugging is the process of removing software bugs, then programming must
+            be the process of putting them in.
+        </blockquote>
+    </figure>
+    <figure>
+        <p style="white-space:pre">
+            시: Bid me discourse, I will enchant thine ear, Or like a fairy trip upon the
+            green, Or, like a nymph, with long dishevelled hair, Dance on the sands, and
+            yet no footing seen: Love is a spirit all compact of fire, Not gross to
+            sink, but light, and will aspire.
+        </p>
+        <figcaption><cite>Venus and Adonis</cite>, by William Shakespeare</figcaption>
+    </figure>
+    <figure>
+        <figcaption><code>코드navigator</code>를 이용하여 브라우저 정보 얻기</figcaption>
+        <pre>
+    function NavigatorExample() {
+      var txt;
+      txt = "Browser CodeName: " + navigator.appCodeName;
+      txt+= "Browser Name: " + navigator.appName;
+      txt+= "Browser Version: " + navigator.appVersion ;
+      txt+= "Cookies Enabled: " + navigator.cookieEnabled;
+      txt+= "Platform: " + navigator.platform;
+      txt+= "User-agent header: " + navigator.userAgent;
+    }
+      </pre>
+    </figure>
+    <script>
+        function NavigatorExample() {
+            var txt;
+            txt = "Browser CodeName: " + navigator.appCodeName;
+            txt += "Browser Name: " + navigator.appName;
+            txt += "Browser Version: " + navigator.appVersion;
+            txt += "Cookies Enabled: " + navigator.cookieEnabled;
+            txt += "Platform: " + navigator.platform;
+            txt += "User-agent header: " + navigator.userAgent;
+            console.log(txt)
+        }
+        NavigatorExample();
+    </script>
 
+    <audio src=""></audio>
+    <video src=""></video>
+    <!-- // MDN Front End Developer cose -->
     <button type="button" onclick="return window.print();"><span>인쇄하기</span></button>
     <div class="content_print">
         <span><img src="" alt="LOGO"></span>
@@ -1337,6 +1388,62 @@
         </div>
     </section>
     <script>
+        const reserveDays = new Date();
+
+        get일 = reserveDays.getDate(); // 주어진 날짜의 현지 시간 기준 일을 반환
+        get요일 = reserveDays.getDay(); // 주어진 현지 시간 기준 요일을 반환 0은 일요일 ~ 6은 토요일
+        get년 = reserveDays.getFullYear() // 주어진 날짜의 현지 시간 기준 연도를 반환
+        get시간 = reserveDays.getHours() // 주어진 날짜의 현지 시간 기준 시를 반환
+        get밀리초 = reserveDays.getMilliseconds();// Date 인스턴스의 밀리초를 현지 시간 기준으로 반환
+        get분 = reserveDays.getMinutes() // Date 인스턴스의 분을 현지 시간 기준으로 반환
+        get월 = reserveDays.getMonth(); // Date 객체의 월 값을 현지 시간에 맞춰 반환 0은 1월 ~ 11은 12월
+        get초 = reserveDays.getSeconds() // Date 객체의 초 값을 현지 시간에 맞춰 반환
+        get시간값 = reserveDays.getTime() // 표준시에 따라 지정된 날짜의 시간에 해당하는 숫자 값을 반환
+        get표준시날짜 = reserveDays.getUTCDate(); // 표준시에 따라 지정된 날짜에 해당 월의 요일 (날짜)을 반환
+
+        console.log(reserveDays);
+        console.log(`${get일}일`);
+
+        switch (get요일) {
+            case 0:
+                console.log('일요일');
+                break;
+            case 1:
+                console.log('월요일');
+                break;
+            case 2:
+                console.log('화요일');
+                break;
+            case 3:
+                console.log('수요일');
+                break;
+            case 4:
+                console.log('목요일');
+                break;
+            case 5:
+                console.log('금요일');
+                break;
+            case 6:
+                console.log('토요일');
+                break;
+            default:
+                console.log('에베베베베')
+        }
+        console.log(`${get년}년`);
+        console.log(`${get시간}시`);
+        console.log(get밀리초);
+        console.log(`${get분}분`);
+        console.log(`${get월 + 1}월`);
+        console.log(`${get초}초`);
+        console.log(get시간값);
+        console.log(get표준시날짜);
+
+
+        // 달력에 날짜(New date)를 배열로 가져오고 날짜 리스트에 뿌려줌
+        // 요일은? 어떻게 맞출까?
+        // 날짜 리스트에서 내가 원하는 첫번째 날짜 선택하면 몇번째 리스트인지 값을 담고있어야 하고
+        // 날짜 리스트에서 내가 원하는 마지막번째 날짜 선택하면 몇번째 리스트인지 값을 담아야 하고
+        // 첫번째 날짜와 마지막 날짜 사이의 날짜들도 같이 선택
         const dayList = document.querySelector('.day_list');
         const days = document.querySelectorAll('.day_list > li');
         const selectBtn = document.querySelector('.select_btn');
