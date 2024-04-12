@@ -13,7 +13,7 @@
     <meta name="keywords" content="페이지키워드">
     <meta name="robots" content="noindex"><!-- 해당페이지를 모든검색엔진에게 검색결과에 비노출 처리 반영시간은 크롤링타이밍과 색인 등록 처리에 따라 언제 반영 될지 모름 -->
     <!--
-        http://www.internettrend.co.kr/trendForward.tsp 최소한 해당 되는 브라우저 확인을 합니다
+        http://www.internettrend.co.kr/trendForward.tsp 최소한 해당 되는 브라우저 검색엔진 확인을 합니다
 
         웹사이트의 크기, 사이트의 구조, 페이지의 콘텐츠, 그리고 다른 많은 요소들에 의해 영향을 받기 때문입니다. 
         일반적으로, 새로운 페이지가 검색 엔진에 반영되는 데는 몇 시간에서 며칠 사이의 시간이 걸릴 수 있습니다.
@@ -38,6 +38,7 @@
     <meta name="twitter:description" content="공유 내용">
     <meta name="twitter:image:src" content="공유 이미지">
     <meta name="twitter:creator" content="공유자">
+    <script src="https://kit.fontawesome.com/af100b3562.js" crossorigin="anonymous"></script>
 
     <!-- <link rel="preload" as="font" type="font/woff2" href=".woff2" crossorigin>
     <link rel="preload" as="fetch" href=".json" crossorigin> -->
@@ -114,7 +115,7 @@
 </head>
 
 <body>
-    <!-- 레리어 팝업은 팝업창 차단 브라우저에서 시각적팝업효과를 내기위한 콘텐츠로 페이지 위에 위치하고 아래의 콘텐츠를 보려면 반드시 사라지게 해야 함. -->
+    <!-- 레이어 팝업은 팝업창 차단 브라우저에서 시각적팝업효과를 내기위한 콘텐츠로 페이지 위에 위치하고 아래의 콘텐츠를 보려면 반드시 사라지게 해야 함. -->
     <!-- 좋은회사는 렌더링, 스크립트, css, html, 접근성을 제대로 알고 있는지 질문을 함 -->
     <noscript>현재 사용 중인 브라우저는 스크립트를 지원하지 않거나, 해당 기능이 활성화되어 있지 않습니다!<br>
         이 페이지를 실행하려면 자바스크립트를 사용해야 합니다. 아래 내용은 설정 방법입니다.<br>
@@ -1166,31 +1167,73 @@
     </script>
     <!-- // jong's tab -->
 
+    <!-- weather -->
+    <section id="weather">
+        <i class="fa-solid fa-cloud"></i>
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-wind"></i>
+        <i class="fa-solid fa-umbrella"></i>
+        <i class="fa-solid fa-snowflake"></i>
+
+    </section>
+    <!-- //weather -->
     <!-- calendar -->
     <style>
-        .calendarWrap {
-            position: relative;
+        .ir_txt {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            border: 0;
+            clip: rect(1px, 1px, 1px, 1px);
+            clip-path: inset(50%);
+        }
+
+        #calendar {
+            max-width: 960px;
+            margin: 0 auto;
+            border-radius: 8px;
+            background: rgba(249, 233, 190, 0.879);
+        }
+
+        #calendar-header {
+            display: flex;
+            justify-content: center;
+            padding-top: 2rem;
+        }
+
+        #calendar .calendarWrap {
+            margin-top: 2rem;
+        }
+
+        #calendar-header .month_btn {
+            all: unset;
+        }
+
+        #calendar-header .month_btn i {
+            font-size: 1.8rem;
+            margin: 0 1rem;
         }
 
         .week_list {
             display: flex;
             list-style: none;
-            border-top: 1px solid #111;
         }
 
         .week_list li {
             flex: 1 0 auto;
             text-align: center;
             padding: 4px;
-
         }
 
         .day_list.ing {
-            border: 1px solid #f54;
+            border: 2px solid #543;
         }
 
         .day_list li.select {
-            background: #f54;
+            background: #354;
             color: #fff;
         }
 
@@ -1198,8 +1241,8 @@
             display: flex;
             flex-wrap: wrap;
             list-style: none;
+            margin-top: 1rem;
             counter-reset: colorcircle 0;
-            border: 1px solid #111;
         }
 
         .day_list li {
@@ -1209,21 +1252,8 @@
             position: relative;
             height: 32rem;
             padding: 4px;
-            border: 0.5px solid #333;
 
-        }
 
-        .day_list li:nth-child(1) i::before,
-        .day_list li:nth-child(1) i::after,
-        .day_list li:nth-child(32) i::before,
-        .day_list li:nth-child(32) i::after,
-        .day_list li:nth-child(33) i::before,
-        .day_list li:nth-child(33) i::after,
-        .day_list li:nth-child(34) i::before,
-        .day_list li:nth-child(34) i::after,
-        .day_list li:nth-child(35) i::before,
-        .day_list li:nth-child(35) i::after {
-            content: none;
         }
 
         .day_list li i {
@@ -1232,7 +1262,7 @@
             top: 0;
         }
 
-        .day_list li i::before {
+        .day_list li i.day_num::before {
             position: absolute;
             top: 0;
             left: 0;
@@ -1246,7 +1276,7 @@
             text-align: center;
         }
 
-        .day_list li i::after {
+        .day_list li i.day_num::after {
             content: '';
             position: absolute;
             top: 0;
@@ -1267,196 +1297,140 @@
             display: none;
         }
     </style>
-    <section>
-        <h2>캘린더 2024년 4월</h2>
-        <div class="pp">
+    <section id="calendar">
+
+        <header id="calendar-header">
+            <button class="month_btn prev" type="button" onclick="monthPrev()"><span class="ir_txt">이전달</span><i
+                    class="fa-solid fa-circle-chevron-left"></i></button>
+            <h2 id="calendar-tit"></h2>
+            <button class="month_btn next" type="button" onclick="monthNext()"><span class="ir_txt">다음달</span><i
+                    class="fa-solid fa-circle-chevron-right"></i></button>
+        </header>
+
+        <!-- <div class="pp">
             <button type="button" class="select_btn">SELECT</button><br>
             <button type="button" class="reset_btn">RESET</button>
             <p>기간을 설정해주세요</p>
             <button type="button" class="comp">설정완료</button>
-        </div>
+        </div> -->
         <div class="calendarWrap">
             <ul class="week_list">
-                <li>일요일</li>
-                <li>월요일</li>
-                <li>화요일</li>
-                <li>수요일</li>
-                <li>목요일</li>
-                <li>금요일</li>
-                <li>토요일</li>
+                <li>SUN</li>
+                <li>MON</li>
+                <li>TUE</li>
+                <li>WED</li>
+                <li>THU</li>
+                <li>FRI</li>
+                <li>SAT</li>
             </ul>
             <ul class="day_list">
                 <li>
-                    <i></i>
+                    <i class="day_num"></i>
                 </li>
-                <li>
-                    <i>1</i>
-                    <div class="schedule">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nesciunt
-                        dolorem rem corporis enim magni, qui voluptatibus,
-                    </div>
-                </li>
-                <li>
-                    <i>2</i>
-                    <div class="schedule">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nesciunt
-                        dolorem rem corporis enim magni, qui voluptatibus, possimus repellendus odio saepe laborum
-                        aliquid expedita tempore quisquam! Nemo praesentium mollitia voluptatem?</div>
-                </li>
-                <li>
-                    <i>3</i>
-                </li>
-                <li>
-                    <i>4</i>
-                </li>
-                <li>
-                    <i>5</i>
-                </li>
-                <li>
-                    <i>6</i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
-                <li>
-                    <i></i>
-                </li>
+
             </ul>
         </div>
     </section>
     <script>
-        const reserveDays = new Date();
+        // https://velog.io/@jhyun_k/%EB%B0%94%EB%8B%90%EB%9D%BC-JS%EB%A1%9C-%EC%BA%98%EB%A6%B0%EB%8D%94-%EB%A7%8C%EB%93%A4%EA%B8%B0#-calindexjs-%EC%BA%98%EB%A6%B0%EB%8D%94-script%ED%8C%8C%EC%9D%BC
+        const date = new Date();
+        const renderCalendar = () => { // 달력 데이터 뿌려주는 함수
+            const viewYear = date.getFullYear();
+            const viewMonth = date.getMonth();
 
-        get일 = reserveDays.getDate(); // 주어진 날짜의 현지 시간 기준 일을 반환
-        get요일 = reserveDays.getDay(); // 주어진 현지 시간 기준 요일을 반환 0은 일요일 ~ 6은 토요일
-        get년 = reserveDays.getFullYear() // 주어진 날짜의 현지 시간 기준 연도를 반환
-        get시간 = reserveDays.getHours() // 주어진 날짜의 현지 시간 기준 시를 반환
-        get밀리초 = reserveDays.getMilliseconds();// Date 인스턴스의 밀리초를 현지 시간 기준으로 반환
-        get분 = reserveDays.getMinutes() // Date 인스턴스의 분을 현지 시간 기준으로 반환
-        get월 = reserveDays.getMonth(); // Date 객체의 월 값을 현지 시간에 맞춰 반환 0은 1월 ~ 11은 12월
-        get초 = reserveDays.getSeconds() // Date 객체의 초 값을 현지 시간에 맞춰 반환
-        get시간값 = reserveDays.getTime() // 표준시에 따라 지정된 날짜의 시간에 해당하는 숫자 값을 반환
-        get표준시날짜 = reserveDays.getUTCDate(); // 표준시에 따라 지정된 날짜에 해당 월의 요일 (날짜)을 반환
+            // 현재 년도와 왈 표시 ------
+            document.querySelector('#calendar-tit').textContent = `${viewYear}년 ${viewMonth + 1}월`;
 
-        console.log(reserveDays);
-        console.log(`${get일}일`);
+            // 지난달 마지막날과 이번달 마지막 날 ------
+            const prevLast = new Date(viewYear, viewMonth, 0)
+            const thisLast = new Date(viewYear, viewMonth + 1, 0)
+            // console.dir(prevLast);
+            // console.dir(thisLast);
 
-        switch (get요일) {
-            case 0:
-                console.log('일요일');
-                break;
-            case 1:
-                console.log('월요일');
-                break;
-            case 2:
-                console.log('화요일');
-                break;
-            case 3:
-                console.log('수요일');
-                break;
-            case 4:
-                console.log('목요일');
-                break;
-            case 5:
-                console.log('금요일');
-                break;
-            case 6:
-                console.log('토요일');
-                break;
-            default:
-                console.log('에베베베베')
+            const prevLastDate = prevLast.getDate(); // 지난달 마지막날
+            const prevLastDay = prevLast.getDay(); // 지난달 마지막 요일
+            const thisLastDate = thisLast.getDate(); // 이번달 마지막날
+            const thisLastDay = thisLast.getDay(); // 이번달 마지막 요일
+
+            // console.log(`지난달 마지막날짜: ${prevLastDate}, ${prevLastDay}`);
+            // console.log(`이번달 마지막날짜: ${thisLastDate}, ${thisLastDay}`);
+
+            const prevDates = [];
+            const thisDates = [...Array(thisLastDate + 1).keys()].slice(1);
+            const nextDates = [];
+            console.log(`이번달 날 수: ${thisDates}`);
+
+            // 달력 날짜 뿌리기 ------
+            if (prevLastDay !== 6) {
+                for (let i = 0; i < prevLastDay + 1; i++) {
+                    prevDates.unshift(prevLastDay, -i); // 지난달 날짜들
+                }
+            }
+            for (let i = 1; i < 7 - thisLastDay; i++) {
+                nextDates.push(i); // 다음달 날짜들
+            }
+            const dates = prevDates.concat(thisDates, nextDates);
+            console.log(dates)
+
+            // 화면에 날짜 뿌리기 ------
+            const firstDateIdx = dates.indexOf(1); // 이번달 1일의 인덱스
+            const lastDateIdx = dates.lastIndexOf(thisLastDate); //이번달 마지막날 인덱스
+
+            // 여기서부터 다시 보기
+            console.log(firstDateIdx); // 2
+            console.log(lastDateIdx); // 31
+            // dates.forEach((date, i) => {
+            //     const condition = i >= firstDateIdx && i < lastDateIdx + 1 ? 'this' : 'other';
+            //     dates[i] = `<li class="${condition}">
+            //         <i>${date}</i>
+            //         </li>`
+            // });
+            // document.querySelector('.day_list').innerHTML = dates.join('');
         }
-        console.log(`${get년}년`);
-        console.log(`${get시간}시`);
-        console.log(get밀리초);
-        console.log(`${get분}분`);
-        console.log(`${get월 + 1}월`);
-        console.log(`${get초}초`);
-        console.log(get시간값);
-        console.log(get표준시날짜);
+        renderCalendar();
+        // const viewYear = date.getFullYear();// 주어진 날짜의 현지 시간 기준 연도를 반환
+        // const viewMonth = date.getMonth(); // Date 객체의 월 값을 현지 시간에 맞춰 반환 0은 1월 ~ 11은 12월
+        // const get일 = date.getDate(); // 주어진 날짜의 현지 시간 기준 일을 반환
+        // const get요일 = date.getDay(); // 주어진 현지 시간 기준 요일을 반환 0은 일요일 ~ 6은 토요일
+        // get시간 = date.getHours() // 주어진 날짜의 현지 시간 기준 시를 반환
+        // get밀리초 = date.getMilliseconds();// Date 인스턴스의 밀리초를 현지 시간 기준으로 반환
+        // get분 = date.getMinutes() // Date 인스턴스의 분을 현지 시간 기준으로 반환
+        // get초 = date.getSeconds() // Date 객체의 초 값을 현지 시간에 맞춰 반환
+        // get시간값 = date.getTime() // 표준시에 따라 지정된 날짜의 시간에 해당하는 숫자 값을 반환
+        // get표준시날짜 = date.getUTCDate(); // 표준시에 따라 지정된 날짜에 해당 월의 요일 (날짜)을 반환
 
 
-        // 달력에 날짜(New date)를 배열로 가져오고 날짜 리스트에 뿌려줌
+        // switch (get요일) {
+        //     case 0:
+        //         console.log('SUN');
+        //         break;
+        //     case 1:
+        //         console.log('MON');
+        //         break;
+        //     case 2:
+        //         console.log('TUE');
+        //         break;
+        //     case 3:
+        //         console.log('WED');
+        //         break;
+        //     case 4:
+        //         console.log('THU');
+        //         break;
+        //     case 5:
+        //         console.log('FRI');
+        //         break;
+        //     case 6:
+        //         console.log('SAT');
+        //         break;
+        //     default:
+        //         console.log('에베베베베')
+        // }
+
+
+        // 달력에 날짜(New date)를 배열로 가져오고 달력에 뿌리고 싶다
         // 요일은? 어떻게 맞출까?
-        // 날짜 리스트에서 내가 원하는 첫번째 날짜 선택하면 몇번째 리스트인지 값을 담고있어야 하고
-        // 날짜 리스트에서 내가 원하는 마지막번째 날짜 선택하면 몇번째 리스트인지 값을 담아야 하고
+        // 달력에서 내가 원하는 첫번째 날짜 선택하면 몇번째 리스트인지 값을 담고있어야 하고
+        // 달력에서 내가 원하는 마지막번째 날짜 선택하면 몇번째 리스트인지 값을 담아야 하고
         // 첫번째 날짜와 마지막 날짜 사이의 날짜들도 같이 선택
         const dayList = document.querySelector('.day_list');
         const days = document.querySelectorAll('.day_list > li');
@@ -1464,7 +1438,8 @@
         const resetBtn = document.querySelector('.reset_btn');
         const pp = document.querySelector('.pp')
         const comp = document.querySelector('.comp');
-        const dayNum = document.querySelectorAll('.day_list > li > i');
+        const dayNum = document.querySelectorAll('.day_list .day_num');
+
 
         let start;
         let end;
@@ -1473,20 +1448,22 @@
 
         document.body.addEventListener('click', function (e) {
             // console.log(dayNum)
-            // 요소 i안에 텍스트가 있는지 체크
-            // function iChk() {
-            //     ...
-            // }
 
-            // 선택이 완료되었을 때
+            // selectDays안에 dayNum이 있는지 체크해서 있으면 숫자노출 없으면 숫자 없음
+            if (dayNum.length) {
+                // console.log(dayNum.length);
+            }
+
+            // 설정 완료를 누르면 
             if (e.target.classList.contains('comp')) {
                 dayList.classList.remove('ing');
                 dayList.classList.remove('first');
-                console.log(selectDays)
+                console.log(`선택한 날짜: ${selectDays}`)
             }
             // 설정 모드일 때 마지막 클릭
             if (dayList.classList.contains('ing') && dayList.classList.contains('first')) {
                 end = e.target.textContent;
+                console.log(end);
                 e.target.classList.add('select');
 
                 for (let i = 0; i < end; i++) {
