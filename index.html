@@ -223,12 +223,15 @@
 
         <form action="/upload" method="post" enctype="multipart/form-data">
             <label for="imageUpload">업로드:</label>
-            <!-- 인풋이이미지가 업로드 버튼으로 사용되는 예시 -->
-            <input type="image" id="imageUpload" name="image" accept="image/*"><!-- 보이스오버-택스트, 버튼 -->
+            <!-- input type="image"는 디자인적으로 이쁜 submit 버튼 -->
+            <input type="image" id="imageUpload" src="https://qnslgksk.github.io/a11y/ico_upload.png"
+                alt="제출버튼"><!-- 보이스오버-택스트, 버튼 -->
             <input type="submit" value="전송">
+
+            <input type="file" accept="image/*"><!-- 이미지 파일만 받고 싶으면 -->
         </form>
 
-        <!--<html lang="ko"> 없으면 위배 -->
+        <!--<html lang=" ko"> 없으면 위배 -->
         <p lang="en">This is a paragraph in English.</p>
         <p lang="ja">これは日本語の段落です。</p><!--  없으면 위배일까? lang이 없으면 알아 듣기 힘듬-->
 
@@ -480,17 +483,20 @@
 
                 <table role="log">이거는 표가 아닌 기록으로 알림</table><!-- 보이스오버- 텍스트  -->
                 <a aria-label="보조기술사용자는 aria-label의 콘텐츠만 인식합니다">앵커</a><!--보이스오버- 텍스트 -->
-                ul태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을 권장<!--보이스오버- 텍스트만 읽어줌 <code><ul></code>코드는 읽지않음;; -->
+                ul태그에 role="navigation"을 주어 사용하기도 하지만 nav태그 사용을
+                권장<!--보이스오버- 텍스트만 읽어줌 <code><ul></code>코드는 읽지않음;; -->
             </div>
             <div>
                 <h3>3. 알게된 점</h3><!-- 보이스오버- 텍스트, 머리말레벨3 -->
-                <p>aria-label, aria-labelledby, aria-description, aria-describedby와 같은 속성은 요소에 설명을 제공하는 속성으로 사용합니다</p>
+                <p>aria-label, aria-labelledby, aria-description, aria-describedby와 같은 속성은 요소에 설명을 제공하는 속성으로 사용합니다
+                </p>
                 <ul><!-- 보이스오버- 구분점, 목록시작 -->
                     <li>aria-label은 영역에 heading태그가 없을 때 사용</li><!-- 보이스오버- 텍스트 -->
                     <li>aria-labelledby는 heading태그,a, button요소를 id값으로 참조할 때 사용</li>
                     <!-- 보이스오버- 구분점 --><!-- 보이스오버- 텍스트, 목록끝 -->
                 </ul>
-                <p>aria-label과 aria-labelledby를 함께 사용하면 aria-label보다 aria-labelledby속성이 우선순위가 높고, 숨김 처리한 설명을 참조하면 안되고
+                <p>aria-label과 aria-labelledby를 함께 사용하면 aria-label보다 aria-labelledby속성이 우선순위가 높고, 숨김 처리한 설명을 참조하면
+                    안되고
                     참조가 불가능한 경우 aria-label속성 사용</p>
                 <ul><!-- 보이스오버- 구분점, 목록시작 -->
                     <li>aria-description은 자세한 설명을 할 때 사용</li><!-- 보이스오버- 텍스트 -->
