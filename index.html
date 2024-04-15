@@ -222,14 +222,15 @@
 
 
         <form action="/upload" method="post" enctype="multipart/form-data">
-            <label for="imageUpload">이미지 업로드:</label><!-- 보이스오버-택스트, 버튼 -->
-            <input type="image" id="imageUpload" name="image" accept="image/*"><!-- 인풋이이미지가 업로드 버튼으로 사용되는 예시 -->
+            <label for="imageUpload">업로드:</label>
+            <!-- 인풋이이미지가 업로드 버튼으로 사용되는 예시 -->
+            <input type="image" id="imageUpload" name="image" accept="image/*"><!-- 보이스오버-택스트, 버튼 -->
             <input type="submit" value="전송">
         </form>
 
         <!--<html lang="ko"> 없으면 위배 -->
         <p lang="en">This is a paragraph in English.</p>
-        <p>これは日本語の段落です。</p><!-- lang="ja" 없으면 위배일까? lang이 없으면 알아 듣기 힘듬-->
+        <p lang="ja">これは日本語の段落です。</p><!--  없으면 위배일까? lang이 없으면 알아 듣기 힘듬-->
 
         <!-- ARIA는 Accessible Rich Internet Applications -->
         <table border="1" aria-describedby="real-deal-summary">
