@@ -111,10 +111,40 @@
             color: transparent;
             clip: rect(1px, 1px, 1px, 1px);
         }
+
+        iframe .lnb>ul>li.active>a {
+            color: red;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <iframe name="nuli" id="nuli" src="https://nuli.navercorp.com/guideline/s01/g01" frameborder="0" width="100%"
+        height="1500px"></iframe>
+    <!-- https://junspapa-itdev.tistory.com/55 크로스 도메인 방법 https://ui.toast.com/weekly-pick/ko_20211110-->
+    <script>
+        // var iframe = document.querySelector("#nuli");
+        // var cssLink = document.createElement("link");
+        // cssLink.href = "style.css";
+        // cssLink.rel = "stylesheet";
+        // cssLink.type = "text/css";
+        // iframe.document.head.appendChild(cssLink);
+
+        $("#nuli").on("load", function () {
+            let head = $("#nuli").contents().find("head");
+            console.log(head);
+            let css = '<style>.lnb>ul>li.active>a {color: red;}< /style>';
+            $(head).append(css);
+            // ...
+            // $(head).append($("< link/>", {
+            //     rel: "stylesheet",
+            //     href: url,
+            //     type: "text/css"
+            // }));
+        });
+    </script>
     <!-- 레이어 팝업은 팝업창 차단 브라우저에서 시각적팝업효과를 내기위한 콘텐츠로 페이지 위에 위치하고 아래의 콘텐츠를 보려면 반드시 사라지게 해야 함. -->
     <!-- 좋은회사는 렌더링, 스크립트, css, html, 접근성을 제대로 알고 있는지 질문을 함 -->
     <noscript>현재 사용 중인 브라우저는 스크립트를 지원하지 않거나, 해당 기능이 활성화되어 있지 않습니다!<br>
