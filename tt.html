@@ -121,6 +121,36 @@
 </head>
 
 <body>
+    <input id="input" type="text"><input id="submit" type="submit" value="확인">
+    <script>
+        var timer;
+        var submit = document.querySelector("#submit");
+        var inputVal = document.querySelector("#input");
+        document.querySelector("#input").addEventListener('input', function (e) {
+            // console.log('AJAX요청', e.target.value);
+
+            /* 연이어 호출되는 함수들 중 마지막 함수(또는 제일 처음)만 호출하도록 하는 것 - 디바운싱 */
+            if (timer) {
+                clearTimeout(timer)
+            }
+            timer = setTimeout(function () {
+                console.log('AJAX요청', e.target.value);
+            }, 200);
+
+            /* 마지막 함수가 호출된 후 일정 시간이 지나기 전에 다시 호출되지 않도록 하는 것 - 쓰로틀링 */
+            if (!timer) {
+                timer = setTimeout(function () {
+                    timer = null;
+                    console.log('AJAX요청', e.target.value);
+                }, 200)
+            }
+        });
+        submit.addEventListener('click', function () {
+            console.log(inputVal.value)
+        })
+    </script>
+    <!---->
+
     <iframe name="nuli" id="nuli" src="https://nuli.navercorp.com/guideline/s01/g01" frameborder="0" width="100%"
         height="1500px"></iframe>
     <!-- https://junspapa-itdev.tistory.com/55 크로스 도메인 방법 https://ui.toast.com/weekly-pick/ko_20211110-->
