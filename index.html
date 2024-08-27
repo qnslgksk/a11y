@@ -59,7 +59,7 @@
     </header><!--  end, 배너 -->
     <main id="main">
 
-        <div class="select_month_wrap c-mypage on" tabindex="0" style="">
+        <!-- <div class="select_month_wrap c-mypage on" tabindex="0">
             <div class="year_warp" data-bind-html="calendarData">
                 <p class="year">2023</p>
                 <div class="radio_wrap type_btn month_wrap">
@@ -82,7 +82,7 @@
             </div>
             <button type="button" class="btn_close ui-pop-close smwClose"
                 data-focus-prev="fr06"><span>팝업닫기</span></button>
-        </div>
+        </div> -->
 
         <!-- 1. tabindex=""
             전체 페이지구조에서 팝업은 제일 하단에 위치 하고 활성화되면 팝업에 초점이 들어오게 하려면 tabindex="0" 사용하여 초점이동을 시킨다
@@ -90,7 +90,7 @@
         
             2. title="" -->
 
-        이미지케이스
+        <!-- 이미지케이스 -->
         <div>
             <a href="https://www.youtube.com/embed/-udAn0Fd7yo" class="vdad_btn ui-vdadpop-open"
                 title="pLayer Story: 빠른 Girl 어떡해 비디오 팝업 열기" aria-controls="pop2" role="button" aria-haspopup="dialog">
@@ -104,22 +104,24 @@
 
         <img src="https://placehold.co/600x400" alt="예시 또는 샘플 이미지는 장식으로 간주하여 빈 값"><!-- 보이스오버- alt값, 이미지 -->
 
-        링크케이스
+        <!-- 링크케이스 -->
 
         <a href="">링크텍스트는 의미있는 텍스트를 제공</a>
 
-        버튼케이스
-        <button><!-- 웹표준에 맞지않음 안에 텍스트 연결해서 읽어줌 -->
+        <!-- 버튼케이스 -->
+        <button>
             <div>dsfsdf</div>
-            <p>sadasf</p>
+            <p>sadasf</p><!-- 버튼 안에 div, p요소는 웹 표준에 맞지 않음 (텍스트 연결해서 읽어줌 role="button") -->
         </button>
 
-
-
-        폼요소케이스
+        <!-- 폼요소케이스 -->
         <!-- 폼 관련 요소에 명확한 설명 제공 -->
         <label for="name">이름:</label><!--보이스오버- 레이블, 텍스트필드, 편집하려면 이중탭하십시오., 로터를사용하여 맞춤법 오류 단어에 연결 -->
         <input type="text" id="name" name="name">
+
+        <!-- 검색추가 -->
+        <input id="query" name="query" type="search" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." maxlength="255" autocomplete="off" class="search_input" data-atcmp-element="" aria-placeholder="네이버에서 가져옴">
+        <input type="search">
 
         <div id="ex1">
             <fieldset class="checkbox-mixed">
