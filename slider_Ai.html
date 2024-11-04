@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 스와이퍼</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        .swiper-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.swiper-slide {
+    flex: 0 0 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: #f0f0f0;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+     </style>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">슬라이드 1</div>
+            <div class="swiper-slide">슬라이드 2</div>
+            <div class="swiper-slide">슬라이드 3</div>
+            <div class="swiper-slide">슬라이드 4</div>
+        </div>
+        <button class="swiper-button-prev">이전</button>
+        <button class="swiper-button-next">다음</button>
+    </div>
+    <script>
+        class Swiper {
+                constructor(container) {
+                    this.container = container;
+                    this.wrapper = container.querySelector('.swiper-wrapper');
+                    this.slides = container.querySelectorAll('.swiper-slide');
+                    this.prevButton = container.querySelector('.swiper-button-prev');
+                    this.nextButton = container.querySelector('.swiper-button-next');
+                    this.currentIndex = 0;
+                    this.slidesCount = this.slides.length;
+
+                    this.init();
+                }
+
+                init() {
+                    this.prevButton.addEventListener('click', () => this.slidePrev());
+                    this.nextButton.addEventListener('click', () => this.slideNext());
+                }
+
+                slidePrev() {
+                    this.currentIndex = (this.currentIndex - 1 + this.slidesCount) % this.slidesCount;
+                    this.updateSlidePosition();
+                }
+
+                slideNext() {
+                    this.currentIndex = (this.currentIndex + 1) % this.slidesCount;
+                    this.updateSlidePosition();
+                }
+
+                updateSlidePosition() {
+                    const offset = -this.currentIndex * 100;
+                    this.wrapper.style.transform = `translateX(${offset}%)`;
+                }
+            }
+
+            // 스와이퍼 초기화
+            document.addEventListener('DOMContentLoaded', () => {
+                const swiperContainer = document.querySelector('.swiper-container');
+                new Swiper(swiperContainer);
+            });
+    </script>
+    <!-- <script src="script.js"></script> -->
+</body>
+
+</html>

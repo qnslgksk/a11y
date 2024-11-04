@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭 메뉴</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+        .tab-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #fff;
+    border-bottom: 2px solid #007bff;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.tab-content.active {
+    display: block;
+}
+     </style>
+</head>
+
+<body>
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="tab1">탭 1</button>
+            <button class="tab-button" data-tab="tab2">탭 2</button>
+            <button class="tab-button" data-tab="tab3">탭 3</button>
+        </div>
+        <div class="tab-contents">
+            <div class="tab-content active" id="tab1">
+                <h2>탭 1 내용</h2>
+                <p>여기는 탭 1의 내용입니다.</p>
+            </div>
+            <div class="tab-content" id="tab2">
+                <h2>탭 2 내용</h2>
+                <p>여기는 탭 2의 내용입니다.</p>
+            </div>
+            <div class="tab-content" id="tab3">
+                <h2>탭 3 내용</h2>
+                <p>여기는 탭 3의 내용입니다.</p>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                const tabButtons = document.querySelectorAll('.tab-button');
+                const tabContents = document.querySelectorAll('.tab-content');
+
+                function activateTab(tabId) {
+                    // 모든 탭 버튼과 내용의 active 클래스 제거
+                    tabButtons.forEach(button => button.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // 선택된 탭 버튼과 내용에 active 클래스 추가
+                    const selectedButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                    const selectedContent = document.getElementById(tabId);
+
+                    selectedButton.classList.add('active');
+                    selectedContent.classList.add('active');
+                }
+
+                // 각 탭 버튼에 클릭 이벤트 리스너 추가
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const tabId = this.getAttribute('data-tab');
+                        activateTab(tabId);
+                    });
+                });
+
+                // 초기 탭 활성화 (첫 번째 탭)
+                activateTab('tab1');
+            });
+            
+     </script>
+</body>
+
+</html>

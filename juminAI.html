@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <style>
+        .masked-input {
+            font-family: monospace;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>로그인 페이지</h1>
+        <form aria-labelledby="login-form-title" role="form">
+            <fieldset>
+                <legend id="login-form-title">주민번호 입력</legend>
+                <label for="jumin1">주민번호:</label>
+                <input type="text" id="jumin1" class="masked-input" oninput="regexJumin()" maxlength="6" placeholder="주민번호 앞6자리" aria-describedby="jumin-desc">
+                <span>-</span>
+                <input type="text" id="jumin2" class="masked-input" oninput="maskJumin()" maxlength="6" placeholder="주민번호 뒤6자리" aria-describedby="jumin-desc">
+                <p id="jumin-desc" class="visually-hidden">주민번호 입력은 필수입니다.</p>
+            </fieldset>
+        </form>
+    </main>
+    <script>
+        function regexJumin() {
+            const jumin1 = document.querySelector('#jumin1');
+            let juminValue1 = jumin1.value;
+            console.log(juminValue1);
+            let regex = /[^0-9]*$/;
+            if(regex.test(juminValue1)){
+                return;
+            } else{
+                // juminValue1.replace(/[^0-9]/g, '*')
+                console.log
+            }
+        }
+
+        function maskJumin() {
+            const jumin2 = document.getElementById('jumin2');
+            let input2 = jumin2.value.replace(/[^0-9]/g, ''); // 숫자와 '-'만 허용
+            // if (value.length > 6 && value[6] !== '-') {
+            //     value = value.slice(0, 6) + '-' + value.slice(6);
+            // }
+            if (input2.length > 0) {
+                const prefix = value.slice(0, 1); // -1
+                const suffix = value.slice(1)+ '*'.repeat(); // 1****** (뒤에 *로 마스킹)
+                
+
+                value = prefix + suffix;
+            }
+            input.value = value;
+        }
+    </script>
+</body>
+
+</html>

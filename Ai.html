@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class SimpleLinearRegression {
+                constructor() {
+                    this.slope = 0;
+                    this.intercept = 0;
+                }
+
+                fit(X, y) {
+                    const n = X.length;
+                    let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+
+                    for (let i = 0; i < n; i++) {
+                        sumX += X[i];
+                        sumY += y[i];
+                        sumXY += X[i] * y[i];
+                        sumXX += X[i] * X[i];
+                    }
+
+                    this.slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+                    this.intercept = (sumY - this.slope * sumX) / n;
+                }
+
+                predict(X) {
+                    return X.map(x => this.slope * x + this.intercept);
+                }
+            }
+
+            // 데이터 준비
+            const X = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
+            const y = [200, 250, 300, 350, 400, 450, 500, 550, 600, 650];
+
+            // 모델 생성 및 학습
+            const model = new SimpleLinearRegression();
+            model.fit(X, y);
+
+            // 예측
+            const X_new = [75, 125];
+            const y_pred = model.predict(X_new);
+
+            console.log("75평방미터 집의 예상 가격:", y_pred[0].toFixed(2));
+            console.log("125평방미터 집의 예상 가격:", y_pred[1].toFixed(2));
+
+            // 결과를 시각화하려면 HTML5 canvas나 D3.js 같은 라이브러리를 사용해야 합니다.
+    </script>
+    
+</body>
+</html>
